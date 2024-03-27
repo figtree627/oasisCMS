@@ -9,16 +9,12 @@ import lombok.Data;
 @Data
 public class MemberDTO {
 	String memberId;
-	String pw;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	String passwd;
 	Date crateDt;
 	String memberNm;
 	String memberNick;
-	String memberProfile_img;
-	String memberProfile_UUID;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	String birthDt;
+	String memberProfileImg;
+	String memberProfileUUID;
 	char sex;
 	String hp;
 	String email;
@@ -28,10 +24,8 @@ public class MemberDTO {
 	String namujiAddress;
 	String etc;
 	char activeYn ;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date inactiveDt;
 	char loginYn;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date loginDt;
 }
 	

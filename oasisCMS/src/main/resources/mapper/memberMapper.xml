@@ -1,4 +1,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.member.dao.MemberDAO">
-
+	<insert id="createMember" parameterType="MemberDTO">
+		INSERT INTO MEMBER (
+			MEMBER_ID, 
+			PASSWD, 
+			CREATE_DT, 
+			MEMBER_NM, 
+			MEMBER_NICK, 
+			MEMBER_PROFILE_IMG, 
+			MEMBER_PROFILE_UUID, 
+			SEX, 
+			HP, 
+			EMAIL, 
+			ZIPCODE, 
+			ROAD_ADDRESS, 
+			JIBUN_ADDRESS, 
+			NAMUJI_ADDRESS, 
+			ETC
+		) 
+		VALUES (
+				#{memberId}, 
+				#{passwd}, 
+				#{createDt},
+				#{memberNm}, 
+				#{memberNick}, 
+				#{memberProfileImg}, 
+				#{memberprofileUUID}, 
+				#{sex},
+				#{hp},  
+				#{email}, 
+				#{zipcode}, 
+				#{roadAddress}, 
+				#{jibunAddress}, 
+				#{namujiAddress}, 
+				#{etc}
+		 )
+	</insert>
+	<select id="getMemberDetail" parameterType="String" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="checkValidId" parameterType="String" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
 </mapper>
