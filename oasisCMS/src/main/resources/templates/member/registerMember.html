@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script th:src="@{/ckeditor/ckeditor.js}"></script>
-<script th:src="@{/jquery/jquery-3.6.1.min.js}"></script>
+<script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
 <script th:src="@{http://dmaps.daum.net/map_js_init/postcode.v2.js}"></script>
 <script>
 
@@ -100,11 +100,8 @@
 				$("#isValidPasswdMsg").html("<span style='color:red;'>패스워드가 일치하지 않습니다.</span>");
 				isPassPasswd = false;
 			}
-			
 		});	
-		
 	});
-	
 	
 	function checkFormValidation() {
 
@@ -113,7 +110,6 @@
 			$("#memberId").focus();
 			return false;
 		}
-		
 		if (!isPassPasswd) {
 			alert("패스워드를 확인해주세요.");
 			$("#confirmPasswd").focus();
