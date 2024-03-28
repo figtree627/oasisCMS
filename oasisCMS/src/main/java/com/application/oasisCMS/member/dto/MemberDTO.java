@@ -10,7 +10,7 @@ import lombok.Data;
 public class MemberDTO {
 	String memberId;
 	String passwd;
-	Date crateDt;
+	Date createDt;
 	String memberNm;
 	String memberNick;
 	String memberProfileImg;

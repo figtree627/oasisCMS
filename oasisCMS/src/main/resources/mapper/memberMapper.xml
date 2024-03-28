@@ -25,7 +25,7 @@
 				#{memberNm}, 
 				#{memberNick}, 
 				#{memberProfileImg}, 
-				#{memberprofileUUID}, 
+				#{memberProfileUUID}, 
 				#{sex},
 				#{hp},  
 				#{email}, 

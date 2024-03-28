@@ -25,14 +25,14 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping
-	public String test() {
-		return "/main";
+	@GetMapping("/main")
+	public String main() {
+		return "member/index";
 	}
 	
 	@GetMapping("/registerMember")
 	public String registerMember() {
-		return "/member/registerMember";
+		return "member/registerMember";
 	}
 	
 	@PostMapping("/registerMember")

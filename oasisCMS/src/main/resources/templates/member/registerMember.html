@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 
 <script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
 <script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
@@ -49,12 +48,42 @@
 </script>
 
 <script>
+$(document).ready(function() {
+    $("#memberId").keyup(function(){
+        let memberId = $(this).val();
+        if (memberId.length < 5){
+            $("#isValidIdMsg").html("<span style='color:red;'>아이디가 5글자 이상이어야 합니다.</span>");
+            return;
+        } else {
+            $("#isValidIdMsg").empty(); // Clear error message if valid
+        }
+    });	
+});
+</script>
+
+
+<script>
 
 	let isPassId = false;
 	let isPassPasswd = false;
 	
 	$().ready(function() {
-		
+
+		$("#passwd").keyup(function(){
+        let passwd = $(this).val();
+
+        // 정규 표현식을 사용하여 비밀번호가 조건을 충족하는지 확인
+        let passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+        
+        if (!passwordRegex.test(passwd)){
+            $("#isValidPasswdMsg").html("<span style='color:red;'>비밀번호는 8글자 이상이어야 하며, 영어 대문자, 숫자, 특수기호를 모두 포함해야 합니다.</span>");
+            return;
+        } else {
+            $("#isValidPasswdMsg").empty(); // Clear error message if valid
+        }
+    });	
+
+
 		$("#isValidId").click(function(){
 			
 			let memberId = $("#memberId").val();
@@ -78,21 +107,15 @@
 	        		$("#isValidIdMsg").html("<span style='color:red;'>중복된 아이디입니다.</span>");
 	        		isPassId = false;
 		          }
-		          
 		       }
-		       
 		    });
-		    
 		});	
-		
-		
 		
 		$("#confirmPasswd").blur(function(){
 			
 			let passwd = $("#passwd").val();
 			let confirmPasswd = $("#confirmPasswd").val();
-			
-			if (passwd == confirmPasswd) {
+			if (passwd != "" && passwd == confirmPasswd) {
 				$("#isValidPasswdMsg").html("<span style='color:green;'>패스워드가 일치합니다.</span>");
 				isPassPasswd = true;
 			}
@@ -103,6 +126,8 @@
 		});	
 	});
 	
+
+
 	function checkFormValidation() {
 
 		if (!isPassId) {
@@ -117,18 +142,20 @@
 		}
 	}
 	
-	
 </script>
 </head>
 <body>
-
+<br><br>
 <div layout:fragment="content">
 
 <div align="center">
 		<form 	th:action="@{/member/registerMember}" 
 				th:onsubmit="return checkFormValidation();" 
 				method="post" enctype="multipart/form-data">
-			<h3>회원가입</h3>
+			
+			<br>
+			<h5 class="title">회원가입</h5>
+			<br>
 			<table border="1">
 				<tr>
 					<td>아이디</td>
@@ -149,11 +176,16 @@
 			        <td>
 			        	<input type="password" id="confirmPasswd" placeholder="비밀번호확인" required/>&emsp;
 			        	<span id="isValidPasswdMsg"></span>
+						
 			        </td>
 		        </tr>
 		        <tr>
 			        <td>이름</td>
 			        <td><input type="text" name="memberNm" placeholder="이름" required/></td>
+		        </tr>                
+		        <tr>
+			        <td>닉네임</td>
+			        <td><input type="text" name="memberNick" placeholder="닉네임" required/></td>
 		        </tr>                
 			    <tr>
 			        <td>성별</td>
@@ -171,12 +203,12 @@
 		        <tr>
 			        <td>이메일</td>
 			        <td>
-			        	<input type="email" name="email" required>  
+			        	<input type="email" name="email" >  
 			        </td>
 		        </tr>
 		        <tr>
 			        <td>프로필</td>
-			        <td><input type="file" name="uploadProfile" required/></td>
+			        <td><input type="file" name="uploadProfileImg" /></td>
 		        </tr>                              
 		        <tr>
 			        <td>주소</td>
