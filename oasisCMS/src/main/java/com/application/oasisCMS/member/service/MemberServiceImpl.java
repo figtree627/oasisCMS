@@ -79,23 +79,21 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberDTO memberDTO)  {
 		
 		MemberDTO validateData = memberDAO.login(memberDTO.getMemberId());
-		// #####################
+		// db에 char로 저장한 것을 String으로 바꾸려면?
 		if (validateData != null) {
-//			if (passwordEncoder.matches(memberDTO.getPasswd() , validateData.getPasswd()) && !validateData=='n')) {
-//				return true;
-//			} 
+			String activeYnString = Character.toString(validateData.getActiveYn());
+			if (passwordEncoder.matches(memberDTO.getPasswd() , validateData.getPasswd()) && !activeYnString.equals("n")) {
+				System.out.println("서비스 - 로그인 성공!");
+				return true;
+			} 
 		}
-		
 		return false;
-		
 	}
-	
 	
 	@Override
 	public MemberDTO getMemberDetail(String memberId)  {
 		return memberDAO.getMemberDetail(memberId);
 	}
-	
 	
 	@Override
 	public void updateMember(MultipartFile uploadProfile , MemberDTO memberDTO) throws IllegalStateException, IOException  {

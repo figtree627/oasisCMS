@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>오아시스 아카데미 메인 페이지
+   
+
+</title>
+</head>
+<body>
+
+<div align="center" layout:fragment="content">
+    <div align="right">
+            <input type="button" name="loginBtn" value="로그인">
+            <input type="button" name="joinBtn" value="가입하기">
+    </div>
+    <div align="center">
+        <a src="/img/logo.jpg" th:href="/main">오아시스아카데미 로고 이미지</a>
+    </div>
+    <div class="naviBar">
+        <a href="/main" value = "home"></a>
+        <a href="/bs/bsBoard">오아시스아카데미</a>
+        <a href="/memorial/memorial">영성기념관</a>
+        <a href="/ammabooks/ammabooks">도서출판암마</a>
+    </div>
+
+</div>
+</body>
+</html>

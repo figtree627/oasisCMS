@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
 
 
@@ -48,30 +48,16 @@
 </script>
 
 <script>
-$(document).ready(function() {
-    $("#memberId").keyup(function(){
-        let memberId = $(this).val();
-        if (memberId.length < 5){
-            $("#isValidIdMsg").html("<span style='color:red;'>아이디가 5글자 이상이어야 합니다.</span>");
-            return;
-        } else {
-            $("#isValidIdMsg").empty(); // Clear error message if valid
-        }
-    });	
-});
-</script>
-
-
-<script>
 
 	let isPassId = false;
 	let isPassPasswd = false;
 	
 	$().ready(function() {
-
+		 /*
 		$("#passwd").keyup(function(){
         let passwd = $(this).val();
-
+	
+       
         // 정규 표현식을 사용하여 비밀번호가 조건을 충족하는지 확인
         let passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
         
@@ -82,8 +68,8 @@ $(document).ready(function() {
             $("#isValidPasswdMsg").empty(); // Clear error message if valid
         }
     });	
-
-
+ 
+       */
 		$("#isValidId").click(function(){
 			
 			let memberId = $("#memberId").val();

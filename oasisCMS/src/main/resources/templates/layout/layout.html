@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	<!--    
+	원하는 html에 복붙
+	<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+	<div layout:fragment="content">비공통화면 코드</div> 
+			
+	-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="오아시스 아카데미 홈페이지">
+	<meta name="keywords" content="oasis, 오아시스, 오아시스아카데미, Spirituality">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+	<title layout:title-pattern="$CONTENT_TITLE"></title>
+	
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	
+	<!-- Css Styles -->
+	<link rel="stylesheet" th:href="@{/ashion/css/bootstrap.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/font-awesome.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/elegant-icons.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/jquery-ui.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/magnific-popup.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/owl.carousel.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/slicknav.min.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/ashion/css/style.css}" type="text/css">
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Offcanvas Menu Begin -->
+	<div class="offcanvas-menu-overlay"></div>
+	<div class="offcanvas-menu-wrapper">
+		<div class="offcanvas__close">+</div>
+		<ul class="offcanvas__widget">
+			<li><span class="icon_search search-switch"></span></li>
+			<li><a href="#"><span class="icon_heart_alt"></span>
+					<div class="tip">2</div> </a></li>
+			<li><a href="#"><span class="icon_bag_alt"></span>
+					<div class="tip">2</div> </a></li>
+		</ul>
+		<div class="offcanvas__logo">
+			<a href="index"><img src="/img/logo.jpg" alt=""></a>
+		</div>
+		<div id="mobile-menu-wrap"></div>
+		<div class="offcanvas__auth">
+			<a href="/member/loginMember">로그인</a> <a
+				href="/member/registerMember">가입하기</a>
+		</div>
+	</div>
+	<!-- Offcanvas Menu End -->
+
+	<!-- Header Section Begin -->
+	<header class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-3 col-lg-8">
+					<div class="header__logo" align="center">
+						<a href="/main"><img src="/img/logo.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-7" align="right">
+					<nav class="header__menu">
+						<ul>
+							<li class="active"><a href="/main">Home</a></li>
+							<li><a href="/bs/main">방송</a>
+								<ul class="dropdown">
+									<li><a th:href="@{/bs/bs_1}">월요일방송</a></li>
+									<li><a th:href="@{/bs/bs_3}">화요일방송</a></li>
+									<li><a th:href="@{/bs/bs_2}">수요일방송</a></li>
+									<li><a th:href="@{/bs/bs_4}">목요일방송</a></li>
+									<li><a th:href="@{/bs/bs_5}">금요일방송</a></li>
+									<li><a th:href="@{/bs/bs_6}">토요일방송</a></li>
+									<li><a th:href="@{/bs/bs_7}">주일방송</a></li>
+								</ul>
+							</li>
+							<li><a href="/memorial/main">영성기념관</a>
+								<ul class="dropdown">
+									<li><a th:href="@{/memorial/m_1}">첫번째 방</a></li>
+									<li><a th:href="@{/memorial/m_2}">두번째 방</a></li>
+									<li><a th:href="@{/memorial/m_3}">세번째 방</a></li>
+									<li><a th:href="@{/memorial/m_4}">네번째 방</a></li>
+									<li><a th:href="@{/memorial/m_5}">다섯번째 방</a></li>
+									<li><a th:href="@{/memorial/m_6}">여섯번째 방</a></li>
+									<li><a th:href="@{/memorial/m_7}">일곱번째 방</a></li>
+								</ul>
+							</li>
+							<li><a th:href="@{/book/main}">도서출판암마</a>
+							<ul class="dropdown">
+								<li><a th:href="@{/book/book_1}">출판사 소개</a></li>
+								<li><a th:href="@{/book/book_2}">저자 소개</a></li>
+								<li><a th:href="@{/book/book_3}">도서 안내</a></li>
+								<ul class="dropdown">
+									<li><a th:href="@{/book/book_3_1}">총 도서목록</a></li>
+									<li><a th:href="@{/book/book_3_2}">주제별 도서목록</a></li>	
+								</ul>
+							</ul>
+							</li>
+								<li><a th:href="@{/bd/main}">게시판</a>
+						</li>
+						</ul>
+						
+					</nav>
+				</div>
+				<div class="col-lg-3">
+					<div class="header__right">
+						<div class="header__right__auth">
+							<a href="/member/loginMember">로그인</a> <a
+								href="/member/registerMember">회원가입</a>
+						</div>
+						<ul class="header__right__widget">
+							<li><span class="icon_search search-switch"></span></li>
+							<li><a href="#"><span class="icon_heart_alt"></span>
+									<div class="tip">2</div> </a></li>
+							<li><a href="#"><span class="icon_bag_alt"></span>
+									<div class="tip">2</div> </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="canvas__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
+	<!-- Header Section End -->
+
+	<div layout:fragment="content"></div>
+
+
+	<!-- Footer Section Begin -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-10 col-sm-7" align="center">
+					<div class="footer__about">
+						<div class="footer__logo">
+							<a href="./index.html"><img src="/img/logo.jpg" alt=""></a>
+						</div>
+						<div align="center">
+							<span>오아시스 아카데미 홈페이지<br> 본질영성을 향해서
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-3 col-sm-5">
+					<div class="footer__widget">
+						<h6>Quick links</h6>
+						<ul>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Blogs</a></li>
+							<li><a href="#">Contact</a></li>
+							<li><a href="#">FAQ</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-3 col-sm-4">
+					<div class="footer__widget">
+						<h6>Account</h6>
+						<ul>
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Orders Tracking</a></li>
+							<li><a href="#">Checkout</a></li>
+							<li><a href="#">Wishlist</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<div class="footer__copyright__text">
+						<p>
+							Copyright &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							All rights reserved | OASIS Academy
+						</p>
+					</div>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Section End -->
+	<!-- Js Plugins -->
+	<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/ashion/js/bootstrap.min.js}"></script>
+	<script th:src="@{/ashion/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/ashion/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/ashion/js/mixitup.min.js}"></script>
+	<script th:src="@{/ashion/js/jquery.countdown.min.js}"></script>
+	<script th:src="@{/ashion/js/jquery.slicknav.js}"></script>
+	<script th:src="@{/ashion/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/ashion/js/jquery.nicescroll.min.js}"></script>
+	<script th:src="@{/ashion/js/main.js}"></script>
+	<script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
+
+</body>
+
+</html>

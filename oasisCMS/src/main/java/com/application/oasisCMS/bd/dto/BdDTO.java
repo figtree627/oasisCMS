@@ -7,12 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class bdDTO {
+public class BdDTO {
 	long bdId;
 	String memberId;
-	String bdTitle;
-	String bdContent;
-	String bdReadCnt;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	String title;
+	String content;
+	String readCnt;
 	Date createDt;
 }

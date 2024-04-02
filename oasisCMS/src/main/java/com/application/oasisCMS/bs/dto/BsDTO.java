@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class BsDTO {
 	long bsId;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date createDt;
 	String bsTitle;
 	String bsImg;

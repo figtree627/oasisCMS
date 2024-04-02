@@ -1,4 +1,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.application.oasisCMS.book.dao.BookDAO">
+<mapper namespace="com.application.oasisCMS.bd.dao.BdDAO">
+
+	<insert id="createBd" parameterType="BdDTO">
+		INSERT INTO BOARD (
+			MEMBER_ID, TITLE, CONTENT
+		)
+		VALUES(
+			#{memberId}, #{title}, #{content}
+		)
+	</insert>
+
+	<select id="getBdList" resultType="BdDTO">
+		SELECT	*
+		FROM	BOARD
+	</select>
+	
+	<select id="getBdDetail" parameterType="long" resultType="BdDTO">
+		SELECT	*
+		FROM	BOARD
+		WHERE	BD_ID = #{bdId}
+	</select>
+	
+	<update id="updateReadCnt" parameterType="long">
+		UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = #{bdId}
+	</update>
+	
+<!-- 	<select id="getEncodePasswd" parameterType="long" resultType="String"> -->
+<!-- 		SELECT	PASSWD -->
+<!-- 		FROM	BOARD -->
+<!-- 		WHERE	BD_ID = #{bdId} -->
+<!-- 	</select> -->
+	
+	<update id="updateBd" parameterType="BdDTO">
+		UPDATE	BOARD
+		SET		TITLE = #{title},
+				CONTENT = #{content}
+		WHERE	BD_ID = #{bdId}
+	</update>
+	
+	<delete id="deleteBd" parameterType="long">
+		DELET FROM	BOARD
+		WHERE		BD_ID = #{bdId}
+	</delete>
 
 </mapper>
