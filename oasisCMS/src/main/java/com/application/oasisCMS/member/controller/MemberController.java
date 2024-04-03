@@ -51,9 +51,9 @@ public class MemberController {
 	}
 	
 	@PostMapping("/registerMember")
-	public String registerMember(@RequestParam("profileImg") MultipartFile profileImg, 
+	public String registerMember(@RequestParam("a") MultipartFile a, 
 								@ModelAttribute MemberDTO memberDTO) throws IllegalStateException, IOException {
-		memberService.createMember(profileImg, memberDTO);
+		memberService.createMember(a, memberDTO);
 		return "redirect:main";
 	} 
 	
@@ -77,12 +77,23 @@ public class MemberController {
 			System.out.println("컨트롤러 - 로그인 성공!");
 			HttpSession session = request.getSession();
 			session.setAttribute("memberId", memberDTO.getMemberId());
-			
 			isValidMember = "y";
-			
 		} 
-		
 		return isValidMember;
+	}
+	@GetMapping("/updateMember")
+	public String updateMember() {
+		
+		return "/member/updateMember";
+	}
+	
+	@GetMapping("/logoutMember")
+	public String logoutMember(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:main";
 		
 	}
 }

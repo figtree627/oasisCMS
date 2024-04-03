@@ -9,9 +9,60 @@
 		padding-right : 0 20% 0 0;
 	}
 </style>
+<script>
+	function checkSession() {
+		
+		let jsSession = "[[${session.memberId}]]";
+		console.log(jsSession);
+		/*
+		if (jsSession == "") {
+			alert("빈문자열")
+		} 
+		if (jsSession == null) {
+			alert("null")
+		} 
+		if (jsSession == undefined) {
+			alert("undifined")
+		} 
+		*/
+		
+// 세션확인 있으면 > 로그인ok > 글쓰기 화면으로
+		if (jsSession != "") {
+			alert('로그인 확인 했습니다. 글쓰기 화면으로 이동합니다.');
+			location.href = "/bd/createBd";
+		} else { //	없으면 > 로그인x > 로그인화면으로
+			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
+			location.href="/member/loginMember";
+		}
+		
+	}
+	
+</script>
 </head>
 <body>
 <div layout:fragment="content">
+	  <div align="center">
+	  <h3>커뮤니티 게시글 리스트</h3>
+   <table border="1">
+      <tr>
+         <th>번호</th>
+         <th>제목</th>
+         <th>작성자</th>
+         <th>작성일</th>
+         <th>조회수</th>
+      </tr>
+      <tr th:each="bdDTO : ${bdList}" >
+         <td th:text="${bdDTOStat.count}">번호</td>
+         <td><a th:text="${bdDTO.title}" th:href="@{/bd/bdDetail(bdId=${bdDTO.bdId})}">제목</a></td>
+         <td th:text="${memberDTO.memberNick}">닉네임</td>
+         <td th:text="${#dates.format(bdDTO.createDt , 'yyyy-MM-dd')}">등록일</td>
+         <td th:text="${bdDTO.readCnt}">조회수</td>
+      </tr>
+   </table>
+	  </div>
+	  
+	  
+	  
 	    <!-- Breadcrumb Begin -->
 		<div class="breadcrumb-option">
 			<div class="container">
@@ -27,7 +78,7 @@
 		</div>
 		<!-- Breadcrumb End -->
 		<div align="right" class="mybtn">
-		<form><input type="button" value="글쓰기" th:onclick="|@{location.href='/bd/createBd'}|">
+		<form> <input type="button" value="글쓰기" th:onclick="checkSession()">
 		</div>
 		<!-- Blog Section Begin -->
 		<section class="blog spad">

@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.application.oasisCMS.bd.dto.BdDTO;
 import com.application.oasisCMS.bd.service.BdService;
+import com.application.oasisCMS.member.service.MemberService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/bd")
@@ -21,6 +25,9 @@ public class BdController {
 	
 	@Autowired
 	private BdService bdService;
+
+	@Autowired
+	private MemberService memberService;
 	
 	
 	// ashion의 블로그를 적용할 예정
@@ -34,34 +41,43 @@ public class BdController {
 		return "bd/bdList";
 	}
 	@GetMapping("/createBd")
-	public String createBd() {
+	public String createBd(Model model, HttpServletRequest req) {
+		System.out.println("글쓰기 컨트롤러 - 겟 도착");
+		// 세션 id에 where절에 넣어서 화면에 가져와라.
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		return "bd/createBd";
 	}
 	
 	@PostMapping("/createBd") 
 	public String createBd(@ModelAttribute BdDTO bdDTO) {
-		
 		// 단위테스트
-		System.out.println("컨트롤러-포스트 도착");
+		System.out.println("글쓰기 컨트롤러-포스트 도착");
 		System.out.println(bdDTO);
+		
 		bdService.createBd(bdDTO);
 		
 		return "bd/bdList";
 	}
 	
-	// ######
 	@GetMapping("/bdList")
 	public String bdList(Model model) {
+		
 		// 단위테스트
-		System.out.println("보드리스트 컨트롤러-포스트 도착");
+		System.out.println("보드리스트 컨트롤러-겟 도착");
 		List<BdDTO> bdList = bdService.getBdList();
+		for(BdDTO bdDTO: bdList) {
+			System.out.println("bdDTO :" + bdDTO);
+		}
 		model.addAttribute("bdList" ,bdList );
 		return "bd/bdList";
 	}
 	
 	
 	@GetMapping("/bdDetail")
-	public String bdDetail(Model model , @RequestParam("bdId") long bdId) {
+	public String bdDetail(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		// 단위테스트
 		//System.out.println(bdService.getBdDetail(bdId));
 		model.addAttribute("bdDTO", bdService.getBdDetail(bdId));

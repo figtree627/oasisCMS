@@ -27,12 +27,6 @@
 		WHERE	BD_ID = #{bdId}
 	</update>
 	
-<!-- 	<select id="getEncodePasswd" parameterType="long" resultType="String"> -->
-<!-- 		SELECT	PASSWD -->
-<!-- 		FROM	BOARD -->
-<!-- 		WHERE	BD_ID = #{bdId} -->
-<!-- 	</select> -->
-	
 	<update id="updateBd" parameterType="BdDTO">
 		UPDATE	BOARD
 		SET		TITLE = #{title},

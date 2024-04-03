@@ -20,12 +20,13 @@ public class BdServiceImpl implements BdService {
 	
 	@Override
 	public void createBd(BdDTO bdDTO) {
-//		bdDTO.setPasswd(passwordEncoder.encode(bdDTO.getPasswd()));
 		bdDAO.createBd(bdDTO);
 	}
 
 	@Override
 	public List<BdDTO> getBdList() {
+		System.out.println("서비스 - 보드리스트 도착");
+		
 		return bdDAO.getBdList();
 	}
 

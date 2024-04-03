@@ -2,21 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
 <meta charset="UTF-8">
-<title>일반게시판 상세 조회</title>
+<title>게시판 상세 조회</title>
 </head>
 <body>
-<div align="center" layout:fragment="content">
-	<h3>게시글 상세조회</h3>
-		<div> 제목 <span th:text="${bdDTO.title}"></span></div>
-		<div> 작성자 <span th:text="${bdDTO.memberNick}"></span></div>
-		<div> 조회수 <span th:text="${bdDTO.readCnt}"></span></div>
-		<div> 작성일 <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span></div>
-		<div> 내용 <span th:text="${bdDTO.content}"></span></div>
-<div>
-	<input type="button" value="수정" th:onclick="|location.href='@{}'|">
-	<input type="button" value="삭제" th:onclick="|location.href='@{}'|">
-	<input type="button" value="목록보기" th:onclick="location.href='@{/bd/bdList}'">
-</div>
+<div layout:fragment="content">
+	<div align="center" >
+		<h3>게시글 상세조회</h3>
+			<div> 제목 <span th:text="${bdDTO.title}"></span></div>
+			<div> 작성자 <span th:text="${bdDTO.memberNick}"></span></div>
+			<div> 조회수 <span th:text="${bdDTO.readCnt}"></span></div>
+			<div> 작성일 <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span></div>
+			<div> 내용 <span th:text="${bdDTO.content}"></span></div>
+		<div>
+			<input type="button" value="수정" th:onclick="|location.href='@{}'|">
+			<input type="button" value="삭제" th:onclick="|location.href='@{}'|">
+			<input type="button" value="목록보기" th:onclick="location.href='@{/bd/bdList}'">
+		</div>
+	</div>
 </div>
 </body>
 </html>

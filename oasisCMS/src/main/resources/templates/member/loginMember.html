@@ -19,7 +19,7 @@
 				success : function(isValidMember) {
 					if (isValidMember == "y") {
 						alert('로그인 성공!');
-						location.href = "./index.html"; // 링크 관련 설명을 다시 들어야 할 것 같다. 폴더가 다를 경우 링크를 어떻게 처리해야 할지???
+						location.href = "/main"; 
 					}
 					else {
 						$("#failMsg").html("<span style='color:red;'>아이디와 패스워드를 확인하세요.</span>");
