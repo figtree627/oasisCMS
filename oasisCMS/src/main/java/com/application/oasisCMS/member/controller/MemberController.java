@@ -1,9 +1,12 @@
 package com.application.oasisCMS.member.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.application.oasisCMS.member.dto.MemberDTO;
 import com.application.oasisCMS.member.service.MemberService;
+import com.application.oasisCMS.member.service.MemberServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -28,6 +32,11 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	private static Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	
 	@GetMapping("/main")
 	public String main() {
@@ -42,9 +51,9 @@ public class MemberController {
 	}
 	
 	@PostMapping("/registerMember")
-	public String registerMember(@RequestParam("uploadProfileImg") MultipartFile uploadProfileImg, 
-								@ModelAttribute MemberDTO dto) throws IllegalStateException, IOException {
-		memberService.createMember(uploadProfileImg, dto);
+	public String registerMember(@RequestParam("profileImg") MultipartFile profileImg, 
+								@ModelAttribute MemberDTO memberDTO) throws IllegalStateException, IOException {
+		memberService.createMember(profileImg, memberDTO);
 		return "redirect:main";
 	} 
 	
@@ -54,7 +63,7 @@ public class MemberController {
 		return memberService.checkValidId(memberId);
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/loginMember")
 	public String login() {
 		return "member/loginMember";
 	}

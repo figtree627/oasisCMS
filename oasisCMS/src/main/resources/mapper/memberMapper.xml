@@ -2,36 +2,16 @@
 <mapper namespace="com.application.oasisCMS.member.dao.MemberDAO">
 	<insert id="createMember" parameterType="MemberDTO">
 		INSERT INTO MEMBER (
-			MEMBER_ID,
-			PASSWD,
-			CREATE_DT,
-			MEMBER_NM,
-			MEMBER_NICK,
-			MEMBER_PROFILE_IMG,
-			MEMBER_PROFILE_UUID,
-			SEX,
-			HP,
-			EMAIL,
-			ZIPCODE,
-			ROAD_ADDRESS,
-			JIBUN_ADDRESS,
-			NAMUJI_ADDRESS,
+			MEMBER_ID, PASSWD, JOIN_DT, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
 			ETC
 		) VALUES (
-			#{memberId},
-			#{passwd},
-			#{createDt},
-			#{memberNm},
-			#{memberNick},
-			#{memberProfileImg},
-			#{memberProfileUUID},
-			#{sex},
-			#{hp},
-			#{email},
-			#{zipcode},
-			#{roadAddress},
-			#{jibunAddress},
-			#{namujiAddress},
+			#{memberId},#{passwd}, #{joinDt}, #{memberNm}, #{memberNick},
+			#{profileImg}, #{profileUUID},
+			#{sex}, #{hp}, #{email}, #{zipcode},
+			#{roadAddress},	#{jibunAddress},#{namujiAddress},
 			#{etc}
 		)
 	</insert>
@@ -59,10 +39,10 @@
 				MEMBER_NICK = #{memberNick},
 			</if>
 			<if	test='MEMBER_PROFILE_IMG != null and !MEMBER_PROFILE_IMG.equals("")'>
-				PROFILE_IMG = #{memberProfileImg},
+				PROFILE_IMG = #{profileImg},
 			</if>
 			<if	test='MEMBER_PROFILE_UUID != null and !MEMBER_PROFILE_UUID.equals("")'>
-				PROFILE_UUID= #{memberProfileUUID},
+				PROFILE_UUID= #{profileUUID},
 			</if>
 			<if test='sex != null and !sex.equals("")'>
 				sex= #{sex},
@@ -88,7 +68,6 @@
 			<if test='ETC != null and !etc.equals("")'>
 				ETC= #{etc},
 			</if>
-
 		</set>
 		WHERE 	MEMBER_ID = #{memberId}
 	</update>
@@ -122,5 +101,4 @@
 			WHERE	INACTIVE_AT < (SELECT DATE_SUB(CURRENT_DATE ,  INTERVAL 90 DAY))
 		]]>
 	</select>
-	
 </mapper>

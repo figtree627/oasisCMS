@@ -18,14 +18,21 @@ import com.application.oasisCMS.bd.service.BdService;
 @Controller
 @RequestMapping("/bd")
 public class BdController {
+	
 	@Autowired
 	private BdService bdService;
 	
-	@GetMapping("/main")
-	public String main() {
-		return "bd/main";
+	
+	// ashion의 블로그를 적용할 예정
+	@GetMapping("/")
+	public String a() {
+		return "bd/bdList";
 	}
 	
+	@GetMapping("/main")
+	public String main() {
+		return "bd/bdList";
+	}
 	@GetMapping("/createBd")
 	public String createBd() {
 		return "bd/createBd";

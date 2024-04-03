@@ -20,16 +20,18 @@ public class MainController {
 	}
 	
 	
-	@GetMapping("/bd")
-	public String bmain() {
-		return "bd/main";
-	}
-	
 	@GetMapping("/bs")
 	public String bsmain() {
 		return "bs/main";
 	}
+	@GetMapping("/book")
+	public String bookMain() {
+		return "book/main";
+	}
 	
-	
-	
+	@GetMapping("/author")
+	public String authorMain() {
+		return "book/author";
+	}
+		
 }

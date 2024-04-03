@@ -35,25 +35,26 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	public void createMember(MultipartFile uploadProfileImg , MemberDTO memberDTO) throws IllegalStateException, IOException  {
+	public void createMember(MultipartFile profileImg , MemberDTO memberDTO) throws IllegalStateException, IOException  {
 		
-		if(uploadProfileImg.isEmpty()) {
-			memberDTO.setMemberProfileImg(fileRepositoryPath + "default.jpg");
-			// memberDTO.setMemberProfileUUID(fileRepositoryPath+UUID.randomUUID()+".jpg");
-		} else if (!uploadProfileImg.isEmpty()) {
-			String originalFilename = uploadProfileImg.getOriginalFilename();
-			memberDTO.setMemberProfileImg(originalFilename);
+		if(profileImg.isEmpty()) {
+//			memberDTO.setProfileImg(fileRepositoryPath + "default.jpg");
+//			memberDTO.setProfileUUID(fileRepositoryPath+UUID.randomUUID()+".jpg");
+		} else if (!profileImg.isEmpty()) {
+			String originalFilename = profileImg.getOriginalFilename();
+			
+			System.out.println("originalFilename : " + originalFilename);
+			
+			memberDTO.setProfileImg(originalFilename);
 			
 			String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 			
 			String uploadFile = UUID.randomUUID() + extension;
-			memberDTO.setMemberProfileUUID(uploadFile);
+			memberDTO.setProfileUUID(uploadFile);
 			
-			uploadProfileImg.transferTo(new File(fileRepositoryPath + uploadFile));
+			profileImg.transferTo(new File(fileRepositoryPath + uploadFile));
 			
 		}
-		
-		memberDTO.setMemberProfileImg("default.jpg");
 		//단위테스트
 		System.out.println(memberDTO);
 		
@@ -77,9 +78,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public boolean login(MemberDTO memberDTO)  {
-		
 		MemberDTO validateData = memberDAO.login(memberDTO.getMemberId());
-		// db에 char로 저장한 것을 String으로 바꾸려면?
 		if (validateData != null) {
 			String activeYnString = Character.toString(validateData.getActiveYn());
 			if (passwordEncoder.matches(memberDTO.getPasswd() , validateData.getPasswd()) && !activeYnString.equals("n")) {
@@ -101,18 +100,18 @@ public class MemberServiceImpl implements MemberService {
 		if (!uploadProfile.isEmpty()) {
 			
 			// 기존 프로파일 이미지 삭제
-			new File(fileRepositoryPath + memberDTO.getMemberProfileUUID()).delete();
+			new File(fileRepositoryPath + memberDTO.getProfileUUID()).delete();
 			
 			// 원본파일이름 저장
 			String originalFilename = uploadProfile.getOriginalFilename();
-			memberDTO.setMemberProfileImg(originalFilename);
+			memberDTO.setProfileImg(originalFilename);
 			
 			// 확장자 찾기
 			String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
 			
 			// 새파일 = UUID + 확장자 처리 후 dto의 UUID를 저장
 			String uploadFile = UUID.randomUUID() + extension;
-			memberDTO.setMemberProfileUUID(uploadFile);
+			memberDTO.setProfileUUID(uploadFile);
 			
 			// 
 			uploadProfile.transferTo(new File(fileRepositoryPath + uploadFile));
@@ -145,7 +144,7 @@ public class MemberServiceImpl implements MemberService {
 		List<MemberDTO> deleteMemberList = memberDAO.getInActiveMemberList();
 		if (!deleteMemberList.isEmpty()) {
 			for (MemberDTO memberDTO : deleteMemberList) {
-				new File(fileRepositoryPath + memberDTO.getMemberProfileUUID()).delete();
+				new File(fileRepositoryPath + memberDTO.getProfileUUID()).delete();
 				memberDAO.deleteMember(memberDTO.getMemberId());
 			}
 		}

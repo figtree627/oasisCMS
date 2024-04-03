@@ -10,11 +10,11 @@ import lombok.Data;
 public class MemberDTO {
 	String memberId;
 	String passwd;
-	Date createDt;
+	Date joinDt;
 	String memberNm;
 	String memberNick;
-	String memberProfileImg;
-	String memberProfileUUID;
+	String profileImg;
+	String profileUUID;
 	char sex;
 	String hp;
 	String email;
