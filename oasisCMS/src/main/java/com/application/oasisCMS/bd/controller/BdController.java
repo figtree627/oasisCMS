@@ -40,6 +40,7 @@ public class BdController {
 	public String main() {
 		return "bd/bdList";
 	}
+	
 	@GetMapping("/createBd")
 	public String createBd(Model model, HttpServletRequest req) {
 		System.out.println("글쓰기 컨트롤러 - 겟 도착");

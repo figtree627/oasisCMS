@@ -77,8 +77,8 @@
 			</div>
 		</div>
 		<!-- Breadcrumb End -->
-		<div align="right" class="mybtn">
-		<form> <input type="button" value="글쓰기" th:onclick="checkSession()">
+		<div align="right" class="mybtn" th:if="${session.memberId != null}">
+		<form><input type="button" value="글쓰기" th:onclick="checkSession()"/>
 		</div>
 		<!-- Blog Section Begin -->
 		<section class="blog spad">
