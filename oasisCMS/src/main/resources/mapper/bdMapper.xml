@@ -10,15 +10,48 @@
 		)
 	</insert>
 
-	<select id="getBdList" resultType="BdDTO">
-		SELECT	*
-		FROM	BOARD
+	<resultMap type="hashmap" id="joinMap">
+		<result property="memberId" column="MEMBER_ID"/>	
+		<result property="memberNick" column="MEMBER_NICK"/>	
+		<result property="bdId" column="BD_ID"/>	
+		<result property="title" column="TITLE"/>	
+		<result property="readCnt" column="READ_CNT"/>	
+		<result property="createDt" column="CREATE_DT"/>	
+	</resultMap>
+	<select id="getBdList" resultMap="joinMap">
+		SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
 	</select>
-	
-	<select id="getBdDetail" parameterType="long" resultType="BdDTO">
-		SELECT	*
-		FROM	BOARD
-		WHERE	BD_ID = #{bdId}
+	<resultMap type="hashmap" id="joinDetail">
+		<result property="memberId" column="MEMBER_ID"/>	
+		<result property="memberNick" column="MEMBER_NICK"/>	
+		<result property="bdId" column="BD_ID"/>	
+		<result property="title" column="TITLE"/>	
+		<result property="readCnt" column="READ_CNT"/>	
+		<result property="createDt" column="CREATE_DT"/>	
+		<result property="content" column="CONTENT"/>	
+	</resultMap>
+	<select id="getBdDetail" parameterType="long" resultMap="joinDetail">
+		SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = #{bdId}
 	</select>
 	
 	<update id="updateReadCnt" parameterType="long">

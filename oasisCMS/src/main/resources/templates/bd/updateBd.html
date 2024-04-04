@@ -34,34 +34,43 @@
 			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
 			location.href="/member/loginMember";
 		}
-		
 	}
-	
 </script>
 </head>
 <body>
 <div layout:fragment="content">
-	  <div align="center">
-	  <h3>커뮤니티 게시글 리스트</h3>
-   <table border="1">
-      <tr>
-         <th>번호</th>
-         <th>제목</th>
-         <th>작성자</th>
-         <th>작성일</th>
-         <th>조회수</th>
-      </tr>
-      <tr th:each="bdDTO : ${bdList}" >
-         <td th:text="${bdDTOStat.count}">번호</td>
-         <td><a th:text="${bdDTO.title}" th:href="@{/bd/bdDetail(bdId=${bdDTO.bdId})}">제목</a></td>
-         <td th:text="${bdDTO.memberNick}">닉네임</td>
-         <td th:text="${#dates.format(bdDTO.createDt , 'yyyy-MM-dd')}">등록일</td>
-         <td th:text="${bdDTO.readCnt}">조회수</td>
-      </tr>
-   </table>
-	  </div>
-	  
-	  
+	<div align="center">
+		<h3>게시글 수정 / 오리지날</h3>
+		<form th:action="@{/bd/updateBd}" method="post">
+			<table border="1">
+				<tr>
+					<td>작성자</td>
+					<td th:text="${bdDTO.memberNick}"></td>
+				</tr>
+				<tr>
+					<td>작성일</td>
+					<td th:text="${#dates.format(bdDTO.createDt , 'yyyy-MM-dd')}"></td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" th:value="${bdDTO.title}"></td>
+				</tr>
+				<tr>
+					<td>글내용</td>
+					<td>
+						<textarea rows="10" cols="60" name="content" th:text="${bdDTO.content}"></textarea>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">
+						<input type="hidden" name="bdId" th:value="${bdDTO.bdId}"/>
+						<input type="submit" value="수정하기" />
+						<input type="button" value="목록보기" th:onclick="@{location.href='/bd/bdList'}" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 	  
 	    <!-- Breadcrumb Begin -->
 		<div class="breadcrumb-option">
@@ -173,7 +182,7 @@
 						<div class="blog__item">
 							<div class="blog__item__pic set-bg" data-setbg="/ashion/img/blog/blog-5.jpg"></div>
 							<div class="blog__item__text">
-								<h6><a th:href="@{/main}">Billboard Music Awards: Best, Worst & Wackiest Dresses On The...</a></h6>
+								<h6><a th:href="@{/main}">Billbd Music Awards: Best, Worst & Wackiest Dresses On The...</a></h6>
 								<ul>
 									<li>by <span>Ema Timahe</span></li>
 									<li>Seb 17, 2019</li>

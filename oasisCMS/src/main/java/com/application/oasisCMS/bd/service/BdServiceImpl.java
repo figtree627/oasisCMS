@@ -1,12 +1,14 @@
 package com.application.oasisCMS.bd.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.application.oasisCMS.bd.dao.BdDAO;
 import com.application.oasisCMS.bd.dto.BdDTO;
+import com.application.oasisCMS.member.dao.MemberDAO;
 
 
 @Service
@@ -14,6 +16,9 @@ public class BdServiceImpl implements BdService {
 
 	@Autowired
 	private BdDAO bdDAO;
+	
+	@Autowired
+	private MemberDAO memberDAO;
 
 //	@Autowired
 //	private PasswordEncoder passwordEncoder; 
@@ -24,14 +29,14 @@ public class BdServiceImpl implements BdService {
 	}
 
 	@Override
-	public List<BdDTO> getBdList() {
+	public List<Map<String,Object>> getBdList() {
 		System.out.println("서비스 - 보드리스트 도착");
 		
 		return bdDAO.getBdList();
 	}
 
 	@Override
-	public BdDTO getBdDetail(long bdId) {
+	public Map<String,Object> getBdDetail(long bdId) {
 		bdDAO.updateReadCnt(bdId);
 		return bdDAO.getBdDetail(bdId);
 	}

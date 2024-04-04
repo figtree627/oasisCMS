@@ -1,6 +1,7 @@
 package com.application.oasisCMS.bd.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,16 +32,36 @@ public class BdController {
 	
 	
 	// ashion의 블로그를 적용할 예정
-	@GetMapping("/")
+	@GetMapping
 	public String a() {
-		return "bd/bdList";
+		return "redirect:/bd/bdList";
+	}
+	
+	@GetMapping("/")
+	public String b() {
+		return "redirect:/bd/bdList";
 	}
 	
 	@GetMapping("/main")
-	public String main() {
-		return "bd/bdList";
+	public String main(Model model) {
+		return "redirect:/bd/bdList";
 	}
 	
+	// 완료
+	@GetMapping("/bdList")
+	public String bdList(Model model) {
+		
+		// 단위테스트
+		System.out.println("보드리스트 컨트롤러-겟 도착");
+		List<Map<String,Object>> bdList = bdService.getBdList();
+		for(Map<String,Object> map : bdList) {
+			System.out.println("bdDTO :" + map);
+		}
+		model.addAttribute("bdList" ,bdList );
+		return "bd/bdList";
+			
+		}
+	// 완료
 	@GetMapping("/createBd")
 	public String createBd(Model model, HttpServletRequest req) {
 		System.out.println("글쓰기 컨트롤러 - 겟 도착");
@@ -50,6 +71,7 @@ public class BdController {
 		return "bd/createBd";
 	}
 	
+	// 완료 
 	@PostMapping("/createBd") 
 	public String createBd(@ModelAttribute BdDTO bdDTO) {
 		// 단위테스트
@@ -61,69 +83,31 @@ public class BdController {
 		return "bd/bdList";
 	}
 	
-	@GetMapping("/bdList")
-	public String bdList(Model model) {
-		
-		// 단위테스트
-		System.out.println("보드리스트 컨트롤러-겟 도착");
-		List<BdDTO> bdList = bdService.getBdList();
-		for(BdDTO bdDTO: bdList) {
-			System.out.println("bdDTO :" + bdDTO);
-		}
-		model.addAttribute("bdList" ,bdList );
-		return "bd/bdList";
-	}
-	
-	
+	// 완료
 	@GetMapping("/bdDetail")
 	public String bdDetail(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		// 단위테스트
-		//System.out.println(bdService.getBdDetail(bdId));
+		System.out.println(bdService.getBdDetail(bdId));
+		
+		Map<String,Object> bdDetailMap = bdService.getBdDetail(bdId);
+			System.out.println("bdDTO :" + bdDetailMap);
+		model.addAttribute("bdDTO" ,bdDetailMap );
 		model.addAttribute("bdDTO", bdService.getBdDetail(bdId));
 		return "bd/bdDetail";
 	}
 	
-	@GetMapping("/authentication")
-	public String authentication(Model model, @RequestParam("bdId") long bdId , 
-								 @RequestParam("menu") String menu) {
-		model.addAttribute("bdDTO" , bdService.getBdDetail(bdId));
-		model.addAttribute("menu" , menu);
-		return "bd/authentication";
-	}
-	
-	@PostMapping("/authentication")
-	@ResponseBody
-	public String authentication(@ModelAttribute BdDTO bdDTO, 
-								 @RequestParam("menu") String menu) {
-		
-		String jsScript = "";
-		if (bdService.checkAuthorized(bdDTO)) { // 인증성공
-			if (menu.equals("update")) {
-				jsScript = "<script>";
-				jsScript += "location.href='/bd/updateBd?bdId="+ bdDTO.getBdId()+ "';";
-				jsScript += "</script>";
-			}
-			else if (menu.equals("delete")) {
-				jsScript = "<script>";
-				jsScript += "location.href='/bd/deleteBd?bdId="+ bdDTO.getBdId()+ "';";
-				jsScript += "</script>";
-			}
-		}
-		else {  // 인증 실패
-			jsScript = """
-				<script>
-					alert('패스워드를 확인하세요.');
-					history.go(-1);
-				</script>
-				""";
-		}
-		return jsScript;
-	}
+//	수정 > 확인창 > Y -> updateBd로 
+//					N -> 그대로
+// 	삭제 > 확인창 > Y -> deleteBd로
+//					N -> 그대로 
 	
 	@GetMapping("/updateBd")
-	public String updateBd(Model model , @RequestParam("bdId") long bdId) {
+	public String updateBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
+		System.out.println("get 업뎃보드도착 ");
 		model.addAttribute("bdDTO", bdService.getBdDetail(bdId));
 		return "bd/updateBd";
 	}
