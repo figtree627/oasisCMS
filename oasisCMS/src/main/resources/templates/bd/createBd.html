@@ -25,6 +25,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
+						<input type="hidden" name="memberId" id="memberId" th:value="${memberDTO.memberId}" />
 						<input type="submit" value="글쓰기" />
 						<input type="reset" value="다시작성" /> 
 						<input type="button" th:onclick="@{/main/bdList}" value="목록보기">

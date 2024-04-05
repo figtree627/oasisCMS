@@ -53,6 +53,7 @@ public class MemberController {
 	@PostMapping("/registerMember")
 	public String registerMember(@RequestParam("a") MultipartFile a, 
 								@ModelAttribute MemberDTO memberDTO) throws IllegalStateException, IOException {
+		System.out.println("멤버컨트롤러 포스트"+ memberDTO);
 		memberService.createMember(a, memberDTO);
 		return "redirect:main";
 	} 

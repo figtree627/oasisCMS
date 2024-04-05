@@ -74,13 +74,13 @@ public class BdController {
 	// 완료 
 	@PostMapping("/createBd") 
 	public String createBd(@ModelAttribute BdDTO bdDTO) {
+		
 		// 단위테스트
 		System.out.println("글쓰기 컨트롤러-포스트 도착");
 		System.out.println(bdDTO);
-		
 		bdService.createBd(bdDTO);
 		
-		return "bd/bdList";
+		return "redirect:/bd/bdList";
 	}
 	
 	// 완료
@@ -112,46 +112,37 @@ public class BdController {
 		return "bd/updateBd";
 	}
 	
-	
 	@PostMapping("/updateBd")
 	@ResponseBody
 	public String updateBd(@ModelAttribute BdDTO bdDTO) {
-		
 		bdService.updateBd(bdDTO);
-		
 		String jsScript = """
 				<script>
-					alert('수정 되었습니다.');
+					alert('수정 됐습니다.');
 					location.href = '/bd/bdList';
 				</script>
 				""";
-		
 		return jsScript;
-		
 	} 
 	
-	
 	@GetMapping("/deleteBd")
-	public String deleteBd(Model model , @RequestParam("bdId") long bdId) {
+	public String deleteBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
+		System.out.println("get delete보드도착 ");
 		model.addAttribute("bdId", bdId);
-		return "bd/deleteBd";
+		return "redirect:/bd/bdList";
 	}
-	
-	
 	@PostMapping("/deleteBd")
 	@ResponseBody
-	public String deleteBd(@RequestParam("bdId") long bdId) {
-		
-		bdService.deleteBd(bdId);
-		
+	public String deleteBd(@ModelAttribute BdDTO bdDTO, HttpServletRequest req) {
+		bdService.deleteBd(bdDTO.getBdId());
 		String jsScript = """
 				<script>
-					alert('삭제 되었습니다.');
+					alert('삭제 됐습니다.');
 					location.href = '/bd/bdList';
 				</script>
 				""";
-		
 		return jsScript;
-	}
-	
+	} 
 }

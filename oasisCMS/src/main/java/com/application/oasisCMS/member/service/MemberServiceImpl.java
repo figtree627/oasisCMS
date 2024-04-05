@@ -35,15 +35,15 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	public void createMember(MultipartFile profileImg , MemberDTO memberDTO) throws IllegalStateException, IOException  {
+	public void createMember(MultipartFile a, MemberDTO memberDTO) throws IllegalStateException, IOException  {
 		
-		if(profileImg.isEmpty()) {
-//			memberDTO.setProfileImg(fileRepositoryPath + "default.jpg");
+		if(a.isEmpty()) {
+			memberDTO.setProfileImg(fileRepositoryPath + "default.jpg");
 //			memberDTO.setProfileUUID(fileRepositoryPath+UUID.randomUUID()+".jpg");
-		} else if (!profileImg.isEmpty()) {
-			String originalFilename = profileImg.getOriginalFilename();
+		} else if (!a.isEmpty()) {
+			String originalFilename = a.getOriginalFilename();
 			
-			System.out.println("originalFilename : " + originalFilename);
+//			System.out.println("originalFilename : " + originalFilename);
 			
 			memberDTO.setProfileImg(originalFilename);
 			
@@ -52,12 +52,12 @@ public class MemberServiceImpl implements MemberService {
 			String uploadFile = UUID.randomUUID() + extension;
 			memberDTO.setProfileUUID(uploadFile);
 			
-			profileImg.transferTo(new File(fileRepositoryPath + uploadFile));
+			a.transferTo(new File(fileRepositoryPath + uploadFile));
 			
 		}
 		//단위테스트
-		System.out.println(memberDTO);
-		
+		System.out.println("멤버서비스 : " + memberDTO);
+	
 		memberDTO.setPasswd(passwordEncoder.encode(memberDTO.getPasswd())); 
 		memberDAO.createMember(memberDTO);
 	}
