@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
+	<style>
+		tr, td {
+			background-color: beige;
+			border:10px red;
+		}
+
+	</style>
 <meta charset="UTF-8">
 <title>게시판 등록화면</title>
 </head>
@@ -9,7 +16,7 @@
 
 		<h3>게시글 작성하기</h3>
 		<form th:action="@{/bd/createBd}" method="post">
-			<table border="1">
+			<table border="3">
 				<tr>
 					<td>작성자</td>
 					<td th:text="${memberDTO.memberNick}" /></td>

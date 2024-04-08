@@ -12,6 +12,4 @@ public interface BdService {
 	public Map<String,Object> getBdDetail(long bdId);
 	public void updateBd(BdDTO bdDTO);
 	public void deleteBd(long bdId);
-
-	public boolean checkAuthorized(BdDTO bdDTO);
 }

@@ -92,9 +92,8 @@ public class BdController {
 		System.out.println(bdService.getBdDetail(bdId));
 		
 		Map<String,Object> bdDetailMap = bdService.getBdDetail(bdId);
-			System.out.println("bdDTO :" + bdDetailMap);
-		model.addAttribute("bdDTO" ,bdDetailMap );
-		model.addAttribute("bdDTO", bdService.getBdDetail(bdId));
+			// System.out.println("bdDTO :" + bdDetailMap);
+		model.addAttribute("bdDTO" , bdDetailMap );
 		return "bd/bdDetail";
 	}
 	
@@ -105,9 +104,9 @@ public class BdController {
 	
 	@GetMapping("/updateBd")
 	public String updateBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		System.out.println("get 업뎃보드도착 ");
+		HttpSession session = req.getSession();
+		model.addAttribute("memberId" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		model.addAttribute("bdDTO", bdService.getBdDetail(bdId));
 		return "bd/updateBd";
 	}
@@ -126,23 +125,11 @@ public class BdController {
 	} 
 	
 	@GetMapping("/deleteBd")
-	public String deleteBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
+	public String deleteBd(@RequestParam("bdId") long bdId, HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		model.addAttribute("memberDTO" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		System.out.println("get delete보드도착 ");
-		model.addAttribute("bdId", bdId);
+		bdService.deleteBd(bdId);
 		return "redirect:/bd/bdList";
 	}
-	@PostMapping("/deleteBd")
-	@ResponseBody
-	public String deleteBd(@ModelAttribute BdDTO bdDTO, HttpServletRequest req) {
-		bdService.deleteBd(bdDTO.getBdId());
-		String jsScript = """
-				<script>
-					alert('삭제 됐습니다.');
-					location.href = '/bd/bdList';
-				</script>
-				""";
-		return jsScript;
-	} 
+	
 }

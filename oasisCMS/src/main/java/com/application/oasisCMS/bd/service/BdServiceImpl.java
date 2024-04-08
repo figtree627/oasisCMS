@@ -14,13 +14,13 @@ import com.application.oasisCMS.member.dao.MemberDAO;
 @Service
 public class BdServiceImpl implements BdService {
 
-	@Autowired
+	@Autowired 
 	private BdDAO bdDAO;
 	
 	@Autowired
-	private MemberDAO memberDAO;
+	private MemberDAO memberDAO; 
 
-//	@Autowired
+//	@Autowired  
 //	private PasswordEncoder passwordEncoder; 
 	
 	@Override
@@ -41,19 +41,6 @@ public class BdServiceImpl implements BdService {
 		return bdDAO.getBdDetail(bdId);
 	}
 
-	// #################수정 필요
-	@Override
-	public boolean checkAuthorized(BdDTO bdDTO) {
-		boolean isAuthorizedUser = false;
-		// String encodedPassword = bdDAO.getEncodePasswd(bdDTO.getBdId());
-		boolean isMatched = true; // passwordEncoder.matches(bdDTO.getPasswd(), encodedPassword);
-		//if (passwordEncoder.matches(bdDTO.getPasswd() , bdDAO.getEncodePasswd(bdDTO.getBdId()))) {}
-		if (isMatched) {
-			isAuthorizedUser = true;
-		}
-		return isAuthorizedUser;
-	}
-	
 	@Override
 	public void updateBd(BdDTO bdDTO) {
 		bdDAO.updateBd(bdDTO);
