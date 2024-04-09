@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.application.oasisCMS.bd.dto.BdDTO;
 import com.application.oasisCMS.bd.service.BdService;
 import com.application.oasisCMS.member.service.MemberService;
+import com.application.oasisCMS.repl.service.ReplService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -29,7 +30,9 @@ public class BdController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
+	@Autowired
+	private ReplService replService;
 	
 	// ashion의 블로그를 적용할 예정
 	@GetMapping
@@ -94,6 +97,14 @@ public class BdController {
 		Map<String,Object> bdDetailMap = bdService.getBdDetail(bdId);
 			// System.out.println("bdDTO :" + bdDetailMap);
 		model.addAttribute("bdDTO" , bdDetailMap );
+		
+//		System.out.println("getReplList : " + replService.getReplList(bdId));
+//		System.out.println("getReplCnt : " + replService.getReplCnt(bdId));
+		
+		List<Map<String,Object>> replLIst = replService.getReplList(bdId);
+		model.addAttribute("replList" , replLIst);
+		model.addAttribute("replLIst" , replService.getReplCnt(bdId));
+		
 		return "bd/bdDetail";
 	}
 	

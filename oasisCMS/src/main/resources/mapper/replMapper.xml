@@ -1,17 +1,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ccom.application.oasisCMS.repl.dao.replDAO">
+<mapper namespace="com.application.oasisCMS.repl.dao.ReplDAO">
 
-	<insert id="createRepl" parameterType="BdDTO">
-		INSERT REPL(
-			BD_ID, MEMBER_ID, CONTENT
-		)VALUES(
-			#{bdId}, #{memberId}, #{content}
-		)
-	</insert>
-
-<!--  
-memberNick은 bd를 작성한 사람이거나 아닐 텐데, 조인을 어떻게 해야 할지?
--->
+	
+	<select id="getReplCnt" parameterType="long" resultType="int">
+		SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = #{bdId}
+	</select>
 
 	<resultMap type="hashmap" id="joinMap">
 		<result property="memberId" column="MEMBER_ID"/>	
@@ -21,60 +16,25 @@ memberNick은 bd를 작성한 사람이거나 아닐 텐데, 조인을 어떻게
 		<result property="content" column="CONTENT"/>	
 		<result property="createDt" column="CREATE_DT"/>	
 	</resultMap>
-	<select id="getReplList" resultMap="joinMap">
+	<select id="getReplList" parameterType="long"  resultMap="joinMap"> 
 		SELECT 
 					M.MEMBER_ID, 
 	           	 	M.MEMBER_NICK,
-					B.BD_ID, 
 					REPL_ID,
 					R.CONTENT, 
 					R.CREATE_DT 
-			FROM 	REPL R, BOARD B, MEMBER M 
-			WHERE 	B.MEMBER_ID = R.MEMBER_ID
-			AND 	R.MEMBER_ID = M.MEMBER_ID;
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = #{bdId}
 	</select>
 	
 	
-	<resultMap type="hashmap" id="joinDetail">
-		<result property="memberId" column="MEMBER_ID"/>	
-		<result property="memberNick" column="MEMBER_NICK"/>	
-		<result property="bdId" column="BD_ID"/>	
-		<result property="title" column="TITLE"/>	
-		<result property="readCnt" column="READ_CNT"/>	
-		<result property="createDt" column="CREATE_DT"/>	
-		<result property="content" column="CONTENT"/>	
-	</resultMap>
-	<select id="getBdDetail" parameterType="long" resultMap="joinDetail">
-		SELECT
-				B.BD_ID			AS BD_ID,
-				B.TITLE			AS TITLE,
-				B.CONTENT		AS CONTENT,
-				B.READ_CNT		AS READ_CNT,
-				B.CREATE_DT		AS CREATE_DT,	
-				M.MEMBER_NICK 	AS MEMBER_NICK,
-				M.MEMBER_ID 	AS MEMBER_ID
-		FROM	BOARD B
-		JOIN	MEMBER M
-		ON 		B.MEMBER_ID = M.MEMBER_ID
-		WHERE 	BD_ID = #{bdId}
+	
+	<select id="getReplDetail" parameterType="long" resultType="ReplDTO">
+		SELECT 	CONTENT, MEMBER_ID
+		FROM 	REPL
+		WHERE	REPL_ID = #{replId}
 	</select>
 	
-	<update id="updateReadCnt" parameterType="long">
-		UPDATE	BOARD
-		SET		READ_CNT = READ_CNT + 1
-		WHERE	BD_ID = #{bdId}
-	</update>
 	
-	<update id="updateBd" parameterType="BdDTO">
-		UPDATE	BOARD
-		SET		TITLE = #{title},
-				CONTENT = #{content}
-		WHERE	BD_ID = #{bdId}
-	</update>
-	
-	<delete id="deleteBd" parameterType="long">
-		DELETE FROM	BOARD
-		WHERE		BD_ID = #{bdId}
-	</delete>
-
 </mapper>

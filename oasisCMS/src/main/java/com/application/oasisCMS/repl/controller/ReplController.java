@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.application.oasisCMS.bd.service.BdService;
 import com.application.oasisCMS.member.service.MemberService;
@@ -24,8 +26,10 @@ public class ReplController {
 
 	@Autowired
 	private ReplService replService;
+	
 	@Autowired
 	private MemberService memberService;
+	
 	@Autowired
 	private BdService bdService;
 	
@@ -35,9 +39,8 @@ public class ReplController {
 		System.out.println("리플 겟 컨트롤러 도착");
 		model.addAttribute("bdId" , bdId);
 		model.addAttribute("memberId", (String)session.getAttribute("memberId"));
-		return "bdAdvance/reply/createRepl";
+		return "bd/createRepl";
 	}
-	
 	
 	@PostMapping("/createRepl")
 	public String createRepl(@ModelAttribute ReplDTO replDTO){
@@ -45,41 +48,28 @@ public class ReplController {
 		System.out.println("리플 포스트 컨트롤러 도착");
 		return "redirect:/bdAdvance/bdDetail?bdId=" + replDTO.getBdId();
 	}
-	
-	/*
+	// 같은 유저 작성 댓글인지 판단 > 수정 누르기 > 
 	@GetMapping("/updateRepl")
-	public String updateRepl(Model model , @RequestParam("replyId") long replyId){
+	public String updateRepl(Model model , @RequestParam("replId") long replId){
 		
-		model.addAttribute("replyDTO" , bdAdvanceService.getReplDetail(replyId));
+		model.addAttribute("replyDTO" , replService.getReplDetail(replId));
 		return "bdAdvance/reply/updateRepl";
 		
 	}
 	
-	
 	@PostMapping("/updateRepl")
-	@ResponseBody
-	public String updateRepl(ReplDTO replyDTO){
+	public String updateRepl(@RequestBody ReplDTO replDTO){
+		System.out.println("일단 포스트 리플 컨트롤러 도착");
+		replService.updateRepl(replDTO);
 		
-		String jsScript = "";
-		if (bdAdvanceService.updateRepl(replyDTO)) {
-			jsScript += "<script>";
-			jsScript += "location.href='/bdAdvance/bdDetail?bdId=" + replyDTO.getBdId() + "';";
-			jsScript += "</script>";
-
-		}
-		else {
-		   jsScript = """
-		   <script> 
-			   alert('check your password');
-			   history.go(-1);
-		   </script>""";
-		}
-		
-		return jsScript;
+		return "y";
 		
 	}
 	
 	
+		
+	
+	/*
 	@GetMapping("/deleteRepl")
 	public String deleteRepl(Model model , @RequestParam("replyId") long replyId) {
 		model.addAttribute("replyDTO" , replService.getReplDetail(replyId));
