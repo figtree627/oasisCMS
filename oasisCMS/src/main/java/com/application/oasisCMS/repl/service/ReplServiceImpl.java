@@ -19,9 +19,9 @@ public class ReplServiceImpl implements ReplService {
 
 	// 리플 등록
 	@Override
-	public void createRepl(ReplDTO replDTO) {
-		System.out.println(replDTO);
-		replDAO.createRepl(replDTO);
+	public void createRepl(Map<String,Object> createReplMap) {
+		System.out.println(createReplMap);
+		replDAO.createRepl(createReplMap);
 	}
 
 	// 리플 리스트 
@@ -32,19 +32,24 @@ public class ReplServiceImpl implements ReplService {
 
 	@Override
 	public int getReplCnt(long bdId) {
-		
 		return replDAO.getReplCnt(bdId);
 	}
 
 	@Override
 	public void updateRepl(ReplDTO replDTO) {
-		System.out.println("리플 서비스 도착");
+		System.out.println("리플수정 서비스 도착");
 		replDAO.updateRepl(replDTO);
 	}
 
 	@Override
 	public ReplDTO getReplDetail(long replId) {
-		
+			System.out.println("리플 상세 서비스");
 		return replDAO.getReplDetail(replId);
+	}
+
+	@Override
+	public void deleteRepl(long replId) {
+		System.out.println("리플삭제 서비스 도착");
+		replDAO.deleteRepl(replId);	
 	}
 }

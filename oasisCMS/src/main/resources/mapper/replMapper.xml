@@ -1,7 +1,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.repl.dao.ReplDAO">
-
-	
+	<insert id="createRepl" parameterType="hashMap">
+		INSERT INTO REPL (
+			REPL_ID, BD_ID, MEMBER_ID, CONTENT
+		)VALUES(
+			#{replId}, #{bdId},#{memberId},#{content}
+		)
+		
+	</insert>	
 	<select id="getReplCnt" parameterType="long" resultType="int">
 		SELECT COUNT(BD_ID)
 		FROM	REPL
@@ -35,6 +41,10 @@
 		FROM 	REPL
 		WHERE	REPL_ID = #{replId}
 	</select>
-	
+	<update id="updateRepl" parameterType="ReplDTO">
+		UPDATE 	REPL
+		SET		CONTENT = #{content}
+		WHERE 	REPL_ID = #{replId}
+	</update>
 	
 </mapper>

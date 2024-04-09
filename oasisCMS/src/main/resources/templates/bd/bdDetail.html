@@ -4,100 +4,27 @@
 <meta charset="UTF-8">
 <title>게시판 상세 조회</title>
 <script>
-
-	function checkSession() {
-			
-		let jsSession = "[[${session.memberId}]]";
-		console.log(jsSession);
-		location.href="/bd/createBd";
-	}
-	
-	function updateRepl(replId) {
-		//$("#content"+replId).html("<textarea>aaaaa</textarea>");
-		let hdContent = document.getElementById("hdContent"+replId).value;
-		document.getElementById("content"+replId).innerHTML = "<textarea>" +hdContent +"</textarea>";
-		
-		
-		// 댓글에서 수정을 누르면 textarea옆에 수정등록버튼 만들기.
-		var btn = document.getElementById("btn");
-	    
-		btn.setAttribute("type", "button");
-	        // 이벤트 핸들러를 등록합니다.
-	        btn.addEventListener("click", updateReplMsg);
-		/*
-		버튼 누르면
-		컨펌확인하시고 맞으면 if문안에서 에이작스사용
-		
-		수정내용을 받을 땐 리케스트 바디로 포스트로 보내기. 
-		*/
-	}
-   	function updateReplMsg(){
-   		var yes = confirm("수정하시겠습니까?");
-
-		if(yes){
-			let param = {"content" : $("#content"+replId).text(),
-						"replId": "[[${repliId}]]"		
-			
-			};
-			
-			$.ajax({
-					url : "/repl/updateRepl",
-					type : "post",
-					data : param,
-					success : function(data){
-						if(data=="y"){
-							alert('등록됐습니다');
-						}
-					}
-				});
-		}
-   	}
-
-   
 </script>
-
-<script>
-$(function(){
-		
-	$("#uBtn").click(function(){
-		var replId = $(this).text();
-		//location.href = '/repl/updateRepl?replId='+replId;
-	});
-	
-	$("#dBtn").click(function(){
-		var replId = $(this).text();
-		location.href = '/repl/deleteRepl?replId='+replId;
-	});
-
-});
-</script>
-
 </head>
 <body>
 <div layout:fragment="content">
 	<div style="border-color:red; padding:5px;" >
-
-	|제목 | <span style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
-	|글번호 | <span th:text="${bdDTO.bdId}"></span> 
-	|작성자 | <span th:text="${bdDTO.memberNick}">작성자</span>
-	|조회수 | <span th:text="${bdDTO.readCnt}"></span>
-	|작성일 | <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span><br>
+		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
+		|&emsp;글번호&emsp; |&emsp; <span th:text="${bdDTO.bdId}"></span> 
+		&emsp;|&emsp;작성자&emsp; |&emsp; <span th:text="${bdDTO.memberNick}">작성자</span>
+		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${bdDTO.readCnt}"></span>
+		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
 		<hr>
 		<div><span th:text="${bdDTO.content}"></span></div>
 	</div>
 	<hr>
 	<div align="right" class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
-		<input type="button" value="수정" th:onclick="|location.href='@{/bd/updateBd(bdId=${#strings.toString(bdDTO.bdId)})}'|"/>
-		<input type="button" value="삭제" th:onclick="|location.href='@{/bd/deleteBd(bdId=${#strings.toString(bdDTO.bdId)})}'|"/>
-
-	</div>
-	
-	<div align="right" class="mybtn" th:if="${session.memberId != null}">
-		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
-	</div>
-	
-	<div align="right">
-		<input type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|">
+		<input type="button" value="수정" th:onclick="|location.href='@{/bd/updateBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" />
+		<input type="button" value="삭제" th:onclick="|location.href='@{/bd/deleteBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" /><br><br>
+		<span class="mybtn" th:if="${session.memberId != null}">
+			<input type="button" value="글쓰기" th:onclick="checkSession()" />
+			<input type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|" />
+		</span>
 	</div>
 
 	<!-- 댓글 목록 -->
@@ -105,22 +32,12 @@ $(function(){
 	id에 번호를 붙여서 for문을 돌 때, js에서 id번호에 맞게 수정 틀이 나오도록 한다. 
 	두 번째 댓글 화면 만들기
 	 -->
-<!-- 	 <div align="center" th:each="replDTO : ${replList}" > -->
-<!-- 	 <p> -->
-<!-- 	 <div th:text="|리플:${replDTO.replId}건|">번호</div> -->
-<!--          <span th:text="${replDTO.memberNick}">작성자</span> -->
-<!--          <span th:id="'content' + ${replDTOStat.index}"></span> -->
-<!--          <span th:text="${replDTO.content}">내용</span> -->
-<!--          <span th:text="${#dates.format(replDTO.createDt , 'yyyy-MM-dd')}">등록일</span> -->
-<!--          <span align="right" class="mybtn" th:if="${session.memberId == bdDTO.memberId}"> -->
-<!--          	<input type="button" id="uBtn" value="수정" th:onclick="|updateRepl(${replDTOStat.index});|"/> -->
-<!-- 			<input type="button" id="dBtn" value="삭제"/> -->
-<!-- 		</span> -->
-<!-- 	 </p> -->
-<!-- 	</div> -->
-	
-	
+
 	<!-- 댓글 기능 -->
+	<div th:if="${session.memberId == bdDTO.memberId}">
+       	<span><input type="button" id="cBtn" value="댓글쓰기" th:onclick='|location.href="@{/repl/createRepl(bdId=${bdDTO.bdId}, memberId=${bdDTO.memberId})}"|'/>
+		</span>
+	</div>
 	<div align="center" th:each="replDTO : ${replList}" >
          <span th:text="|리플:${replDTO.replId}건|">번호</span>
          <span th:text="${replDTO.memberNick}">작성자</span>
@@ -128,17 +45,12 @@ $(function(){
          <div th:id="'content' + ${replDTOStat.index}">
 	         <span th:text="${replDTO.content}">내용</span>
 	         <input type="hidden" th:id="'hdContent' + ${replDTOStat.index}" th:value ="${replDTO.content}"/>
-			 <div>
-				<input type='hidden' id='btn' value='수정등록' onclick='updateReplMsg();'>
-			 </div>
-			</div>
-        <div align="right" class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
-         	<input type="button" id="uBtn" value="수정" th:onclick="|updateRepl(${replDTOStat.index});|"/>
-			<input type="button" id="dBtn" value="삭제"/>
-		</div>
+		        <span class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
+		         	<input type="button" id="uBtn" value="수정" th:onclick='|location.href="@{/repl/updateRepl(replId=${replDTO.replId})}"|' />
+					<input type="button" id="dBtn" value="삭제" th:onclick='|location.href="@{/repl/deleteRepl(replId=${replDTO.replId})}"|' />
+				</span>
+		 </div>
 	</div>
-	
-	
 </div>
 </body>
 </html>

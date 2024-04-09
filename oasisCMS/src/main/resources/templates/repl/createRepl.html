@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>댓글쓰기</title>
+</head>
+<body>
+    <div layout:fragment="content">
+	<h1> 댓글작성</h1>
+    <form th:action="@{/repl/createRepl}" method="post">
+        <table>
+            <tr>
+                <th>
+                    작성내용
+                </th>
+                <td>
+                    <textarea name="content" rows="3" cols="200"></textarea>
+                    <input type="submit" value="댓글등록"/>
+                </td>
+                <td><input type="hidden" name="bdId" th:value="${bdId}" ></td>
+                <td><input type="hidden" name="memberId" th:value="${memberId}" ></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

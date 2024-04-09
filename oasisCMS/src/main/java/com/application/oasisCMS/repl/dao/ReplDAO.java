@@ -10,7 +10,7 @@ import com.application.oasisCMS.repl.dto.ReplDTO;
 @Mapper
 public interface ReplDAO {
 
-	public void createRepl(ReplDTO replDTO);
+	public void createRepl(Map<String,Object> createReplMap);
 	public int getReplCnt(long bdId);
 	public List<Map<String,Object>> getReplList(long bdId);
 	// bdId, content, createDT,memberNick, profileIMg
@@ -24,6 +24,6 @@ public interface ReplDAO {
 	
 	
 	public void updateRepl(ReplDTO replDTO);
-//	public void deleteRepl(long replId);
+	public void deleteRepl(long replId);
 //	public String validateReplUserCheck(long replId);
 }
