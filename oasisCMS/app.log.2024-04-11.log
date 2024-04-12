@@ -1,0 +1,289 @@
+2024-04-11 21:03:19.901 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-11 21:03:20.009 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-11 21:04:18.110 [http-nio-80-exec-10] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$sILt78KebTRgLr5RW1XPZeXRKfjHjpYA23CbYbO3JSCgeeAtKeU8O','관리자', '운영자',
+			'01.jpg', 'b7e27e6a-55c1-423a-aeb3-a237b8de32cb.jpg',
+			'm', '01011111111', 'figtree627@gmail.com', '18109',
+			'경기 오산시 수청로 220 (금암동, 금암마을 휴먼시아)',	'경기 오산시 금암동 509','1',
+			'<p>1</p>
+'
+		)
+
+2024-04-11 21:04:27.945 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-11 21:04:27.950 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$sILt78KebTRgLr5RW1XPZeXRKfjHjpYA23CbYbO3JSCgeeAtKeU8O |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-11 21:23:42.018 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:23:42.039 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:24:02.499 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:24:02.508 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:28:42.925 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:28:42.936 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:30:41.490 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:30:41.498 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:30:45.529 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:30:45.534 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:30:50.798 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:30:50.808 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:30:59.453 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:30:59.457 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:31:25.770 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:31:25.777 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:31:54.934 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:31:54.942 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:31:57.997 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:31:58.003 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
+2024-04-11 21:32:00.266 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-11 21:32:00.271 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|---------------|---------|----------------------|------------|----------|
+|bd_id |title          |read_cnt |create_dt             |member_nick |member_id |
+|------|---------------|---------|----------------------|------------|----------|
+|3     |1번째 회원이 만든 게시글 |602      |2024-04-05 16:14:13.0 |별명1         |q1        |
+|4     |4번째 회원님의 글입니다. |10       |2024-04-05 16:30:58.0 |444         |q4        |
+|5     |4번째 다시 쓰는 글    |5        |2024-04-05 16:33:12.0 |444         |q4        |
+|6     |1111           |80       |2024-04-05 17:31:43.0 |별명1         |q1        |
+|8     |왜이렇게 안되니?      |4        |2024-04-09 17:02:19.0 |별명1         |q1        |
+|9     |선거날인데          |4        |2024-04-10 11:28:44.0 |닉6          |q6        |
+|------|---------------|---------|----------------------|------------|----------|
+
