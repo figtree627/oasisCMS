@@ -59,7 +59,7 @@
 			</span> 
 			<span th:unless="${session.memberId == null}">
 				<a th:href="@{/member/logoutMember}">로그아웃</a>
-				<a href="/member/updateMember">회원정보수정</a>
+				<a th:href="@{/member/updateMember(memberId=${session.memberId})}">회원정보수정</a>
 			</span>
 		</div>
 	</div>

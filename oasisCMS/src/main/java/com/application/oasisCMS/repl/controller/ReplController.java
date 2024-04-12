@@ -54,30 +54,41 @@ public class ReplController {
 	
 	// 같은 유저 작성 댓글인지 판단 > 수정 누르기 > 
 	@GetMapping("/updateRepl")
-	public String updateRepl(Model model , @RequestParam("replId") long replId){
+	public String updateRepl(Model model , @RequestParam("bdId")long bdId, @RequestParam("replId") long replId){
 		System.out.println("리플수정 겟 컨트롤러 도착");
+		
+		 System.out.println("bdId : " + bdId);
+		 System.out.println("replId : " + replId);
+		 System.out.println("리플세부내용: " + replService.getReplDetail(replId));
 		model.addAttribute("replDTO" , replService.getReplDetail(replId));
+//		model.addAttribute("replDTO" , replService.getReplDetail(replId).getBdId());
 		return "repl/updateRepl";
 		
 	}
 	
 	@PostMapping("/updateRepl")
-	public String updateRepl(@ModelAttribute ReplDTO replDTO){
+	@ResponseBody
+	public String updateRepl(Model model, @ModelAttribute ReplDTO replDTO){
+		String jsScript="";
+		System.out.println(replDTO);
 		System.out.println("리플수정 포스트 컨트롤러 도착");
 		replService.updateRepl(replDTO);
-		
-		return "redirect:/bd/bdDetail?bdId=" + replDTO.getBdId();
+		jsScript = "<script>";
+		jsScript += "location.href='/bd/bdDetail?bdId="+ replDTO.getBdId()+ "';";
+		jsScript += "</script>";
+		return jsScript;
 		
 	}
 	
 	
 	@GetMapping("/deleteRepl")
-	public String deleteRepl(Model model , @RequestParam("replId") long replId) {
+	public String deleteRepl(@RequestParam("bdId") long bdId, @RequestParam("replId") long replId) {
 		
 		System.out.println("리플삭제 컨트롤러 겟 도착");
 		replService.deleteRepl(replId);
 		
-		return null;
+//		return "redirect:/bd/bdList";
+		return "redirect:/bd/bdDetail?bdId="+bdId;
 	}
 	
 	

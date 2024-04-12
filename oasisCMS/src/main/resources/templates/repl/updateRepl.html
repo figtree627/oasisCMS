@@ -12,6 +12,9 @@
             <tr>
                 <th>
                     작성내용
+                <p th:text="${replDTO.bdId}" > a</p>
+                <p th:text="${replDTO.memberId}" > b</p>
+                <p th:text="${replDTO.replId}" > c</p>
                 </th>
                 <td>
                     <textarea name="content" rows="3" cols="200" th:text="${replDTO.content}"></textarea>
@@ -19,6 +22,7 @@
                 </td>
                 <td><input type="hidden" name="bdId" th:value="${replDTO.bdId}" ></td>
                 <td><input type="hidden" name="memberId" th:value="${replDTO.memberId}" ></td>
+                <td><input type="hidden" name="replId" th:value="${replDTO.replId}" ></td>
             </tr>
         </table>
     </form>

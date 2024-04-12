@@ -4,18 +4,14 @@
 <meta charset="UTF-8">
 <script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
 <script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
-<title>회원게시판 등록화면</title>
+<title>영성기념관 게시글 등록화면</title>
 </head>
 <body>
 	<div align="center" layout:fragment="content">
-		<br>
-		<p th:text="|${memberDTO.memberNick}님 게시글 작성하기|"></p>
-		<form th:action="@{/bd/createBd}" method="post">
+
+		<h3>영성기념관 게시글 등록화면</h3>
+		<form th:action="@{/memorial/createBd}" method="post" enctype="multipart/form-data">
 			<table border="3">
-				<tr>
-					<td>작성자</td>
-					<td th:text="|&emsp;${memberDTO.memberNick}|" /> </td>
-				</tr>
 				<tr>
 					<td>제목</td>
 					<td><input type="text" name="title" /></td>
@@ -23,15 +19,20 @@
 				<tr>
 					<td>글내용</td>
 					<td><textarea rows="10" cols="50" name="content"></textarea>
-						<script>CKEDITOR.replace('content');</script>
+							<script>CKEDITOR.replace('content');</script>
+					</td>
+				</tr>
+				<tr>
+					<td>이미지 업로드</td>
+					<td><input type="file" name="uploadImg" />
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="hidden" name="memberId" id="memberId" th:value="${memberDTO.memberId}" />
+						<input type="hidden" name="memberId" id="memberId" th:value="${session.memberId}" />
 						<input type="submit" value="글쓰기" />
 						<input type="reset" value="다시작성" /> 
-						<input type="button" th:onclick="@{/main/bdList}" value="목록보기">
+						<input type="button" th:onclick="@{/memorial/bdList}" value="목록보기">
 					</td>
 				</tr>
 			</table>

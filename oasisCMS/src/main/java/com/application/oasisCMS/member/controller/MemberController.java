@@ -1,13 +1,14 @@
 package com.application.oasisCMS.member.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,11 @@ public class MemberController {
 	}
 	
 	@GetMapping("/registerMember")
-	public String registerMember() {
+	public String registerMember(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(session !=null) {
+			session.invalidate();
+		}
 		return "member/registerMember";
 	}
 	
@@ -82,11 +87,6 @@ public class MemberController {
 		} 
 		return isValidMember;
 	}
-	@GetMapping("/updateMember")
-	public String updateMember() {
-		
-		return "/member/updateMember";
-	}
 	
 	@GetMapping("/logoutMember")
 	public String logoutMember(HttpServletRequest request) {
@@ -96,5 +96,20 @@ public class MemberController {
 		
 		return "redirect:main";
 		
+	}
+	
+	@GetMapping("/updateMember")
+	public String updateMember(Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
+		return "/member/updateMember";
+	}
+	
+	@PostMapping("/updateMember")
+	public String updateMember(@RequestParam("a") MultipartFile a, @ModelAttribute MemberDTO memberDTO) throws IllegalStateException, IOException {
+		System.out.println("멤버 수정 - 포스트 컨트롤러 : " + memberDTO);
+		memberService.createMember(a, memberDTO);
+		return "redirect:main";
+	
 	}
 }

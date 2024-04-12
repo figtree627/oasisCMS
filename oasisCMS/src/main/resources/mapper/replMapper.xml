@@ -37,14 +37,19 @@
 	
 	
 	<select id="getReplDetail" parameterType="long" resultType="ReplDTO">
-		SELECT 	CONTENT, MEMBER_ID
+		SELECT 	*
 		FROM 	REPL
 		WHERE	REPL_ID = #{replId}
 	</select>
+	
 	<update id="updateRepl" parameterType="ReplDTO">
 		UPDATE 	REPL
 		SET		CONTENT = #{content}
 		WHERE 	REPL_ID = #{replId}
 	</update>
 	
+	<delete id="deleteRepl" parameterType="long">
+		DELETE FROM REPL
+		WHERE REPL_ID = #{replId}	
+	</delete>
 </mapper>

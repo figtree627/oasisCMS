@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.application.oasisCMS.memorial.dao.MemorialDAO">
+	<insert id="createBd" parameterType="MemorialDTO">
+		INSERT INTO	MEMORIAL(
+			BD_ID, TITLE, CONTENT, BD_IMG, BD_UUID
+		)VALUES(
+			#{bdId},#{title},#{content},#{bdImg},#{bdUUID}		
+		)
+	</insert>
+	
+	<select id="getBdList" resultType="MemorialDTO">
+		SELECT	BD_ID, BD_IMG, BD_UUID, TITLE, CONTENT, READ_CNT, CREATE_DT 
+		FROM 	MEMORIAL
+	</select>		
+	
+	<select id="getBdDetail" parameterType="long" resultType="MemorialDTO">
+		SELECT 	* 
+		FROM 	MEMORIAL
+		WHERE 	BD_ID = #{bdId}
+	</select>
+	<update id="updateReadCnt" parameterType="long">
+		UPDATE 	MEMORIAL 
+		SET		READ_CNT = READ_CNT+1
+		WHERE 	BD_ID = #{bdId}
+	</update>
+	<update id="updateMember" parameterType="MemberDTO">
+		UPDATE	MEMBER
+		<set>
+			<if test='bdImg != null and !bdImg.equals("")'>
+				BD_IMG = #{bdImg},
+			</if>
+			<if test='bdUUID != null and !bdUUID.equals("")'>
+				BD_UUID = #{bdUUID},
+			</if>
+			<if test='content!= null and !content.equals("")'>
+				CONTENT = #{content},
+			</if>
+			<if test='title != null and !title.equals("")'>
+				TITLE = #{title},  
+			</if>
+			READ_CNT= READ_CNT-1
+		</set>
+		WHERE BD_ID = #{bdId}	
+	</update>
+	
+</mapper>

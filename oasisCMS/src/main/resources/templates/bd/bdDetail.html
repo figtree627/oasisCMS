@@ -8,6 +8,7 @@
 </head>
 <body>
 <div layout:fragment="content">
+	
 	<div style="border-color:red; padding:5px;" >
 		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
 		|&emsp;글번호&emsp; |&emsp; <span th:text="${bdDTO.bdId}"></span> 
@@ -23,8 +24,8 @@
 		<input type="button" value="삭제" th:onclick="|location.href='@{/bd/deleteBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" /><br><br>
 		<span class="mybtn" th:if="${session.memberId != null}">
 			<input type="button" value="글쓰기" th:onclick="checkSession()" />
-			<input type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|" />
 		</span>
+		<input type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|" />
 	</div>
 
 	<!-- 댓글 목록 -->
@@ -34,20 +35,19 @@
 	 -->
 
 	<!-- 댓글 기능 -->
-	<div th:if="${session.memberId == bdDTO.memberId}">
-       	<span><input type="button" id="cBtn" value="댓글쓰기" th:onclick='|location.href="@{/repl/createRepl(bdId=${bdDTO.bdId}, memberId=${bdDTO.memberId})}"|'/>
-		</span>
+	<div class="mybtn" th:if="${session.memberId != null}">
+		<input type="button" value="댓글쓰기" th:onclick='|location.href="@{/repl/createRepl(bdId=${bdDTO.bdId}, memberId=${bdDTO.memberId})}"|'/>
 	</div>
 	<div align="center" th:each="replDTO : ${replList}" >
-         <span th:text="|리플:${replDTO.replId}건|">번호</span>
-         <span th:text="${replDTO.memberNick}">작성자</span>
+         <span th:text="|댓글번호:${replDTO.replId}|">번호</span>
+         <span 	th:text="${replDTO.memberNick}">작성자</span>
          <span th:text="${#dates.format(replDTO.createDt , 'yyyy-MM-dd')}">등록일</span>
          <div th:id="'content' + ${replDTOStat.index}">
 	         <span th:text="${replDTO.content}">내용</span>
 	         <input type="hidden" th:id="'hdContent' + ${replDTOStat.index}" th:value ="${replDTO.content}"/>
 		        <span class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
-		         	<input type="button" id="uBtn" value="수정" th:onclick='|location.href="@{/repl/updateRepl(replId=${replDTO.replId})}"|' />
-					<input type="button" id="dBtn" value="삭제" th:onclick='|location.href="@{/repl/deleteRepl(replId=${replDTO.replId})}"|' />
+		         	<input type="button" id="uBtn" value="수정" th:onclick='|location.href="@{/repl/updateRepl(bdId=${bdDTO.bdId},replId=${replDTO.replId})}"|' />
+					<input type="button" id="dBtn" value="삭제" th:onclick='|location.href="@{/repl/deleteRepl(bdId=${bdDTO.bdId},replId=${replDTO.replId})}"|' />
 				</span>
 		 </div>
 	</div>
