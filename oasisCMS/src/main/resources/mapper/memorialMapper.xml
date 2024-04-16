@@ -8,9 +8,20 @@
 		)
 	</insert>
 	
-	<select id="getBdList" resultType="MemorialDTO">
-		SELECT	BD_ID, BD_IMG, BD_UUID, TITLE, CONTENT, READ_CNT, CREATE_DT 
+	<select id="getBdList1" resultType="MemorialDTO">
+		SELECT	*
 		FROM 	MEMORIAL
+		LIMIT   0,3;
+	</select>		
+	<select id="getBdList2" resultType="MemorialDTO">
+		SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   3,3;
+	</select>		
+	<select id="getBdList3" resultType="MemorialDTO">
+		SELECT	*
+		FROM 	MEMORIAL
+		LIMIT  6,3;
 	</select>		
 	
 	<select id="getBdDetail" parameterType="long" resultType="MemorialDTO">
@@ -42,5 +53,8 @@
 		</set>
 		WHERE BD_ID = #{bdId}	
 	</update>
-	
+	<delete id="deleteBd" parameterType="long">
+		DELETE FROM MEMORIAL
+		WHERE BD_ID=#{bdId}	
+	</delete>
 </mapper>

@@ -1,4 +1,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.author.dao.AuthorDAO">
-
+	<insert id="createBd" parameterType="AuthorDTO">
+		INSERT INTO AUTHOR (
+			 AUTHOR_ID, BD_ID, TITLE, AUTHOR_NM, CONTENT, AUTHOR_IMG, AUTHOR_UUID
+		) VALUES(
+			#{authorId}, #{bdId}, #{title}, #{authorNm}, #{content}, #{authorImg}, #{authorUUID}		
+		)
+	</insert>
+	
+	<select id="getBdList" resultType="AuthorDTO">
+		SELECT * FROM AUTHOR
+	</select>
+	
+	<select id="getBdDetail" parameterType="long" resultType="AuthorDTO">
+		SELECT * FROM AUTHOR
+		WHERE BD_ID = #{bdId}
+	</select>
+	<update id="updateReadCnt" parameterType="long">
+		UPDATE AUTHOR
+		SET	READ_CNT = READ_CNT+1
+		WHERE BD_ID = #{bdId}
+	</update>
+	<update id="updateBd" parameterType="long">
+		UPDATE AUTHOR
+		<set>
+			<if test='title != null and !title.equals("")'>
+				TITLE = #{title},
+			</if>
+			<if test='content != null and !content.equals("")'>
+				CONTENT = #{content},
+			</if>
+			<if test='authorImg != null and !authorImg.equals("")'>
+				AUTHOR_IMG = #{authorImg},
+			</if>
+			<if test='authorUUID != null and !authorUUID.equals("")'>
+				AUTHOR_UUID = #{authorUUID},
+			</if>
+			READ_CNT= READ_CNT-1
+		</set>
+		WHERE BD_ID = #{bdId}
+	</update>
+	<delete id="deleteBd" parameterType="long">
+		DELETE FROM AUTHOR
+		WHERE BD_ID = #{bdId}
+	</delete>
+	
+	
 </mapper>

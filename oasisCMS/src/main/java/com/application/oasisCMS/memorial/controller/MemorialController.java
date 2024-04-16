@@ -1,8 +1,10 @@
 package com.application.oasisCMS.memorial.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.application.oasisCMS.member.dto.MemberDTO;
 import com.application.oasisCMS.member.service.MemberService;
 import com.application.oasisCMS.memorial.dto.MemorialDTO;
 import com.application.oasisCMS.memorial.service.MemorialService;
@@ -48,21 +49,57 @@ public class MemorialController {
 	public String m() {
 		return "redirect:/memorial/bdList";
 	}
-	public String getMethodName(@RequestParam String param) {
-		return new String();
+	@GetMapping("/visit")
+	public String visit() {
+		return "memorial/visit";
 	}
 	
-
+	@GetMapping("/visit/1")
+	public String visit1() {
+		return "memorial/visit1";
+	}
+	@GetMapping("/visit/2")
+	public String visit2() {
+		return "memorial/visit2";
+	}
+	@GetMapping("/visit/3")
+	public String visit3() {
+		return "memorial/visit3";
+	}
+	@GetMapping("/visit/4")
+	public String visit4() {
+		return "memorial/visit4";
+	}
+	@GetMapping("/visit/5")
+	public String visit5() {
+		return "memorial/visit5";
+	}
+	@GetMapping("/visit/6")
+	public String visit6() {
+		return "memorial/visit6";
+	}
+	@GetMapping("/visit/7")
+	public String visit7() {
+		return "memorial/visit7";
+	}
+	
+	
+	@GetMapping("/purpose")
+	public String purpose() {
+		return "memorial/purpose";
+	}
 	@GetMapping("/bdList")
 	public String bdList(Model model) {
 		
 		// 단위테스트
 		System.out.println("기념관-게시판리스트 컨트롤러-겟 도착");
-		List<MemorialDTO> bdList = memorialService.getBdList();
+		List<MemorialDTO> bdList = memorialService.getBdList1();
 		for(MemorialDTO dto : bdList) {
 			System.out.println("memorialDTO :" + dto);
 		}
-		model.addAttribute("bdList" ,bdList );
+		model.addAttribute("bdList1" ,bdList );
+		model.addAttribute("bdList2" ,memorialService.getBdList2() );
+		model.addAttribute("bdList3" ,memorialService.getBdList3() );
 		return "memorial/bdList";
 	}
 	
@@ -114,7 +151,7 @@ public class MemorialController {
 		
 		@GetMapping("/updateBd")
 		public String updateBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
-			System.out.println("get 업뎃보드도착 ");
+			System.out.println("[컨트롤러] 기념관 수정 - 겟");
 			HttpSession session = req.getSession();
 			model.addAttribute("memberId" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 			model.addAttribute("memorialDTO", memorialService.getBdDetail(bdId));
@@ -123,8 +160,30 @@ public class MemorialController {
 		
 		@PostMapping("/updateBd")
 		@ResponseBody
-		public String updateBd(@ModelAttribute MemorialDTO memorialDTO) {
-			memorialService.updateBd(memorialDTO);
+		public String updateBd(@RequestParam("uploadImg") MultipartFile uploadImg, @ModelAttribute MemorialDTO memorialDTO)throws IllegalStateException, IOException {
+			System.out.println("[서비스] 기념관 수정 - 포스트 ");
+			
+			if(uploadImg.isEmpty()) {
+				memorialDTO.setBdImg(fileRepositoryPath + memorialDTO.getBdUUID());
+				
+			} else if (!uploadImg.isEmpty()) {
+				String originalFilename = uploadImg.getOriginalFilename();
+				System.out.println("originalFilename : " + originalFilename);
+				
+				memorialDTO.setBdImg(originalFilename);
+				
+				String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+				
+				String uploadFile = UUID.randomUUID() + extension;
+				memorialDTO.setBdUUID(uploadFile);
+				
+				uploadImg.transferTo(new File(fileRepositoryPath + uploadFile));
+//	 			uploadImg.transferTo(new File(fileRepositoryPath +"author/"+ uploadFile));
+				
+			}
+			//단위테스트
+			System.out.println("[서비스] 저자 수정 후 : " + memorialDTO);
+			memorialService.updateBd(uploadImg, memorialDTO);
 			String jsScript = """
 					<script>
 						alert('수정 됐습니다.');
@@ -135,9 +194,9 @@ public class MemorialController {
 		} 
 		
 		@GetMapping("/deleteBd")
-		public String deleteBd(@RequestParam("bdId") long bdId, HttpServletRequest req) {
-			HttpSession session = req.getSession();
-			System.out.println("get delete보드도착 ");
+		public String deleteBd(@RequestParam("bdId") long bdId) {
+			System.out.println("[컨트롤러] 기념관 삭제 겟 ");
+			System.out.println(memorialService.getBdList1());
 			memorialService.deleteBd(bdId);
 			return "redirect:/memorial/bdList";
 		}

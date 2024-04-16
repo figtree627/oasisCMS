@@ -3,7 +3,6 @@ package com.application.oasisCMS.memorial.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -20,8 +19,8 @@ import com.application.oasisCMS.memorial.dto.MemorialDTO;
 @Service
 public class MemorialServiceImpl implements MemorialService {
 
-	@Value("${file.repo.path.memorial}")
 	// @Value("${file.repo.path}+memorial/") 이렇게 써도 되나?
+	@Value("${file.repo.path.memorial}")
     private String fileRepositoryPath;
 	
 	@Autowired 
@@ -31,7 +30,7 @@ public class MemorialServiceImpl implements MemorialService {
 	
 	@Override
 	public void createBd(MultipartFile uploadImg, MemorialDTO memorialDTO) throws IllegalStateException, IOException{
-		System.out.println("기념관 등록 - 서비스 도착!");
+		System.out.println("[서비스] 기념관 등록-도착!");
 		
 		if(uploadImg.isEmpty()) {
 			memorialDTO.setBdImg(fileRepositoryPath + "default.jpg");
@@ -52,19 +51,33 @@ public class MemorialServiceImpl implements MemorialService {
 			
 		}
 		//단위테스트
-		System.out.println("멤버서비스 : " + memorialDTO);
+		System.out.println("[서비스] 기념관 등록 내용 : " + memorialDTO);
 		
 		 memorialDAO.createBd(memorialDTO);
 	}
 	
 	
 	@Override
-	public List<MemorialDTO> getBdList() {
-		System.out.println("서비스 - 보드리스트 도착");
+	public List<MemorialDTO> getBdList1() {
+		List<MemorialDTO> bdList = memorialDAO.getBdList1();
 		
-		return memorialDAO.getBdList();
+		System.out.println("[서비스] 보드리스트 : " + bdList);
+		
+		return bdList;
 	}
 
+	@Override
+	public List<MemorialDTO> getBdList2() {
+		// TODO Auto-generated method stub
+		return memorialDAO.getBdList2();
+	}
+
+
+	@Override
+	public List<MemorialDTO> getBdList3() {
+		return memorialDAO.getBdList3();
+	}
+	
 	@Override
 	public MemorialDTO getBdDetail(long bdId) {
 		memorialDAO.updateReadCnt(bdId);
@@ -72,12 +85,38 @@ public class MemorialServiceImpl implements MemorialService {
 	}
 
 	@Override
-	public void updateBd(MemorialDTO memorialDTO) {
-		memorialDAO.updateBd(memorialDTO);
+	public void updateBd(MultipartFile uploadImg, MemorialDTO memorialDTO) throws IllegalStateException, IOException {
+		System.out.println("[서비스] 기념관 수정 -도착!");
+		
+		if(uploadImg.isEmpty()) {
+			memorialDTO.setBdImg(fileRepositoryPath + memorialDTO.getBdUUID());
+			
+		} else if (!uploadImg.isEmpty()) {
+			String originalFilename = uploadImg.getOriginalFilename();
+			System.out.println("originalFilename : " + originalFilename);
+			
+			memorialDTO.setBdImg(originalFilename);
+			
+			String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+			
+			String uploadFile = UUID.randomUUID() + extension;
+			memorialDTO.setBdUUID(uploadFile);
+			
+			uploadImg.transferTo(new File(fileRepositoryPath + uploadFile));
+// 			uploadImg.transferTo(new File(fileRepositoryPath +"memorial/"+ uploadFile));
+			
+		}
+		//단위테스트
+		System.out.println("[서비스] 기념관 수정 후 내용: " + memorialDTO);
+		
+		 memorialDAO.updateBd(memorialDTO);
 	}
 	@Override
 	public void deleteBd(long bdId) {
+		System.out.println("[서비스] 기념관 삭제");
+
 		memorialDAO.deleteBd(bdId);
 	}
+
 
 }

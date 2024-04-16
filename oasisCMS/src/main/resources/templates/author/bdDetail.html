@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>기념관 게시글 상세 조회</title>
+<script>
+// 사진 불러 오기
+
+</script>
+</head>
+<body>
+<div layout:fragment="content">
+	<h3><span th:text="|${authorDTO.bdId}번 기념관 게시글 상세조회 |">저자 갤러리 상세조회 </span></h3>
+	
+	<div style="border-color:red; padding:5px;" >
+		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${authorDTO.title}">제목</span> <br>
+		|&emsp;글번호&emsp; |&emsp; <span th:text="${authorDTO.bdId}"></span> 
+		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${authorDTO.readCnt}"></span>
+		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(authorDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
+		<hr>
+		
+		<div>
+		<p><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}" class="images"/></p>
+		
+		
+		<span th:utext="${authorDTO.content}"></span></div>
+	</div>
+	<hr>
+		<div align="right" class="mybtn" th:if="|${session.memberId=='admin'}|">
+			<input type="button" value="수정" th:onclick="|location.href='@{/author/updateBd(bdId=${#strings.toString(authorDTO.bdId)})}'|" />
+			<input type="button" value="삭제" th:onclick="|location.href='@{/author/deleteBd(bdId=${#strings.toString(authorDTO.bdId)})}'|" /><br><br>
+			<span class="mybtn" th:if="${session.memberId != null}">
+				<input type="button" value="글쓰기" th:onclick="checkSession()" />
+			</span>
+			<input type="button" value="목록보기" th:onclick="|location.href='@{/author/main}'|" />
+		</div>
+
+</div>
+</body>
+</html>

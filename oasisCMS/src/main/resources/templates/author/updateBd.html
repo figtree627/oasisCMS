@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>저자 갤러리 페이지</title>
+<script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
+</head>
+<body>
+<div layout:fragment="content">
+	<div align="center">
+		<h3>저자 갤러리 수정</h3>
+		<form th:action="@{/author/updateBd}" method="post" enctype="multipart/form-data">
+			<table border="1">
+				<tr>
+					<td>작성일</td>
+					<td th:text="${#dates.format(authorDTO.createDt , 'yyyy-MM-dd')}"></td>
+				</tr>
+				<tr>
+					<td>저자</td>
+					<td><input type="text" name="authorNm" th:value="${authorDTO.authorNm}" /></td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" th:value="${authorDTO.title}"></td>
+				</tr>
+				<tr>
+					<td>글내용</td>
+					<td>
+						<textarea rows="10" cols="200" name="content" th:text="${authorDTO.content}"></textarea>
+						<script>CKEDITOR.replace('content');</script>
+					</td>
+				</tr>
+				<tr>
+				<td>
+						이미지업로드				
+				</td>
+				<td><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}" class="images"/><br>
+					<input type="file" name="uploadImg"/></td>
+				</tr>
+				
+				<tr align="center">
+					<td colspan="2">
+						<input type="hidden" name="bdId" th:value="${authorDTO.bdId}"/>
+						<input type="submit" value="수정하기" />
+						<input type="button" value="목록보기" th:onclick="@{location.href='/author/bdList'}" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+</body>
+</html>

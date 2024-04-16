@@ -22,7 +22,7 @@ import com.application.oasisCMS.member.dto.MemberDTO;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	@Value("${file.repo.path}")
+	@Value("${file.repo.path.member}")
     private String fileRepositoryPath;
 	
 	@Autowired

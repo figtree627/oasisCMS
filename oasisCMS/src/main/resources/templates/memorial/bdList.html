@@ -54,7 +54,8 @@ table {
 </head>
 <body>
 <div layout:fragment="content">
-	
+
+
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
@@ -62,134 +63,76 @@ table {
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Blog</span>
+                        <span>blog</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb End -->
+    
 
     <!-- Blog Section Begin -->
-    <section class="blog spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div th:each="memorialDTO : ${bdList}">
-	                    <div class="blog__item">
-	                        <div class="blog__item__pic large__item set-bg" style="background-image: url(${memorialDTO.bdUUID});"></div>
-	                        <div class="blog__item__text">
-	                        <img src="@{/memorial/thumbnails(fileName=${memorialDTO.bdUUID})}"/>
-	                            <h6><a th:text="${memorialDTO.title}" th:href="@{/memorial/bdDetail(bdId=${memorialDTO.bdId})}">제목</a></h6>
-	                            <ul>
-	                                <li>by <span>Ema Timahe</span></li>
-	                                <li>Seb 17, 2019</li>
-	                            </ul>
-	                        </div>
-	                    </div>
-                    </div>
+ <div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId != null}">
+		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
+		<br><br></div>
+
+   <section class="blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div th:each="memorialDTO : ${bdList1}">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-7.jpg"></div>
                         <div class="blog__item__text">
-                            <h6><a href="#">Pot Party! See Farrah Abraham Flaunt Smoking Body At...</a></h6>
+	                        <a th:href="@{/memorial/bdDetail(bdId=${memorialDTO.bdId})}">
+                            <img th:src="@{/memorial/thumbnails(fileName=${memorialDTO.bdUUID})}"/>
+                            </a>
+                            <h6><span th:text="${memorialDTO.title}" >제목</span></h6>
                             <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-9.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">CMT Awards 2019 Red Carpet Arrivals Carrie Underwood, Sheryl...</a></h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
+                                <li>by <span>운영자</span></li>
+                                <li th:text="${#dates.format(memorialDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div th:each="memorialDTO : ${bdList2}">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
                         <div class="blog__item__text">
-                            <h6><a href="#">Amf Cannes Red Carpet Celebrities Kendall Jenner, Pamela...</a></h6>
+	                        <a th:href="@{/memorial/bdDetail(bdId=${memorialDTO.bdId})}">
+                            <img th:src="@{/memorial/thumbnails(fileName=${memorialDTO.bdUUID})}"/>
+                            </a>
+                            <h6><span th:text="${memorialDTO.title}" >제목</span></h6>
                             <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-4.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">Ireland Baldwin Shows Off Trendy Ilse Valfre Tattoo At Stagecoach...</a>
-                            </h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-8.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">Kim Kardashian Steps Out In Paris Wearing Shocking Sparkly...</a></h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-10.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">A-list Battle! Angelina Jolie & Lady Gaga Fighting Over Who...</a></h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
+                                <li>by <span>운영자</span></li>
+                                <li th:text="${#dates.format(memorialDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div th:each="memorialDTO : ${bdList3}">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
                         <div class="blog__item__text">
-                            <h6><a href="#">Gigi Hadid, Rita Ora, Serena & Other Hot Celebs Stun At 2019...</a></h6>
+	                        <a th:href="@{/memorial/bdDetail(bdId=${memorialDTO.bdId})}">
+                            <img th:src="@{/memorial/thumbnails(fileName=${memorialDTO.bdUUID})}"/>
+                            </a>
+                            <h6><span th:text="${memorialDTO.title}" >제목</span></h6>
                             <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
+                                <li>by <span>운영자</span></li>
+                                <li th:text="${#dates.format(memorialDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-5.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">Billboard Music Awards: Best, Worst & Wackiest Dresses On The...</a></h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="blog__item">
-                        <div class="blog__item__pic large__item set-bg" data-setbg="img/blog/blog-6.jpg"></div>
-                        <div class="blog__item__text">
-                            <h6><a href="#">Stephanie Pratt Busts Out Of Teeny Black Bikini During Hawaii...</a></h6>
-                            <ul>
-                                <li>by <span>Ema Timahe</span></li>
-                                <li>Seb 17, 2019</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <a href="#" class="primary-btn load-btn">Load more posts</a>
                 </div>
             </div>
         </div>
-    </section>
+        
+    </div>
+</section>
+
     <!-- Blog Section End -->
 	
 </div>

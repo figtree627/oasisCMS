@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
+<title>저자 갤러리 등록화면</title>
+</head>
+<body>
+	<div align="center" layout:fragment="content">
+
+		<h3>저자 갤러리 등록화면</h3>
+		<form th:action="@{/author/createBd}" method="post" enctype="multipart/form-data">
+			<table border="1">
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" /></td>
+				</tr>
+				<tr>
+					<td>저자이름</td>
+					<td><input type="text" name="authorNm" value="오혜령" /></td>
+				</tr>
+				<tr>
+					<td>글내용</td>
+					<td><textarea rows="10" cols="50" name="content"></textarea>
+							<script>CKEDITOR.replace('content');</script>
+					</td>
+				</tr>
+				<tr>
+					<td>이미지 업로드</td>
+					<td><input type="file" name="uploadImg" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="hidden" name="memberId" id="memberId" th:value="${session.memberId}" />
+						<input type="submit" value="글쓰기" />
+						<input type="reset" value="다시작성" /> 
+						<input type="button" th:onclick="@{/author/bdList}" value="목록보기">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

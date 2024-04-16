@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	@Value("${file.repo.path}")
+	@Value("${file.repo.path.member}")
     private String fileRepositoryPath;
 	
 	@Autowired

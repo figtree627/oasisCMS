@@ -1,4 +1,74 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.member.book.BookDAO">
-
+<insert id="createBd" parameterType="BookDTO">
+	INSERT INTO BOOK (
+		BOOK_ID, AUTHOR_ID, BOOK_NM, BOOK_IMG, BOOK_UUID, PUBLISHER_ID, PUBLISHER_NM, PUB_DT, INTRO_ONE_LINE, INTRO_DETAIL
+	) VALUES(
+		#{bookId},
+		#{authorId},
+		#{bookNm},
+		#{bookImg},
+		#{bookUUID},
+		#publisherId},
+		#{publisherNm},
+		#{pubDt},
+		#{introOneline},
+		#{introDetail}
+	)
+</insert>
+<select id="getBdList" resultType="BookDTO">
+		SELECT 	B.* 
+		FROM 	BOOK B
+		JOIN 	AUTHOR A
+		WHERE 	B.AUTHOR_ID = A.AUTHOR_ID
+	</select>
+	
+	<select id="getBdDetail" parameterType="long" resultType="BookDTO">
+		SELECT * FROM BOOK
+		WHERE BOOK_ID = #{bookId}
+	</select>
+	<update id="updateReadCnt" parameterType="long">
+		UPDATE BOOK
+		SET	READ_CNT = READ_CNT+1
+		WHERE BOOK_ID = #{bookId}
+	</update>
+	<update id="updateBd" parameterType="long">
+		UPDATE BOOK
+		<set>
+			<if test='authorId != null and !authorId.equals("")'>
+				AUTHOR_ID= #{authorId},
+			</if>
+			<if test='bookNm != null and !bookNm.equals("")'>
+				BOOK_NM= #{bookNm},
+			</if>
+			<if test='bookImg != null and !bookImg.equals("")'>
+				BOOK_IMG = #{bookImg},
+			</if>
+			<if test='bookUUID != null and !bookUUID.equals("")'>
+				BOOK_UUID = #{bookUUID},
+			</if>
+			<if test='publisherId != null and !publisherId.equals("")'>
+				PUBLISHER_ID = #{publisherId},
+			</if>
+			<if test='publisherNm != null and !publisherNm.equals("")'>
+				PUBLISHER_NM = #{publisherNm},
+			</if>
+			<if test='pubDt != null and !pubDt.equals("")'>
+				PUB_DT = #{pubDt},
+			</if>
+			<if test='introOneLine != null and !introOneLine.equals("")'>
+				INTRO_ONE_LINE = #{introOneLine},
+			</if>
+			<if test='introDetail != null and !introDetail.equals("")'>
+				INTRO_DETAIL = #{introDetail},
+			</if>
+			READ_CNT= READ_CNT-1
+		</set>
+		WHERE BOOK_ID = #{bookId}
+	</update>
+	<delete id="deleteBd" parameterType="long">
+		DELETE FROM BOOK
+		WHERE BOOK_ID = #{bookId}
+	</delete>
+	
 </mapper>

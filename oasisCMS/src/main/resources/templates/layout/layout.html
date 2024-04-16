@@ -91,28 +91,35 @@
 							</li>
 							<li><a href="/memorial/main">영성기념관</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/memorial/m_1}">첫번째 방</a></li>
-									<li><a th:href="@{/memorial/m_2}">두번째 방</a></li>
-									<li><a th:href="@{/memorial/m_3}">세번째 방</a></li>
-									<li><a th:href="@{/memorial/m_4}">네번째 방</a></li>
-									<li><a th:href="@{/memorial/m_5}">다섯번째 방</a></li>
-									<li><a th:href="@{/memorial/m_6}">여섯번째 방</a></li>
-									<li><a th:href="@{/memorial/m_7}">일곱번째 방</a></li>
+									<li><a th:href="@{/memorial/purpose}">건립취지</a></li>
+									<li><a th:href="@{/memorial/visit}">기념관순례</a>
+									<ul>
+										<li><a th:href="@{/memorial/1}">첫번째 방</a></li>
+										<li><a th:href="@{/memorial/2}">두번째 방</a></li>
+										<li><a th:href="@{/memorial/3}">세번째 방</a></li>
+										<li><a th:href="@{/memorial/4}">네번째 방</a></li>
+										<li><a th:href="@{/memorial/5}">다섯번째 방</a></li>
+										<li><a th:href="@{/memorial/6}">여섯번째 방</a></li>
+										<li><a th:href="@{/memorial/7}">일곱번째 방</a></li>
+									</ul>
+									</li>
 								</ul>
 							</li>
 							<li><a th:href="@{/book/main}">도서출판암마</a>
-							<ul class="dropdown">
-								<li><a th:href="@{/book/book_1}">출판사 소개</a></li>
-								<li><a th:href="@{/book/book_2}">저자 소개</a></li>
-								<li><a th:href="@{/book/book_3}">도서 안내</a></li>
 								<ul class="dropdown">
-									<li><a th:href="@{/book/book_3_1}">총 도서목록</a></li>
-									<li><a th:href="@{/book/book_3_2}">주제별 도서목록</a></li>	
+									<li><a th:href="@{/book/book_1}">출판사 소개</a></li>
+									<li><a th:href="@{/author/bdList}">저자 소개</a></li>
+									<li><a th:href="@{/book/book_3}">도서 안내</a>
+										<ul>
+											<li><a th:href="@{/book/book_3_1}">총 도서목록</a></li>
+											<li><a th:href="@{/book/book_3_2}">주제별 도서목록</a></li>	
+										</ul>
+									</li>								
 								</ul>
-							</ul>
 							</li>
-								<li><a th:href="@{/bd/main}">게시판</a>
-						</li>
+							<li>
+								<a th:href="@{/bd/main}">게시판</a>
+							</li>
 						</ul>
 					</nav>
 				</div>

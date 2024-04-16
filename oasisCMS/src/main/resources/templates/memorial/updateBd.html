@@ -39,7 +39,7 @@ table, th, td {
 <div layout:fragment="content">
 	<div align="center">
 		<h3>게시글 수정</h3>
-		<form th:action="@{/memorial/updateBd}" method="post" >
+		<form th:action="@{/memorial/updateBd}" method="post" enctype="multipart/form-data">
 			<table border="1">
 				<tr>
 					<td>작성일</td>

@@ -46,7 +46,7 @@ public class BdController {
 	}
 	
 	@GetMapping("/main")
-	public String main(Model model) {
+	public String main() {
 		return "redirect:/bd/bdList";
 	}
 	
