@@ -1,6 +1,5 @@
 package com.application.oasisCMS.book.dao;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

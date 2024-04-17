@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.application.oasisCMS.book.dto.BookDTO;
 import com.application.oasisCMS.book.dao.BookDAO;
-import com.application.oasisCMS.book.dto.BookDTO;
 import com.application.oasisCMS.memorial.service.MemorialServiceImpl;
 
 @Service

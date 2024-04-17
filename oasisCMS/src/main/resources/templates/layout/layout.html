@@ -71,22 +71,28 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo" align="center">
-						<a href="/main"><img src="/img/logo.jpg" alt=""></a>
+						<a href="/main"><img src="/img/logo.jpg"></a>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-7" align="right">
 					<nav class="header__menu">
 						<ul>
-							<li class="active"><a href="/main">Home</a></li>
+							<li class="active"><a href="/main"}>Home</a></li>
 							<li><a href="/bs/main">방송</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/bs/bs_1}">월요일방송</a></li>
-									<li><a th:href="@{/bs/bs_3}">화요일방송</a></li>
-									<li><a th:href="@{/bs/bs_2}">수요일방송</a></li>
-									<li><a th:href="@{/bs/bs_4}">목요일방송</a></li>
-									<li><a th:href="@{/bs/bs_5}">금요일방송</a></li>
-									<li><a th:href="@{/bs/bs_6}">토요일방송</a></li>
-									<li><a th:href="@{/bs/bs_7}">주일방송</a></li>
+									<li><a th:href="@{/bs/main}">방송국소개</a></li>
+
+									<li><a th:href="@{/bs/bsAll}">방송탐방</a>
+									<ul>
+										<li><a th:href="@{/bs/1}">월요일방송</a></li>
+										<li><a th:href="@{/bs/3}">화요일방송</a></li>
+										<li><a th:href="@{/bs/2}">수요일방송</a></li>
+										<li><a th:href="@{/bs/4}">목요일방송</a></li>
+										<li><a th:href="@{/bs/5}">금요일방송</a></li>
+										<li><a th:href="@{/bs/6}">토요일방송</a></li>
+										<li><a th:href="@{/bs/7}">주일방송</a></li>
+									</ul>
+									</li>
 								</ul>
 							</li>
 							<li><a href="/memorial/main">영성기념관</a>
@@ -107,12 +113,12 @@
 							</li>
 							<li><a th:href="@{/book/main}">도서출판암마</a>
 								<ul class="dropdown">
-									<li><a th:href="@{/book/book_1}">출판사 소개</a></li>
+									<li><a th:href="@{/book/main}">출판사 소개</a></li>
 									<li><a th:href="@{/author/bdList}">저자 소개</a></li>
-									<li><a th:href="@{/book/book_3}">도서 안내</a>
+									<li><a th:href="@{/book/bdList}">도서 안내</a>
 										<ul>
-											<li><a th:href="@{/book/book_3_1}">총 도서목록</a></li>
-											<li><a th:href="@{/book/book_3_2}">주제별 도서목록</a></li>	
+											<li><a th:href="@{/book/bdList}">총 도서목록</a></li>
+											<li><a th:href="@{/book/bdLIst}">주제별 도서목록</a></li>	
 										</ul>
 									</li>								
 								</ul>
@@ -162,7 +168,7 @@
 				<div class="col-lg-4 col-md-10 col-sm-7" align="center">
 					<div class="footer__about">
 						<div class="footer__logo">
-							<a href="./index.html"><img src="/img/logo.jpg" alt=""></a>
+							<a href="#"><img src="/img/logo.jpg" alt=""></a>
 						</div>
 						<div align="center">
 							<span>오아시스 아카데미 홈페이지<br> 본질영성
@@ -183,12 +189,12 @@
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
 					<div class="footer__widget">
-						<h6>Account</h6>
+						<h6>사이트맵</h6>
 						<ul>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Orders Tracking</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Wishlist</a></li>
+							<li><a th:href="@{bs/main}">오아시스방송</a></li>
+							<li><a th:href="@{memorial/main}">영성기념관</a></li>
+							<li><a th:href="@{book/main}">도서출판암마</a></li>
+							<li><a th:href="@{bd/bdList}">게시판</a></li>
 						</ul>
 					</div>
 				</div>

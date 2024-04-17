@@ -9,21 +9,29 @@
 </script>
 </head>
 <body>
-<div layout:fragment="content">
-	<h3><span th:text="|${authorDTO.bdId}번 기념관 게시글 상세조회 |">저자 갤러리 상세조회 </span></h3>
-	
+<div layout:fragment="content" align="center">
+<br>
+		
 	<div style="border-color:red; padding:5px;" >
-		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${authorDTO.title}">제목</span> <br>
-		|&emsp;글번호&emsp; |&emsp; <span th:text="${authorDTO.bdId}"></span> 
-		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${authorDTO.readCnt}"></span>
-		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(authorDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
+		 #<span th:text="${authorDTO.bdId}"></span> 
+		&nbsp;<span style="width:200px " th:text="${authorDTO.title}">제목</span> <br>
+		<div align="right">
+		
+		 &nbsp;|&nbsp; <span th:text="${#dates.format(authorDTO.createDt, 'yy-MM-dd | hh:mm')}"></span>&emsp;
+		 &nbsp;| 조회수:&nbsp; <span th:text="${authorDTO.readCnt}"></span>
+		 <br>
+		 
+		 </div>
+		 
 		<hr>
 		
-		<div>
-		<p><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}" class="images"/></p>
+<table>
+	<tr>
+		<td><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}" class="images"/></td>
+	</tr>
+		<td><span th:utext="${authorDTO.content}"></span></td>
+</table>
 		
-		
-		<span th:utext="${authorDTO.content}"></span></div>
 	</div>
 	<hr>
 		<div align="right" class="mybtn" th:if="|${session.memberId=='admin'}|">

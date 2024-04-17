@@ -35,27 +35,34 @@ public class BookController {
 	private BookService bookService;
 	
 	@GetMapping("/main")
-	public String main() {
+	public String main(Model model, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		model.addAttribute("memberId", (String)session.getAttribute("memberId"));
+		
 		return "book/main";
 	}
 	
 	@GetMapping("/bdList")
-	public String bdList(Model model) {
+	public String bdList(Model model, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		model.addAttribute("memberId", (String)session.getAttribute("memberId"));
 		
 		// 단위테스트
-		System.out.println("도서 게시판리스트 컨트롤러-겟 도착");
+		System.out.println("[컨트롤러] 도서 리스트 - 겟 도착");
 		List<BookDTO> bdList = bookService.getBdList();
 		for(BookDTO dto : bdList) {
 			System.out.println("bookDTO :" + dto);
 		}
-		model.addAttribute("bdList" ,bdList );
+		model.addAttribute("bdList" ,bookService.getBdList());
 		return "book/bdList";
 	}
 	
 
 	@GetMapping("/createBd")
 	public String createBD(Model model, HttpServletRequest req) {
-		System.out.println("기념관-게시글 등록 컨트롤러-겟 도착");
+		System.out.println("[컨트롤러] 기념관-등록 - 겟 도착");
 		HttpSession session = req.getSession();
 		model.addAttribute("memberId", (String)session.getAttribute("memberId"));
 		

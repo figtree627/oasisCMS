@@ -28,42 +28,56 @@
 			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
 			location.href="/member/loginMember";
 		}
-		
 	}
-	
 </script>
+<style>
+        .post-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* 요소 사이의 간격을 동일하게 설정합니다. */
+        }
+        .post {
+            width: calc(25% - 10px); /* 한 줄에 4개의 요소가 들어가도록 너비를 설정합니다. */
+            margin-bottom: 20px;
+            /* 필요에 따라 추가적인 스타일링을 수행할 수 있습니다. */
+        }
+        .post img {
+            width: 100%;
+            height: auto; /* 이미지의 비율을 유지하도록 합니다. */
+        }
+        .post-title {
+            font-weight: bold;
+            margin-top: 10px;
+            /* 필요에 따라 추가적인 스타일링을 수행할 수 있습니다. */
+        }
+    </style>
 </head>
 <body>
 <div layout:fragment="content">
-
 	<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId != null}">
 		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
 		<br><br>
 	</div>
 
 <!-- Blog Section Begin -->
-<section class="blog spad">
-	<h3>저자 갤러리</h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-				<div th:each="authorDTO : ${bdList}" >
-					<div class="blog__item">
-                        <a th:href="@{/author/bdDetail(bdId=${authorDTO.bdId})}">
-                        <div class="blog__item__pic large__item set-bg" style="background-image: url('/author/${authorDTO.authorUUID}');"></div>
-                        <div class="blog__item__text">
-                            <img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}"/>
-                            <h6><span th:text="${authorDTO.title}" >제목</span></h6>
-                            <ul>
-                                <li>by <span>운영자</span></li>
-                                <li th:text="${#dates.format(authorDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
-                            </ul>
-                        </div></a>
-                    </div>
-                </div>
-            </div>
+<section class="blog spad" align="center">
+	<div th:each="authorDTO : ${bdList}">
+	<table>
+		<tr>
+		<td>제목 </td>
+		<td th:text="${authorDTO.title}" ></td>
+		</tr>
+	</table>
+	</div>
+	
+      <!-- 실험 시작 -->
+    <div class="post-container blog__item__pic set-bg" th:each="authorDTO : ${bdList}">
+        <div class="post">
+         	<a th:href="@{/author/bdDetail(bdId=${authorDTO.bdId})}"><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}"/></a>
         </div>
+        <div class="post-title"> <h6 th:text="${authorDTO.title}" >제목</h6></div>
     </div>
+<!-- 실험 끝 --> 
 </section>
 <!-- Blog Section End -->
 </div>

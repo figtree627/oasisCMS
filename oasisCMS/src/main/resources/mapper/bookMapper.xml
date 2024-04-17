@@ -1,5 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.application.oasisCMS.member.book.BookDAO">
+<mapper namespace="com.application.oasisCMS.book.dao.BookDAO">
 <insert id="createBd" parameterType="BookDTO">
 	INSERT INTO BOOK (
 		BOOK_ID, AUTHOR_ID, BOOK_NM, BOOK_IMG, BOOK_UUID, PUBLISHER_ID, PUBLISHER_NM, PUB_DT, INTRO_ONE_LINE, INTRO_DETAIL
@@ -16,11 +16,8 @@
 		#{introDetail}
 	)
 </insert>
-<select id="getBdList" resultType="BookDTO">
-		SELECT 	B.* 
-		FROM 	BOOK B
-		JOIN 	AUTHOR A
-		WHERE 	B.AUTHOR_ID = A.AUTHOR_ID
+	<select id="getBdList" resultType="BookDTO">
+		SELECT * FROM BOOK
 	</select>
 	
 	<select id="getBdDetail" parameterType="long" resultType="BookDTO">

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>도서출판암마</title>
+<script>
+	function checkSession() {
+		
+		let jsSession = "[[${session.memberId}]]";
+		console.log(jsSession);
+		/*
+		if (jsSession == "") {
+			alert("빈문자열")
+		} 
+		if (jsSession == null) {
+			alert("null")
+		} 
+		if (jsSession == undefined) {
+			alert("undifined")
+		} 
+		*/
+		
+// 세션확인 있으면 > 로그인ok > 글쓰기 화면으로
+		if (jsSession != "") {
+			// alert('로그인 확인 했습니다. 글쓰기 화면으로 이동합니다.');
+			location.href = "/book/createBd";
+		} else { //	없으면 > 로그인x > 로그인화면으로
+			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
+			location.href="/member/loginMember";
+		}
+	}
+</script>
+</head>
+<body>
+<div layout:fragment="content">
+<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId != null}">
+		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
+		<br><br>
+	</div>
+    <!-- Breadcrumb Begin -->
+    
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a th:href="@{/main}"><i class="fa fa-home"></i> Home</a>
+                       <a th:href="@{/book/main}">도서출판암마</a>
+                       <a th:href="@{/book/bdList}">도서목록</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- Blog Section Begin -->
+   <section class="blog spad">
+ 
+  	
+</section>
+
+    <!-- Blog Section End -->
+	
+</div>
+</body>
+</html>
