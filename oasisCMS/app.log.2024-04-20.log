@@ -1,0 +1,963 @@
+2024-04-20 14:45:59.415 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 14:45:59.579 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|--------|----------|----------------|--------------|
+|author_id |book_id |author_nm |author_birth_dt |author_detail |
+|----------|--------|----------|----------------|--------------|
+|----------|--------|----------|----------------|--------------|
+
+2024-04-20 14:46:10.441 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 14:46:10.454 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|-------|----------|
+|passwd |active_yn |
+|-------|----------|
+|-------|----------|
+
+2024-04-20 14:46:14.144 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 14:46:14.145 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------|----------|
+|passwd |active_yn |
+|-------|----------|
+|-------|----------|
+
+2024-04-20 14:46:20.123 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-20 14:46:20.124 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-20 14:49:44.407 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-20 14:49:44.408 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-20 14:49:50.508 [http-nio-80-exec-5] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$hNHiiu.Wko/jMptzHsSAHuXitrwhc3FdW7SW91FtBoYoOGCWSmruy','관리자', '운영자',
+			'프로필.jpg', 'a57b4697-1a94-4701-ab34-ab01efc1c359.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '18110',
+			'경기 오산시 수청로 4-3 (수청동)',	'경기 오산시 수청동 586-8','11111',
+			''
+		)
+
+2024-04-20 14:49:59.005 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 14:49:59.011 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$hNHiiu.Wko/jMptzHsSAHuXitrwhc3FdW7SW91FtBoYoOGCWSmruy |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-20 14:54:16.453 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-20 14:54:16.461 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-20 14:55:06.593 [http-nio-80-exec-8] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$FpBk4JXvUOTHBeUDbjloc.Yz6N4YEbEOj4Q2.kGH6sqLgfwa3oZFu','관리자', '운영자',
+			'프로필.jpg', '905af169-306d-40d8-9c8c-fe198b236c49.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '18110',
+			'경기 오산시 수목원로 430 (수청동, 오산대역 꿈에그린)',	'경기 오산시 수청동 581','11',
+			'<p>11</p>
+'
+		)
+
+2024-04-20 14:55:06.621 [http-nio-80-exec-8] ERROR jdbc.sqlonly - 71. PreparedStatement.execute() INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$FpBk4JXvUOTHBeUDbjloc.Yz6N4YEbEOj4Q2.kGH6sqLgfwa3oZFu','관리자', '운영자',
+			'프로필.jpg', '905af169-306d-40d8-9c8c-fe198b236c49.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '18110',
+			'경기 오산시 수목원로 430 (수청동, 오산대역 꿈에그린)',	'경기 오산시 수청동 581','11',
+			'<p>11</p>
+'
+		)
+
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'ROAD_ADDRESS' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy72.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy11/jdk.proxy11.$Proxy140.createMember(Unknown Source)
+	at com.application.oasisCMS.member.service.MemberServiceImpl.createMember(MemberServiceImpl.java:62)
+	at com.application.oasisCMS.member.controller.MemberController.registerMember(MemberController.java:62)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-20 15:02:00.647 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 15:02:00.648 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|-------|----------|
+|passwd |active_yn |
+|-------|----------|
+|-------|----------|
+
+2024-04-20 15:02:08.319 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-20 15:02:08.320 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-20 15:02:42.487 [http-nio-80-exec-2] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$MsnJZhF8L1BeZUmUDB1jPemzrrs92LKay3I0L49p49QJBf9I7iH.C','운영자', '관리운영자',
+			'프로필.jpg', '3df06f0a-f210-471f-bf3e-d204c554a622.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '18110',
+			'경기 오산시 문헌공로 30 (내삼미동)',	'경기 오산시 내삼미동 880','1',
+			'<p>1</p>
+'
+		)
+
+2024-04-20 15:02:42.489 [http-nio-80-exec-2] ERROR jdbc.sqlonly - 71. PreparedStatement.execute() INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$MsnJZhF8L1BeZUmUDB1jPemzrrs92LKay3I0L49p49QJBf9I7iH.C','운영자', '관리운영자',
+			'프로필.jpg', '3df06f0a-f210-471f-bf3e-d204c554a622.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '18110',
+			'경기 오산시 문헌공로 30 (내삼미동)',	'경기 오산시 내삼미동 880','1',
+			'<p>1</p>
+'
+		)
+
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'ROAD_ADDRESS' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy72.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy11/jdk.proxy11.$Proxy140.createMember(Unknown Source)
+	at com.application.oasisCMS.member.service.MemberServiceImpl.createMember(MemberServiceImpl.java:62)
+	at com.application.oasisCMS.member.controller.MemberController.registerMember(MemberController.java:62)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-20 15:12:03.889 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 15:12:03.901 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 15:39:08.243 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 15:39:08.288 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 15:39:09.974 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 15:39:09.977 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 15:45:15.563 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 15:45:15.645 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-04-20 15:46:28.870 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 15:46:28.875 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-04-20 15:47:26.425 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT * FROM BOOK
+
+2024-04-20 15:47:26.435 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|book_id |author_id |book_nm |book_img |book_uuid |publisher_id |publisher_nm |pub_dt |intro_one_line |intro_detail |read_cnt |
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+
+2024-04-20 15:47:26.436 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT * FROM BOOK
+
+2024-04-20 15:47:26.439 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|book_id |author_id |book_nm |book_img |book_uuid |publisher_id |publisher_nm |pub_dt |intro_one_line |intro_detail |read_cnt |
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+
+2024-04-20 15:52:27.897 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT * FROM BOOK
+
+2024-04-20 15:52:27.902 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|book_id |author_id |book_nm |book_img |book_uuid |publisher_id |publisher_nm |pub_dt |intro_one_line |intro_detail |read_cnt |
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+
+2024-04-20 15:52:27.903 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT * FROM BOOK
+
+2024-04-20 15:52:27.911 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|book_id |author_id |book_nm |book_img |book_uuid |publisher_id |publisher_nm |pub_dt |intro_one_line |intro_detail |read_cnt |
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+|--------|----------|--------|---------|----------|-------------|-------------|-------|---------------|-------------|---------|
+
+2024-04-20 15:52:31.527 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 15:52:31.533 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-04-20 15:53:24.293 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 15:53:24.299 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 16:53:56.233 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 16:53:56.348 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-04-20 16:54:31.896 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 16:54:31.899 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-04-20 16:54:34.960 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 16:54:34.964 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-04-20 16:55:03.754 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin'
+
+2024-04-20 16:55:03.760 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-20 16:55:30.697 [http-nio-80-exec-3] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin', '$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie','운영자', '운영자',
+			'프로필.jpg', '57f81533-6332-4359-aafb-6de4f6ba92be.jpg',
+			'm', '01011112222', 'figtree627@gmail.com', '28562',
+			'충북 청주시 서원구 1순환로 627 (사창동)',	'충북 청주시 서원구 사창동 180-1','1',
+			'<p>1</p>
+'
+		)
+
+2024-04-20 16:55:37.698 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 16:55:37.702 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-20 16:55:50.908 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'admin'
+
+2024-04-20 16:55:50.917 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img |profile_uuid                             |sex |hp          |email                |zipcode |road_address              |jibun_address        |namuji_address |etc        |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|admin     |$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |운영자       |운영자         |프로필.jpg     |57f81533-6332-4359-aafb-6de4f6ba92be.jpg |m   |01011112222 |figtree627@gmail.com |28562   |충북 청주시 서원구 1순환로 627 (사창동) |충북 청주시 서원구 사창동 180-1 |1              |<p>1</p>
+ |Y         |2024-04-20 16:55:30.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+
+2024-04-20 16:56:08.525 [http-nio-80-exec-10] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			NULL, '$2a$10$CQsOT9i47KJs6/H7DkMaOeejFQUFhUfRB.CwUU3WXrbQg9ZNx3NQu',NULL, '운영자',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '01011112222', 'figtree627@gmail.com', '',
+			'',	'','',
+			''
+		)
+
+2024-04-20 16:56:08.544 [http-nio-80-exec-10] ERROR jdbc.sqlonly - 71. PreparedStatement.execute() INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			NULL, '$2a$10$CQsOT9i47KJs6/H7DkMaOeejFQUFhUfRB.CwUU3WXrbQg9ZNx3NQu',NULL, '운영자',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '01011112222', 'figtree627@gmail.com', '',
+			'',	'','',
+			''
+		)
+
+java.sql.SQLIntegrityConstraintViolationException: Column 'MEMBER_ID' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425)
+	at jdk.proxy2/jdk.proxy2.$Proxy72.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86)
+	at jdk.proxy11/jdk.proxy11.$Proxy140.createMember(Unknown Source)
+	at com.application.oasisCMS.member.service.MemberServiceImpl.createMember(MemberServiceImpl.java:62)
+	at com.application.oasisCMS.member.controller.MemberController.updateMember(MemberController.java:111)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-20 16:56:23.397 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 16:56:23.403 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 16:56:33.716 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 16:56:33.718 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 16:57:56.917 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	*
+		FROM 	MEMORIAL
+		LIMIT   0,3;
+
+2024-04-20 16:57:56.922 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|------|--------|-------|--------|---------|----------|
+|bd_id |title |content |bd_img |bd_uuid |read_cnt |create_dt |
+|------|------|--------|-------|--------|---------|----------|
+|------|------|--------|-------|--------|---------|----------|
+
+2024-04-20 16:59:51.487 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 16:59:51.492 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-04-20 17:00:01.873 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'admin'
+
+2024-04-20 17:00:01.876 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img |profile_uuid                             |sex |hp          |email                |zipcode |road_address              |jibun_address        |namuji_address |etc        |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|admin     |$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |운영자       |운영자         |프로필.jpg     |57f81533-6332-4359-aafb-6de4f6ba92be.jpg |m   |01011112222 |figtree627@gmail.com |28562   |충북 청주시 서원구 1순환로 627 (사창동) |충북 청주시 서원구 사창동 180-1 |1              |<p>1</p>
+ |Y         |2024-04-20 16:55:30.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+
+2024-04-20 17:00:34.895 [http-nio-80-exec-6] INFO  jdbc.sqlonly - INSERT INTO AUTHOR (
+			 AUTHOR_ID, BD_ID, TITLE, AUTHOR_NM, CONTENT, AUTHOR_IMG, AUTHOR_UUID
+		) VALUES(
+			0, 0, '방송중', '오혜령', '', '''젊음의 찬가''를 진행하다(35세).jpg', '4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg'		
+		)
+
+2024-04-20 17:00:34.922 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:00:34.924 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:00:42.328 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'admin'
+
+2024-04-20 17:00:42.333 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img |profile_uuid                             |sex |hp          |email                |zipcode |road_address              |jibun_address        |namuji_address |etc        |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|admin     |$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |운영자       |운영자         |프로필.jpg     |57f81533-6332-4359-aafb-6de4f6ba92be.jpg |m   |01011112222 |figtree627@gmail.com |28562   |충북 청주시 서원구 1순환로 627 (사창동) |충북 청주시 서원구 사창동 180-1 |1              |<p>1</p>
+ |Y         |2024-04-20 16:55:30.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+
+2024-04-20 17:01:08.379 [http-nio-80-exec-3] INFO  jdbc.sqlonly - INSERT INTO AUTHOR (
+			 AUTHOR_ID, BD_ID, TITLE, AUTHOR_NM, CONTENT, AUTHOR_IMG, AUTHOR_UUID
+		) VALUES(
+			0, 0, '진실로', '오혜령', '', 's20080111.jpg', '7ca09ff1-8109-4917-8214-15dae7744b7e.jpg'		
+		)
+
+2024-04-20 17:01:08.403 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:01:08.407 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:02:28.405 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:02:28.411 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:04:07.057 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:04:07.060 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:04:56.278 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:04:56.281 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:05:31.318 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:05:31.325 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:06:54.561 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:06:54.563 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:07:30.481 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-04-20 17:07:30.484 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img              |author_uuid                              |read_cnt |create_dt             |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+|1     |0         |방송중   |[null]  |오혜령       |        |'젊음의 찬가'를 진행하다(35세).jpg |4c5f8cb7-d565-4184-ae81-02281bd212d6.jpg |0        |2024-04-20 17:00:34.0 |
+|2     |0         |진실로   |[null]  |오혜령       |        |s20080111.jpg           |7ca09ff1-8109-4917-8214-15dae7744b7e.jpg |0        |2024-04-20 17:01:08.0 |
+|------|----------|------|--------|----------|--------|------------------------|-----------------------------------------|---------|----------------------|
+
+2024-04-20 17:30:09.747 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 17:30:09.763 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-04-20 17:30:19.287 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-20 17:30:19.290 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-20 17:30:24.449 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 17:30:24.450 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-04-20 17:30:26.735 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'admin'
+
+2024-04-20 17:30:26.740 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img |profile_uuid                             |sex |hp          |email                |zipcode |road_address              |jibun_address        |namuji_address |etc        |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+|admin     |$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |운영자       |운영자         |프로필.jpg     |57f81533-6332-4359-aafb-6de4f6ba92be.jpg |m   |01011112222 |figtree627@gmail.com |28562   |충북 청주시 서원구 1순환로 627 (사창동) |충북 청주시 서원구 사창동 180-1 |1              |<p>1</p>
+ |Y         |2024-04-20 16:55:30.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|------------|-----------------------------------------|----|------------|---------------------|--------|--------------------------|---------------------|---------------|-----------|----------|----------------------|------------|---------|
+
+2024-04-20 17:30:49.685 [http-nio-80-exec-6] INFO  jdbc.sqlonly - INSERT INTO BOARD (
+			MEMBER_ID, TITLE, CONTENT
+		)
+		VALUES(
+			'admin', '첫번째 게시글 입니다.', '<p>하고 싶은 말을 적어봅니다.</p>
+'
+		)
+
+2024-04-20 17:30:49.747 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-20 17:30:49.749 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |0        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|------|-------------|---------|----------------------|------------|----------|
+
