@@ -58,7 +58,7 @@ public class MemorialServiceImpl implements MemorialService {
 	
 	
 	@Override
-	public List<MemorialDTO> getBdList1() {
+	public List<MemorialDTO> getBdList() {
 		List<MemorialDTO> bdList = memorialDAO.getBdList1();
 		
 		System.out.println("[서비스] 보드리스트 : " + bdList);
@@ -66,18 +66,6 @@ public class MemorialServiceImpl implements MemorialService {
 		return bdList;
 	}
 
-	@Override
-	public List<MemorialDTO> getBdList2() {
-		// TODO Auto-generated method stub
-		return memorialDAO.getBdList2();
-	}
-
-
-	@Override
-	public List<MemorialDTO> getBdList3() {
-		return memorialDAO.getBdList3();
-	}
-	
 	@Override
 	public MemorialDTO getBdDetail(long bdId) {
 		memorialDAO.updateReadCnt(bdId);

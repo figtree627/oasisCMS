@@ -30,27 +30,6 @@
 		}
 	}
 </script>
-<style>
-        .post-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* 요소 사이의 간격을 동일하게 설정합니다. */
-        }
-        .post {
-            width: calc(25% - 10px); /* 한 줄에 4개의 요소가 들어가도록 너비를 설정합니다. */
-            margin-bottom: 20px;
-            /* 필요에 따라 추가적인 스타일링을 수행할 수 있습니다. */
-        }
-        .post img {
-            width: 100%;
-            height: auto; /* 이미지의 비율을 유지하도록 합니다. */
-        }
-        .post-title {
-            font-weight: bold;
-            margin-top: 10px;
-            /* 필요에 따라 추가적인 스타일링을 수행할 수 있습니다. */
-        }
-    </style>
 </head>
 <body>
 <div layout:fragment="content">
@@ -59,27 +38,6 @@
 		<br><br>
 	</div>
 
-<!-- Blog Section Begin -->
-<section class="blog spad" align="center">
-	<div th:each="authorDTO : ${bdList}">
-	<table>
-		<tr>
-		<td>제목 </td>
-		<td th:text="${authorDTO.title}" ></td>
-		</tr>
-	</table>
-	</div>
-	
-      <!-- 실험 시작 -->
-    <div class="post-container blog__item__pic set-bg" th:each="authorDTO : ${bdList}">
-        <div class="post">
-         	<a th:href="@{/author/bdDetail(bdId=${authorDTO.bdId})}"><img th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}"/></a>
-        </div>
-        <div class="post-title"> <h6 th:text="${authorDTO.title}" >제목</h6></div>
-    </div>
-<!-- 실험 끝 --> 
-</section>
-<!-- Blog Section End -->
 </div>
 </body>
 </html>

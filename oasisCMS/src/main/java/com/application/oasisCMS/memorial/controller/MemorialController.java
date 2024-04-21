@@ -42,13 +42,14 @@ public class MemorialController {
 
 	@GetMapping("/main")
 	public String main() {
-		return "redirect:/memorial/bdList";
+		return "memorial/purpose";
 	}
 	
 	@GetMapping("/")
 	public String m() {
-		return "redirect:/memorial/bdList";
+		return "memorial/purpose";
 	}
+
 	@GetMapping("/visit")
 	public String visit() {
 		return "memorial/visit";
@@ -56,31 +57,31 @@ public class MemorialController {
 	
 	@GetMapping("/visit/1")
 	public String visit1() {
-		return "memorial/visit1";
+		return "memorial/visit/1";
 	}
 	@GetMapping("/visit/2")
 	public String visit2() {
-		return "memorial/visit2";
+		return "memorial/visit/2";
 	}
 	@GetMapping("/visit/3")
 	public String visit3() {
-		return "memorial/visit3";
+		return "memorial/visit/3";
 	}
 	@GetMapping("/visit/4")
 	public String visit4() {
-		return "memorial/visit4";
+		return "memorial/visit/4";
 	}
 	@GetMapping("/visit/5")
 	public String visit5() {
-		return "memorial/visit5";
+		return "memorial/visit/5";
 	}
 	@GetMapping("/visit/6")
 	public String visit6() {
-		return "memorial/visit6";
+		return "memorial/visit/6";
 	}
 	@GetMapping("/visit/7")
 	public String visit7() {
-		return "memorial/visit7";
+		return "memorial/visit/7";
 	}
 	
 	
@@ -93,13 +94,11 @@ public class MemorialController {
 		
 		// 단위테스트
 		System.out.println("기념관-게시판리스트 컨트롤러-겟 도착");
-		List<MemorialDTO> bdList = memorialService.getBdList1();
+		List<MemorialDTO> bdList = memorialService.getBdList();
 		for(MemorialDTO dto : bdList) {
 			System.out.println("memorialDTO :" + dto);
 		}
 		model.addAttribute("bdList1" ,bdList );
-		model.addAttribute("bdList2" ,memorialService.getBdList2() );
-		model.addAttribute("bdList3" ,memorialService.getBdList3() );
 		return "memorial/bdList";
 	}
 	
@@ -196,7 +195,7 @@ public class MemorialController {
 		@GetMapping("/deleteBd")
 		public String deleteBd(@RequestParam("bdId") long bdId) {
 			System.out.println("[컨트롤러] 기념관 삭제 겟 ");
-			System.out.println(memorialService.getBdList1());
+			System.out.println(memorialService.getBdList());
 			memorialService.deleteBd(bdId);
 			return "redirect:/memorial/bdList";
 		}

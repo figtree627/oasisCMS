@@ -40,6 +40,17 @@ public class AuthorController {
 	@Autowired
 	private AuthorService authorService;
 	
+	
+	@GetMapping("/socialCareer")
+	private String socialCareer() {
+		return "author/socialCareer";
+	}
+	
+	@GetMapping("/spiritualAspect")
+	private String spiritualAspect() {
+		return "author/spiritualAspect";
+	}
+	
 	@GetMapping("/")
 	public String main(Model model, HttpServletRequest req) {
 			HttpSession session = req.getSession();
