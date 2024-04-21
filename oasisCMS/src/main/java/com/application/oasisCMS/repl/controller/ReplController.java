@@ -40,7 +40,7 @@ public class ReplController {
 		HttpSession session = req.getSession();
 		System.out.println("리플 겟 컨트롤러 도착");
 		model.addAttribute("bdId" , bdId);
-		model.addAttribute("memberId", (String)session.getAttribute("memberId"));
+		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		return "repl/createRepl";
 	}
 	
@@ -54,13 +54,16 @@ public class ReplController {
 	
 	// 같은 유저 작성 댓글인지 판단 > 수정 누르기 > 
 	@GetMapping("/updateRepl")
-	public String updateRepl(Model model , @RequestParam("bdId")long bdId, @RequestParam("replId") long replId){
+	public String updateRepl(Model model , @RequestParam("bdId")long bdId, @RequestParam("replId") long replId, HttpServletRequest req){
+		
+		HttpSession session = req.getSession();
 		System.out.println("리플수정 겟 컨트롤러 도착");
 		
 		 System.out.println("bdId : " + bdId);
 		 System.out.println("replId : " + replId);
 		 System.out.println("리플세부내용: " + replService.getReplDetail(replId));
 		model.addAttribute("replDTO" , replService.getReplDetail(replId));
+		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
 //		model.addAttribute("replDTO" , replService.getReplDetail(replId).getBdId());
 		return "repl/updateRepl";
 		

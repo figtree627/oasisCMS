@@ -3,24 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글쓰기</title>
+
 </head>
 <body>
-    <div layout:fragment="content">
-	<h1> 댓글작성</h1>
+    <div layout:fragment="content" align="center">
+	<h4> 댓글작성</h4>
     <form th:action="@{/repl/createRepl}" method="post">
-        <table>
-            <tr>
-                <th>
-                    작성내용
-                </th>
-                <td>
-                    <textarea name="content" rows="3" cols="200"></textarea>
-                    <input type="submit" value="댓글등록"/>
-                </td>
-                <td><input type="hidden" name="bdId" th:value="${bdId}" ></td>
-                <td><input type="hidden" name="memberId" th:value="${memberId}" ></td>
-            </tr>
-        </table>
+             <div style="border:3px solid green; display:inline-block; ">
+             댓글 작성자 : <div th:text="${memberDTO.memberNick}"></div>
+             </div>
+                        <input type="submit" value="댓글등록"/>
+                <textarea name="content" id="content" rows="3" cols="100" required></textarea>
+                <input type="hidden" name="bdId" th:value="${bdId}" />
+                <input type="hidden" name="memberId" th:value="${session.memberId}" />
     </form>
 </div>
 </body>

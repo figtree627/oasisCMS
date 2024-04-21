@@ -16,7 +16,7 @@
 		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${bdDTO.readCnt}"></span>
 		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
 		<hr>
-		<div><span th:text="${bdDTO.content}"></span></div>
+		<div><span th:utext="${bdDTO.content}"></span></div>
 	</div>
 	<hr>
 	<div align="right" class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
