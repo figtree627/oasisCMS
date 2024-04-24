@@ -95,11 +95,11 @@
 </script>
 <link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 </head>
-<body class="mybody">
+<body>
 <br><br>
 <div layout:fragment="content">
 <hr>
-<div align="center">
+<div class="mybody">
 		<form 	th:action="@{/member/updateMember}" 
 				th:onsubmit="return checkFormValidation();" 
 				method="post" enctype="multipart/form-data">

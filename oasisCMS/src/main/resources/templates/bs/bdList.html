@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>오아시스아카데미 방송 메인페이지</title>
+<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 <script>
 	function checkSession(number) {
 
@@ -31,21 +32,18 @@
 		</div>
 		<!-- Breadcrumb End -->
 		<!-- Blog Section Begin -->
-		<div style="width: 720px;" align="right" class="mybtn"
+		<div style="width: 720px; text-align:right;" class="mybtn"
 			th:if="${session.memberId == 'admin'}">
-			<input type="button" value="글쓰기" th:onclick="checkSession(1)" /> <br>
+			<input type="button" value="글쓰기" onclick="checkSession()" /> <br>
 			<br>
 		</div>
 
 		<section class="blog spad">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div th:each="bsDTO : ${bdList}">
-							<div class="blog__item">
+			<div class="myContainer" th:each="bsDTO : ${bdList}">
 								<div class="blog__item__text">
-									<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"> <img
-										th:src="@{/bs/thumbnails(fileName=${bsDTO.bdUUID})}" />
+									<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"> 
+									<img class="bdImg"
+										th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}"/>
 									</a>
 									<h6>
 										<span th:text="${bsDTO.title}">제목</span>
@@ -55,10 +53,6 @@
 										<li th:text="${#dates.format(bsDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
 									</ul>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</section>
 

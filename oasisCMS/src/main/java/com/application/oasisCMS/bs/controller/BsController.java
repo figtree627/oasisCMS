@@ -39,12 +39,43 @@ public class BsController {
 	@Autowired
 	private MemberService memberService;
 	
-	
+	// 일반 주소 네비게이션
 	@GetMapping("/main")
 	public String main() {
 		return "bs/main";
 	}
 	
+	@GetMapping("/1")
+	public String day1 () {
+		return "bs/day/1";
+	}
+	@GetMapping("/2")
+	public String day2 () {
+		return "bs/day/2";
+	}
+	@GetMapping("/3")
+	public String day3 () {
+		return "bs/day/3";
+	}
+	@GetMapping("/4")
+	public String day4 () {
+		return "bs/day/4";
+	}
+	@GetMapping("/5")
+	public String day5 () {
+		return "bs/day/5";
+	}
+	@GetMapping("/6")
+	public String day6 () {
+		return "bs/day/6";
+	}
+	@GetMapping("/7")
+	public String day7 () {
+		return "bs/day/7";
+	}
+	
+	
+	// 기능별 네비게이션
 	@GetMapping("/createBd")
 	public String createBD(Model model, HttpServletRequest req) {
 		System.out.println("[컨트롤러] 방송 등록 겟");
@@ -57,7 +88,7 @@ public class BsController {
 	public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, 
 							@ModelAttribute BsDTO bsDTO) 
 							throws IllegalStateException, IOException{
-//		public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, @ModelAttribute BsDTO bsDTO) throws IllegalStateException, IOException{
+		// public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, @ModelAttribute BsDTO bsDTO) throws IllegalStateException, IOException{
 		// html에서 이미지를 위해 enctype="multipart/form-data" 추가해야함.
 		System.out.println("[컨트롤러] 방송 등록 포스트");
 		System.out.println("bsDTO : " + bsDTO);
