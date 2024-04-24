@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+  var yyyy = today.getFullYear();
+
+  var todayString = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("dateInput").value = todayString;
+});
+</script>
+<title>오아시스 아카데미 방송 등록화면</title>
+<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
+</head>
+<body>
+	<div align="center" layout:fragment="content">
+
+		<h3>오아시스 아카데미 방송 등록하기</h3><br>
+		
+		<form th:action="@{/bs/createBd}" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td class="mytd1"><label>제목</label></td>
+					<td class="mytd2" align="left">
+						<input class="text" type="text" name="title"required />
+						<input type="date" name="createDt" id="dateInput" style="text-align:center;width:140px;"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="mytd1"><label>방송구분</label></td>
+					<td class="mytd2">				
+						<select class="mytd2" name="category1"  style="text-align:center;width:110px;" >
+							<option value="월" >월요일방송</option>
+							<option value="화" >화요일방송</option>
+							<option value="수" >수요일방송</option>
+							<option value="목" >목요일방송</option>
+							<option value="금" >금요일방송</option>
+							<option value="토" >토요일방송</option>
+							<option value="일" >일요일방송</option>
+						</select>
+						<input type="text" name="bsCategory2" placeholder="분류 기준 적기 : 영성예화, 영성강화, ...등">
+					</td>
+				</tr>
+				<tr>
+					<td class="mytd1"><label>이미지 업로드</label></td>
+					<td colspan="2" class="mytd2"><input type="file" name="uploadImg" />
+					</td>
+				</tr>
+				<tr>
+					<td class="mytd1"><label>글내용</label></td>
+					<td colspan="2" class="mytd2"><textarea rows="10" cols="60" name="content" required></textarea>
+							<script>CKEDITOR.replace('content');</script>
+					</td>
+				</tr>
+			
+			</table>
+			<input type="hidden" name="memberId" id="memberId" th:value="${session.memberId}" />
+			<input type="submit" value="글쓰기" />
+			<input type="reset" value="다시작성" /> 
+			<input type="button" th:onclick="@{/bs/bdList}" value="목록보기">
+		</form>
+	</div>
+</body>
+</html>

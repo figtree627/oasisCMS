@@ -8,14 +8,16 @@ import lombok.Data;
 
 @Data
 public class BsDTO {
-	long bsId;
-	Date createDt;
-	String bsTitle;
+	long bdId;
+	String title;
 	String bsImg;
 	String bsUUID;
-	long bsReadCnt;
+	String content;
+	long readCnt;
 	String bsCategory1;
 	String bsCategory2;
 	String bsCategory3;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	Date createDt;
 	
 }

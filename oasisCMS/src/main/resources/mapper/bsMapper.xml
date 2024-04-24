@@ -1,4 +1,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.bs.dao.BsDAO">
+	<insert id="createBd" parameterType="BsDTO">
+	INSERT INTO BS (
+		 BD_ID, TITLE, CONTENT, BS_IMG, BS_UUID
+	) VALUES(
+		#{bdId}, #{title}, #{content}, #{bsImg}, #{bsUUID}		
+	)
+</insert>
 
+	<select id="getBdList" resultType="BsDTO">
+		SELECT * FROM BS
+	</select>
+	
+	<select id="getBdDetail" parameterType="long" resultType="BsDTO">
+		SELECT * FROM BS
+		WHERE BD_ID = #{bdId}
+	</select>
+	<update id="updateReadCnt" parameterType="long">
+		UPDATE BS
+		SET	READ_CNT = READ_CNT+1
+		WHERE BD_ID = #{bdId}
+	</update>
+	<update id="updateBd" parameterType="long">
+		UPDATE BS
+		<set>
+			<if test='title != null and !title.equals("")'>
+				TITLE = #{title},
+			</if>
+			<if test='content != null and !content.equals("")'>
+				CONTENT = #{content},
+			</if>
+			<if test='bsImg != null and !bsImg.equals("")'>
+				BS_IMG = #{bsImg},
+			</if>
+			<if test='bsUUID != null and !bsUUID.equals("")'>
+				BS_UUID = #{bsUUID},
+			</if>
+			READ_CNT= READ_CNT-1
+		</set>
+		WHERE BD_ID = #{bdId}
+	</update>
+	<delete id="deleteBd" parameterType="long">
+		DELETE FROM BS
+		WHERE BD_ID = #{bdId}
+	</delete>
+	
+		
+	
 </mapper>

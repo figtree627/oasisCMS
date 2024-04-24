@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
 <meta charset="UTF-8">
-<title>저자 소개 게시판</title>
+<title>저자 갤러리</title>
 <script>
 	function checkSession() {
 		
@@ -33,11 +33,36 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId != null}">
+	<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId =='admin'}">
 		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
 		<br><br>
 	</div>
-
-</div>
+		<section class="blog spad">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div th:each="authorDTO : ${bdList}">
+							<div class="blog__item">
+								<div class="blog__item__text">
+									<a th:href="@{/author/bdDetail(bdId=${authorDTO.bdId})}">
+										<img
+										th:src="@{/author/thumbnails(fileName=${authorDTO.authorUUID})}" />
+									</a>
+									<h6>
+										<span th:text="${authorDTO.title}">제목</span>
+									</h6>
+									<ul>
+										<li>by <span>운영자</span></li>
+										<li
+											th:text="${#dates.format(authorDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </body>
 </html>

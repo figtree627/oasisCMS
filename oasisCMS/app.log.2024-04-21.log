@@ -1,0 +1,1992 @@
+2024-04-21 15:44:09.743 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'qwer1'
+
+2024-04-21 15:44:09.891 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|-------|----------|
+|passwd |active_yn |
+|-------|----------|
+|-------|----------|
+
+2024-04-21 15:44:18.731 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer1'
+
+2024-04-21 15:44:18.733 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-21 15:45:17.436 [http-nio-80-exec-2] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'qwer1', '$2a$10$khnA6P/o/j5YJEye6f//ku0qM8nhIKPbaP8ESWG9DvEdlnSaM5AuG','회원1', '닉넴1',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '01011112222', 'qwer1@gmail.com', '',
+			'',	'','',
+			''
+		)
+
+2024-04-21 15:45:21.408 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:45:21.431 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |0        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:45:25.614 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = NULL
+
+2024-04-21 15:45:25.618 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|-------|----------|------------|------------|-------------|----|---|------|--------|-------------|--------------|---------------|----|----------|--------|------------|---------|
+|member_id |passwd |member_nm |member_nick |profile_img |profile_uuid |sex |hp |email |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt |inactive_dt |login_dt |
+|----------|-------|----------|------------|------------|-------------|----|---|------|--------|-------------|--------------|---------------|----|----------|--------|------------|---------|
+|----------|-------|----------|------------|------------|-------------|----|---|------|--------|-------------|--------------|---------------|----|----------|--------|------------|---------|
+
+2024-04-21 15:45:25.619 [http-nio-80-exec-7] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 1
+
+2024-04-21 15:45:25.633 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 1
+
+2024-04-21 15:45:25.638 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+|bd_id |title        |content                  |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |<p>하고 싶은 말을 적어봅니다.</p>
+ |1        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:45:25.639 [http-nio-80-exec-7] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 1
+
+2024-04-21 15:45:25.649 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 1
+
+2024-04-21 15:45:25.652 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+|bd_id |title        |content                  |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |<p>하고 싶은 말을 적어봅니다.</p>
+ |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|------|-------------|-------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:45:25.654 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 1
+
+2024-04-21 15:45:25.661 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:45:25.662 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 1
+
+2024-04-21 15:45:25.666 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 15:45:41.134 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'qwer1'
+
+2024-04-21 15:45:41.138 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$khnA6P/o/j5YJEye6f//ku0qM8nhIKPbaP8ESWG9DvEdlnSaM5AuG |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-21 15:45:45.367 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:45:45.372 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:45:47.442 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer1'
+
+2024-04-21 15:45:47.448 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer1     |$2a$10$khnA6P/o/j5YJEye6f//ku0qM8nhIKPbaP8ESWG9DvEdlnSaM5AuG |회원1       |닉넴1         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer1@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:45:17.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:46:12.585 [http-nio-80-exec-3] INFO  jdbc.sqlonly - INSERT INTO BOARD (
+			MEMBER_ID, TITLE, CONTENT
+		)
+		VALUES(
+			'qwer1', '게시판 1번 글작성', '<p>게시글 작성하고 있습니다.</p>
+'
+		)
+
+2024-04-21 15:46:12.603 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:46:12.607 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:46:15.959 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer1'
+
+2024-04-21 15:46:15.968 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer1     |$2a$10$khnA6P/o/j5YJEye6f//ku0qM8nhIKPbaP8ESWG9DvEdlnSaM5AuG |회원1       |닉넴1         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer1@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:45:17.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:46:22.077 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:46:22.080 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:46:36.816 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer2'
+
+2024-04-21 15:46:36.817 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-21 15:47:24.497 [http-nio-80-exec-8] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'qwer2', '$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq','회원2', '닉넴2',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '01011112222', 'qwer2@gmail.com', '',
+			'',	'','',
+			''
+		)
+
+2024-04-21 15:47:28.818 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:47:28.823 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:47:41.126 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer3'
+
+2024-04-21 15:47:41.127 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-04-21 15:48:00.020 [http-nio-80-exec-5] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'qwer3', '$2a$10$TT81CblXq2V5fx52HCUzwuT1FSznmgnjJsDo.F7MVrFk50uqpjVYS','회원3', '닉넴3',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'w', '01011112222', '', '',
+			'',	'','',
+			''
+		)
+
+2024-04-21 15:48:03.569 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:48:03.573 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:48:17.084 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'qwer2'
+
+2024-04-21 15:48:17.086 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-04-21 15:48:24.062 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:48:24.065 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:48:26.083 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:48:26.093 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:48:59.280 [http-nio-80-exec-4] INFO  jdbc.sqlonly - INSERT INTO BOARD (
+			MEMBER_ID, TITLE, CONTENT
+		)
+		VALUES(
+			'qwer2', '2번째 게시글입니다.', '<p>2번째 회원님이 작성하고 있습니다.</p>
+'
+		)
+
+2024-04-21 15:48:59.303 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:48:59.313 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |0        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|3     |2번째 게시글입니다.  |0        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:49:03.054 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:49:03.060 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:49:03.061 [http-nio-80-exec-7] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:49:03.065 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:49:03.067 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |1        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:49:03.068 [http-nio-80-exec-7] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:49:03.075 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:49:03.077 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |2        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:49:03.079 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 15:49:03.080 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:49:03.081 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 15:49:03.083 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 15:50:24.553 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:50:24.556 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |2        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|3     |2번째 게시글입니다.  |0        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:25.830 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:50:25.833 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |2        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|3     |2번째 게시글입니다.  |0        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:28.178 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:50:28.181 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:50:28.183 [http-nio-80-exec-9] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:28.189 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:28.195 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |3        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:28.196 [http-nio-80-exec-9] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:28.200 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:28.211 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |4        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:28.213 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 15:50:28.215 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:50:28.216 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 15:50:28.217 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 15:50:28.216 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:50:28.230 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:50:28.231 [http-nio-80-exec-10] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:28.235 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:28.242 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |5        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:28.243 [http-nio-80-exec-10] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:28.247 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:28.250 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |6        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:28.251 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 15:50:28.253 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:50:28.254 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 15:50:28.257 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 15:50:30.840 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:50:30.845 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |6        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|3     |2번째 게시글입니다.  |0        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:32.177 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:50:32.182 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:50:32.183 [http-nio-80-exec-6] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 3
+
+2024-04-21 15:50:32.192 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 3
+
+2024-04-21 15:50:32.195 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+|bd_id |title       |content                      |read_cnt |create_dt             |member_nick |member_id |
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+|3     |2번째 게시글입니다. |<p>2번째 회원님이 작성하고 있습니다.</p>
+ |1        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:32.196 [http-nio-80-exec-6] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 3
+
+2024-04-21 15:50:32.200 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 3
+
+2024-04-21 15:50:32.203 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+|bd_id |title       |content                      |read_cnt |create_dt             |member_nick |member_id |
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+|3     |2번째 게시글입니다. |<p>2번째 회원님이 작성하고 있습니다.</p>
+ |2        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|------------|-----------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:32.205 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 3
+
+2024-04-21 15:50:32.207 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:50:32.208 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 3
+
+2024-04-21 15:50:32.210 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 15:50:34.558 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-04-21 15:50:34.561 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-------------|---------|----------------------|------------|----------|
+|bd_id |title        |read_cnt |create_dt             |member_nick |member_id |
+|------|-------------|---------|----------------------|------------|----------|
+|1     |첫번째 게시글 입니다. |2        |2024-04-20 17:30:49.0 |운영자         |admin     |
+|2     |게시판 1번 글작성   |6        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|3     |2번째 게시글입니다.  |2        |2024-04-21 15:48:59.0 |닉넴2         |qwer2     |
+|------|-------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:36.185 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 15:50:36.189 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 15:50:36.190 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:36.203 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:36.205 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |7        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:36.206 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 15:50:36.209 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 15:50:36.211 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |8        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 15:50:36.212 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 15:50:36.218 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 15:50:36.219 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 15:50:36.221 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:02:09.932 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:02:09.940 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:02:09.942 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:09.947 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:09.950 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |9        |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:09.952 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:09.956 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:09.958 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |10       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:09.960 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:02:09.963 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:02:09.964 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:02:09.967 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:02:13.723 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:02:13.728 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:02:13.729 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:13.732 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:13.735 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |11       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:13.736 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:13.738 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:13.740 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |12       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:13.741 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:02:13.745 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:02:13.747 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:02:13.748 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:02:42.831 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:02:42.834 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:02:42.834 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:42.837 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:42.840 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |13       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:42.841 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:42.844 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:42.846 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |14       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:42.848 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:02:42.853 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:02:42.853 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:02:42.855 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:02:43.958 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:02:43.961 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:02:43.962 [http-nio-80-exec-4] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:43.970 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:43.973 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |15       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:43.973 [http-nio-80-exec-4] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:02:43.976 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:02:43.978 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |16       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:02:43.979 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:02:43.986 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:02:43.986 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:02:43.988 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:09:20.199 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:09:20.203 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:09:20.205 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:09:20.211 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:09:20.214 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |17       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:09:20.215 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:09:20.218 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:09:20.220 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |18       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:09:20.221 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:09:20.223 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:09:20.223 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:09:20.227 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:09:22.288 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:09:22.293 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:09:22.294 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:09:22.300 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:09:22.302 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |19       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:09:22.303 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:09:22.314 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:09:22.317 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |20       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:09:22.319 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:09:22.321 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------|
+|member_id |member_nick |repl_id |content |create_dt |
+|----------|------------|--------|--------|----------|
+|----------|------------|--------|--------|----------|
+
+2024-04-21 16:09:22.323 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:09:22.324 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|0            |
+|-------------|
+
+2024-04-21 16:09:26.180 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:09:26.183 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:10:12.464 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:10:12.468 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:10:31.910 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:10:31.914 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:10:48.431 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:10:48.435 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:11:47.886 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:11:47.888 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:12:55.780 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:12:55.783 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:13:38.608 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:13:38.610 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:13:57.709 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:13:57.715 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:14:09.746 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:14:09.749 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:42:49.721 [http-nio-80-exec-6] INFO  jdbc.sqlonly - INSERT INTO REPL (
+			REPL_ID, BD_ID, MEMBER_ID, CONTENT
+		)VALUES(
+			NULL, '2','qwer2',''
+		)
+
+2024-04-21 16:42:49.753 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:42:49.756 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:42:49.757 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:42:49.760 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:42:49.763 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |21       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:42:49.764 [http-nio-80-exec-3] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:42:49.770 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:42:49.773 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |22       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:42:49.774 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:42:49.776 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------------------|
+|member_id |member_nick |repl_id |content |create_dt             |
+|----------|------------|--------|--------|----------------------|
+|qwer2     |닉넴2         |1       |        |2024-04-21 16:42:49.0 |
+|----------|------------|--------|--------|----------------------|
+
+2024-04-21 16:42:49.776 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:42:49.778 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|1            |
+|-------------|
+
+2024-04-21 16:42:52.525 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:42:52.529 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:42:58.983 [http-nio-80-exec-2] INFO  jdbc.sqlonly - INSERT INTO REPL (
+			REPL_ID, BD_ID, MEMBER_ID, CONTENT
+		)VALUES(
+			NULL, '2','qwer2',''
+		)
+
+2024-04-21 16:42:59.001 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:42:59.005 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:42:59.005 [http-nio-80-exec-10] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:42:59.012 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:42:59.014 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |23       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:42:59.015 [http-nio-80-exec-10] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:42:59.019 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:42:59.021 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |24       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:42:59.027 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:42:59.029 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------------------|
+|member_id |member_nick |repl_id |content |create_dt             |
+|----------|------------|--------|--------|----------------------|
+|qwer2     |닉넴2         |1       |        |2024-04-21 16:42:49.0 |
+|qwer2     |닉넴2         |2       |        |2024-04-21 16:42:58.0 |
+|----------|------------|--------|--------|----------------------|
+
+2024-04-21 16:42:59.030 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:42:59.031 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|2            |
+|-------------|
+
+2024-04-21 16:53:00.538 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:53:00.542 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:53:00.543 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:53:00.548 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:53:00.550 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |25       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:53:00.550 [http-nio-80-exec-2] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:53:00.553 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:53:00.555 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |26       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:53:00.556 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:53:00.562 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|----------|------------|--------|--------|----------------------|
+|member_id |member_nick |repl_id |content |create_dt             |
+|----------|------------|--------|--------|----------------------|
+|qwer2     |닉넴2         |1       |        |2024-04-21 16:42:49.0 |
+|qwer2     |닉넴2         |2       |        |2024-04-21 16:42:58.0 |
+|----------|------------|--------|--------|----------------------|
+
+2024-04-21 16:53:00.562 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:53:00.564 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|2            |
+|-------------|
+
+2024-04-21 16:53:02.925 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:53:02.934 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:53:14.503 [http-nio-80-exec-4] INFO  jdbc.sqlonly - INSERT INTO REPL (
+			REPL_ID, BD_ID, MEMBER_ID, CONTENT
+		)VALUES(
+			NULL, '2','qwer2','댓글을 작성합니다.'
+		)
+
+2024-04-21 16:53:14.524 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:53:14.529 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:53:14.530 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:53:14.533 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:53:14.535 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |27       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:53:14.536 [http-nio-80-exec-1] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:53:14.541 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:53:14.545 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |28       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:53:14.546 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:53:14.549 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|----------|------------|--------|-----------|----------------------|
+|member_id |member_nick |repl_id |content    |create_dt             |
+|----------|------------|--------|-----------|----------------------|
+|qwer2     |닉넴2         |1       |           |2024-04-21 16:42:49.0 |
+|qwer2     |닉넴2         |2       |           |2024-04-21 16:42:58.0 |
+|qwer2     |닉넴2         |3       |댓글을 작성합니다. |2024-04-21 16:53:14.0 |
+|----------|------------|--------|-----------|----------------------|
+
+2024-04-21 16:53:14.549 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:53:14.551 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|3            |
+|-------------|
+
+2024-04-21 16:56:24.046 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:56:24.050 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:56:25.664 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:56:25.667 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:56:28.801 [http-nio-80-exec-8] INFO  jdbc.sqlonly - INSERT INTO REPL (
+			REPL_ID, BD_ID, MEMBER_ID, CONTENT
+		)VALUES(
+			NULL, '2','qwer2',''
+		)
+
+2024-04-21 16:56:28.823 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer2'
+
+2024-04-21 16:56:28.826 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email           |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer2     |$2a$10$U1pxeKPB13phB2BPNJw9Ru9UymLc7nzkjOhEN23Z/9S/69jLaVRFq |회원2       |닉넴2         |c:/spring_member_profile/member/default.jpg |null         |m   |01011112222 |qwer2@gmail.com |        |             |              |               |    |Y         |2024-04-21 15:47:24.0 |null        |null     |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|----------------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-04-21 16:56:28.826 [http-nio-80-exec-6] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:56:28.833 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:56:28.835 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |29       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:56:28.836 [http-nio-80-exec-6] INFO  jdbc.sqlonly - UPDATE	BOARD
+		SET		READ_CNT = READ_CNT + 1
+		WHERE	BD_ID = 2
+
+2024-04-21 16:56:28.839 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.CONTENT		AS CONTENT,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON 		B.MEMBER_ID = M.MEMBER_ID
+		WHERE 	BD_ID = 2
+
+2024-04-21 16:56:28.840 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|bd_id |title      |content                 |read_cnt |create_dt             |member_nick |member_id |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+|2     |게시판 1번 글작성 |<p>게시글 작성하고 있습니다.</p>
+ |30       |2024-04-21 15:46:12.0 |닉넴1         |qwer1     |
+|------|-----------|------------------------|---------|----------------------|------------|----------|
+
+2024-04-21 16:56:28.841 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 
+					M.MEMBER_ID, 
+	           	 	M.MEMBER_NICK,
+					REPL_ID,
+					R.CONTENT, 
+					R.CREATE_DT 
+			FROM 	REPL R, MEMBER M 
+			WHERE 	R.MEMBER_ID = M.MEMBER_ID
+			AND 	R.BD_ID = 2
+
+2024-04-21 16:56:28.843 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|----------|------------|--------|-----------|----------------------|
+|member_id |member_nick |repl_id |content    |create_dt             |
+|----------|------------|--------|-----------|----------------------|
+|qwer2     |닉넴2         |1       |           |2024-04-21 16:42:49.0 |
+|qwer2     |닉넴2         |2       |           |2024-04-21 16:42:58.0 |
+|qwer2     |닉넴2         |3       |댓글을 작성합니다. |2024-04-21 16:53:14.0 |
+|qwer2     |닉넴2         |4       |           |2024-04-21 16:56:28.0 |
+|----------|------------|--------|-----------|----------------------|
+
+2024-04-21 16:56:28.844 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT COUNT(BD_ID)
+		FROM	REPL
+		WHERE BD_ID = 2
+
+2024-04-21 16:56:28.848 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|-------------|
+|count(bd_id) |
+|-------------|
+|4            |
+|-------------|
+

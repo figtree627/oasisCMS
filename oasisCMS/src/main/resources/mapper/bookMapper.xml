@@ -4,16 +4,7 @@
 	INSERT INTO BOOK (
 		BOOK_ID, AUTHOR_ID, BOOK_NM, BOOK_IMG, BOOK_UUID, PUBLISHER_ID, PUBLISHER_NM, PUB_DT, INTRO_ONE_LINE, INTRO_DETAIL
 	) VALUES(
-		#{bookId},
-		#{authorId},
-		#{bookNm},
-		#{bookImg},
-		#{bookUUID},
-		#publisherId},
-		#{publisherNm},
-		#{pubDt},
-		#{introOneline},
-		#{introDetail}
+		#{bookId}, #{authorId},	#{bookNm}, #{bookImg}, #{bookUUID}, #publisherId}, #{publisherNm}, #{pubDt}, #{introOneline}, #{introDetail}
 	)
 </insert>
 	<select id="getBdList" resultType="BookDTO">

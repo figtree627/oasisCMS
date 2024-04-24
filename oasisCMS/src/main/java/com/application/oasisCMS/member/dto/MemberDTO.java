@@ -2,8 +2,6 @@ package com.application.oasisCMS.member.dto;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Data;
 
 @Data
@@ -23,9 +21,7 @@ public class MemberDTO {
 	String jibunAddress;
 	String namujiAddress;
 	String etc;
-	char activeYn ;
+	char activeYn;
 	Date inactiveDt;
-	char loginYn;
-	Date loginDt;
 }
 	

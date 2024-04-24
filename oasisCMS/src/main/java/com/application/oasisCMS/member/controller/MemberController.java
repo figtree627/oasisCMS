@@ -101,14 +101,17 @@ public class MemberController {
 	@GetMapping("/updateMember")
 	public String updateMember(Model model, HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
-		return "/member/updateMember";
+		MemberDTO memberDTO = memberService.getMemberDetail((String)session.getAttribute("memberId"));
+		System.out.println("[컨트롤러] 멤버 겟 :" + memberDTO );
+		
+		model.addAttribute("memberDTO", memberDTO);
+		return "member/updateMember";
 	}
 	
 	@PostMapping("/updateMember")
 	public String updateMember(@RequestParam("a") MultipartFile a, @ModelAttribute MemberDTO memberDTO) throws IllegalStateException, IOException {
-		System.out.println("멤버 수정 - 포스트 컨트롤러 : " + memberDTO);
-		memberService.createMember(a, memberDTO);
+		System.out.println("[컨트롤러] 멤버 수정 - 포스트: " + memberDTO);
+		memberService.updateMember(a, memberDTO);
 		return "redirect:main";
 	
 	}

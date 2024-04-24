@@ -56,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 			
 		}
 		//단위테스트
-		System.out.println("멤버서비스 : " + memberDTO);
+		System.out.println("[서비스] 멤버 등록: " + memberDTO);
 	
 		memberDTO.setPasswd(passwordEncoder.encode(memberDTO.getPasswd())); 
 		memberDAO.createMember(memberDTO);
@@ -82,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 		if (validateData != null) {
 			String activeYnString = Character.toString(validateData.getActiveYn());
 			if (passwordEncoder.matches(memberDTO.getPasswd() , validateData.getPasswd()) && !activeYnString.equals("n")) {
-				System.out.println("서비스 - 로그인 성공!");
+				System.out.println("[서비스] 멤버 로그인 ");
 				return true;
 			} 
 		}
@@ -91,12 +91,13 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public MemberDTO getMemberDetail(String memberId)  {
+		System.out.println("[서비스] 멤버 디테일 : " + memberDAO.getMemberDetail(memberId)); 
 		return memberDAO.getMemberDetail(memberId);
 	}
 	
 	@Override
 	public void updateMember(MultipartFile uploadProfile , MemberDTO memberDTO) throws IllegalStateException, IOException  {
-		
+		System.out.println("[서비스] 멤버 수정으로 넘어온 것: " + memberDTO);
 		if (!uploadProfile.isEmpty()) {
 			
 			// 기존 프로파일 이미지 삭제
@@ -117,8 +118,9 @@ public class MemberServiceImpl implements MemberService {
 			uploadProfile.transferTo(new File(fileRepositoryPath + uploadFile));
 			
 		}
-		
+		System.out.println("[서비스] 멤버 수정: " + memberDTO);
 		memberDAO.updateMember(memberDTO);
+		System.out.println("[서비스] 멤버 수정 - DAO갖다온 결과:" + memberDAO.getMemberDetail(memberDTO.getMemberId()));
 	
 	}
 	

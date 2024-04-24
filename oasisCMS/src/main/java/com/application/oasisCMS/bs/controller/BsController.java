@@ -1,23 +1,140 @@
 package com.application.oasisCMS.bs.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.application.oasisCMS.bs.dto.BsDTO;
 import com.application.oasisCMS.bs.service.BsService;
+import com.application.oasisCMS.member.service.MemberService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/bs")
 public class BsController {
 	
+	@Value("${file.repo.path.bs}")
+    private String fileRepositoryPath;
+	
 	@Autowired
 	private BsService bsService;
 	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	@GetMapping("/main")
 	public String main() {
 		return "bs/main";
 	}
+	
+	@GetMapping("/createBd")
+	public String createBD(Model model, HttpServletRequest req) {
+		System.out.println("[컨트롤러] 방송 등록 겟");
+		HttpSession session = req.getSession();
+		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
+		
+		return "bs/createBd";
+	}
+	@PostMapping("/createBd")
+	public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, 
+							@ModelAttribute BsDTO bsDTO) 
+							throws IllegalStateException, IOException{
+//		public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, @ModelAttribute BsDTO bsDTO) throws IllegalStateException, IOException{
+		// html에서 이미지를 위해 enctype="multipart/form-data" 추가해야함.
+		System.out.println("[컨트롤러] 방송 등록 포스트");
+		System.out.println("bsDTO : " + bsDTO);
+		bsService.createBd(uploadImg, bsDTO);
+		return "redirect:/bs/bdList";
+	}
+	
+	@GetMapping("/bdList")
+	public String bdList(Model model) {
+		
+		// 단위테스트
+		System.out.println("[컨트롤러] 방송 리스트 - 겟 도착");
+		List<BsDTO> bdList = bsService.getBdList();
+		for(BsDTO dto : bdList) {
+			System.out.println("bsDTO :" + dto);
+		}
+		model.addAttribute("bdList" ,bdList );
+		return "bs/bdList";
+	}
+	
+	// 상세조회
+	@GetMapping("/bdDetail")
+	public String bdDetail(Model model, @RequestParam("bdId") long bdId, HttpServletRequest req){
+		HttpSession session = req.getSession();
+		String memberId = (String) session.getAttribute("memberId");
+		model.addAttribute("memberId", memberId);
+		
+		//단위테스트
+		System.out.println(memberId);
+		System.out.println("[컨트롤러] 방송 상세조회 겟 -   " + bsService.getBdDetail(bdId));
+		
+		BsDTO bsDTO = bsService.getBdDetail(bdId);
+		model.addAttribute("bsDTO", bsDTO);
+		
+		return "bs/bdDetail";
+	}	
+	
+//	 썸네일기능 구현
+	@GetMapping("/thumbnails")
+	@ResponseBody
+	public Resource thumbnails(@RequestParam("fileName") String fileName) throws MalformedURLException {
+		// new UrlResource("file:" + 파일접근경로) 객체를 반환하여 이미지를 조회한다.
+		return new UrlResource("file:" + fileRepositoryPath + fileName); // 이미지 경로 수정하여 사용
+	}
+
+
+	@GetMapping("/updateBd")
+	public String updateBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
+		System.out.println("[컨트롤러] 방송 수정 - 겟 도착 ");
+		HttpSession session = req.getSession();
+		model.addAttribute("memberId" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
+		model.addAttribute("bsDTO", bsService.getBdDetail(bdId));
+		return "bs/updateBd";
+	}
+	
+	@PostMapping("/updateBd")
+	@ResponseBody
+	public String updateBd(@RequestParam("uploadImg") MultipartFile uploadImg, 
+			@ModelAttribute BsDTO bsDTO) 
+			throws IllegalStateException, IOException{
+		System.out.println("[컨트롤러] 방송 수정 - 포스트 ");
+		bsService.updateBd(uploadImg, bsDTO);
+		String jsScript = """
+				<script>
+					location.href = '/bs/bdList';
+				</script>
+				""";
+		return jsScript;
+	} 
+	
+	// 삭제
+	@GetMapping("/deleteBd")
+	public String deleteBd(@RequestParam("bdId") long bdId) {
+		System.out.println("[컨트롤러] 방송 삭제 - 겟 도착 ");
+		System.out.println(bsService.getBdList());
+		bsService.deleteBd(bdId);
+		return "redirect:/bs/bdList";
+	}
+
 }

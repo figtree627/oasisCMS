@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>기념관 게시글 상세 조회</title>
+<script>
+// 사진 불러 오기
+
+</script>
+</head>
+<body>
+<div layout:fragment="content">
+	<h3><span th:text="|${memorialDTO.bdId}번 기념관 게시글 상세조회 |"> 기념관 게시글 상세조회 </span></h3>
+	
+	<div style="border-color:red; padding:5px;" >
+		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${memorialDTO.title}">제목</span> <br>
+		|&emsp;글번호&emsp; |&emsp; <span th:text="${memorialDTO.bdId}"></span> 
+		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${memorialDTO.readCnt}"></span>
+		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(memorialDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
+		<hr>
+		
+		<div>
+		<p><img th:src="@{/memorial/thumbnails(fileName=${memorialDTO.bdUUID})}" class="images"/></p>
+		
+		
+		<span th:utext="${memorialDTO.content}"></span></div>
+	</div>
+	<hr>
+		<div align="right" class="mybtn" th:if="|${session.memberId=='admin'}|">
+			<input type="button" value="수정" th:onclick="|location.href='@{/memorial/updateBd(bdId=${#strings.toString(memorialDTO.bdId)})}'|" />
+			<input type="button" value="삭제" th:onclick="|location.href='@{/memorial/deleteBd(bdId=${#strings.toString(memorialDTO.bdId)})}'|" /><br><br>
+			<span class="mybtn" th:if="${session.memberId != null}">
+				<input type="button" value="글쓰기" th:onclick="checkSession()" />
+			</span>
+			<input type="button" value="목록보기" th:onclick="|location.href='@{/memorial/main}'|" />
+		</div>
+
+</div>
+</body>
+</html>

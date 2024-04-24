@@ -32,6 +32,9 @@
 		SELECT 	* FROM MEMBER WHERE MEMBER_ID = #{memberId}
 	</select>
 
+	<!-- 
+	""안에는 java형식을 따라야 한다.. (못 찾아서 3시간 걸림.. ㅠㅠ)
+	
 	<update id="updateMember" parameterType="MemberDTO">
 		UPDATE 	MEMBER
 		<set>
@@ -70,7 +73,47 @@
 			</if>
 		</set>
 		WHERE 	MEMBER_ID = #{memberId}
-	</update>
+	</update> -->
+	
+	<update id="updateMember" parameterType="MemberDTO">
+    UPDATE 	MEMBER
+    <set>
+        <if test='memberNick != null and !memberNick.equals("")'>
+            MEMBER_NICK = #{memberNick},
+        </if>
+        <if test='profileImg != null and !profileImg.equals("")'>
+            PROFILE_IMG = #{profileImg},
+        </if>
+        <if test='profileUUID != null and !profileUUID.equals("")'>
+            PROFILE_UUID= #{profileUUID},
+        </if>
+        <if test='sex != null and !sex.equals("")'>
+            sex= #{sex},
+        </if>
+        <if test='hp != null and !hp.equals("")'>
+            HP= #{hp},
+        </if>
+        <if test='email != null and !email.equals("")'>
+            EMAIL= #{email},
+        </if>
+        <if test='zipcode != null and !zipcode.equals("")'>
+            ZIPCODE = #{zipcode},
+        </if>
+        <if test='roadAddress != null and !roadAddress.equals("")'>
+            ROAD_ADDRESS = #{roadAddress},
+        </if>
+        <if test='jibunAddress != null and !jibunAddress.equals("")'>
+            JIBUN_ADDRESS = #{jibunAddress},
+        </if>
+        <if test='namujiAddress != null and !namujiAddress.equals("")'>
+            NAMUJI_ADDRESS = #{namujiAddress},
+        </if>
+        <if test='etc != null and !etc.equals("")'>
+            ETC= #{etc},
+        </if>
+    </set>
+    WHERE 	MEMBER_ID = #{memberId}
+</update>
 	
 	<select id="getMemberList" resultType="MemberDTO">
 		SELECT 	* 

@@ -60,7 +60,7 @@ public class AuthorController {
 	
 	@GetMapping("/createBd")
 	public String createBD(Model model, HttpServletRequest req) {
-		System.out.println("저자-게시글 등록 컨트롤러-겟 도착");
+		System.out.println("[컨트롤러] 저자 등록 - 겟 도착");
 		HttpSession session = req.getSession();
 		model.addAttribute("memberDTO", memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		
@@ -72,8 +72,7 @@ public class AuthorController {
 							throws IllegalStateException, IOException{
 //		public String createBd(@RequestParam("uploadImg") MultipartFile uploadImg, @ModelAttribute AuthorDTO authorDTO) throws IllegalStateException, IOException{
 		// html에서 이미지를 위해 enctype="multipart/form-data" 추가해야함.
-		System.out.println("저자 등록 포스트 컨트롤러임");
-		System.out.println("authorDTO : " + authorDTO);
+		System.out.println("[컨트롤러] 저자 등록 포스트 : " + authorDTO);
 		authorService.createBd(uploadImg, authorDTO);
 		return "redirect:/author/bdList";
 	}
@@ -82,10 +81,10 @@ public class AuthorController {
 	public String bdList(Model model) {
 		
 		// 단위테스트
-		System.out.println("저자-게시판리스트 컨트롤러-겟 도착");
+		System.out.println("[컨트롤러] 저자 리스트 -겟");
 		List<AuthorDTO> bdList = authorService.getBdList();
 		for(AuthorDTO dto : bdList) {
-			System.out.println("authorDTO :" + dto);
+			System.out.println("[컨트롤러] 저자 리스트 :" + dto);
 		}
 		model.addAttribute("bdList" ,bdList );
 		return "author/bdList";
@@ -100,7 +99,7 @@ public class AuthorController {
 		
 		//단위테스트
 		System.out.println(memberId);
-		System.out.println("저자 보드 세부내용 겟 -   " + authorService.getBdDetail(bdId));
+		System.out.println("[컨트롤러] 저자 상세 - 겟 : " + authorService.getBdDetail(bdId));
 		
 		AuthorDTO authorDTO = authorService.getBdDetail(bdId);
 		model.addAttribute("authorDTO", authorDTO);
@@ -119,7 +118,7 @@ public class AuthorController {
 
 	@GetMapping("/updateBd")
 	public String updateBd(Model model , @RequestParam("bdId") long bdId, HttpServletRequest req) {
-		System.out.println("저자 업뎃 수정 도착 ");
+		System.out.println("[컨트롤러] 저자 업뎃 - 겟 ");
 		HttpSession session = req.getSession();
 		model.addAttribute("memberId" , memberService.getMemberDetail((String)session.getAttribute("memberId")));
 		model.addAttribute("authorDTO", authorService.getBdDetail(bdId));
@@ -131,7 +130,9 @@ public class AuthorController {
 	public String updateBd(@RequestParam("uploadImg") MultipartFile uploadImg, 
 			@ModelAttribute AuthorDTO authorDTO) 
 			throws IllegalStateException, IOException{
-		authorService.updateBd(uploadImg, authorDTO);
+		
+				System.out.println("[컨트롤러] 저자 업뎃 포스트" + authorDTO);
+				authorService.updateBd(uploadImg, authorDTO);
 		String jsScript = """
 				<script>
 					location.href = '/author/bdList';
@@ -143,7 +144,7 @@ public class AuthorController {
 	// 삭제
 	@GetMapping("/deleteBd")
 	public String deleteBd(@RequestParam("bdId") long bdId) {
-		System.out.println("get delete보드도착 ");
+		System.out.println("[컨트롤러] 저자 삭제 - 겟"); 
 		System.out.println(authorService.getBdList());
 		authorService.deleteBd(bdId);
 		return "redirect:/author/bdList";

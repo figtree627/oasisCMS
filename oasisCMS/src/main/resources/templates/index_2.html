@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>오아시스 첫화면</title>
+<style>
+div.big-pic {
+	display:inline-block;
+	display: flex;
+	width:30%;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: around;
+	height:auto;
+	margin-left:20px;
+	margin-right:20px;
+	
+}
+	
+div.main-pic {
+	display:inline-block;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: around;
+	width:400px;
+	height:400px;
+	margin-left:20px;
+	margin-right:20px;
+	justify-self: around;
+}
+</style>
+</head>
+<body>
+
+<div layout:fragment="content">
+	<div class="container-fluid">
+		<div class="big-pic">
+			<img src="/img/main.jpg">
+		</div>
+		<div class="main-pic col-lg-6 col-md-6 col-sm-6 p-0">
+			<img src="/img/academy_1.png">
+		</div>
+		<div class="main-pic col-lg-6 col-md-6 col-sm-6 p-0">
+			<img src="/img/book_main.png">
+		</div>
+		<div class="main-pic col-lg-6 col-md-6 col-sm-6 p-0">
+			<img src="/img/memorial.png">
+		</div>
+		<div class="main-pic col-lg-6 col-md-6 col-sm-6 p-0">
+			<img src="/img/community_main.png">
+		</div>
+	</div>
+</div>
+</body>
+</html>

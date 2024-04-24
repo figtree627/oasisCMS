@@ -4,16 +4,31 @@
 <meta charset="UTF-8">
 <script th:src="@{/ashion/ckeditor/ckeditor.js}"></script>
 <script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
+<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 </head>
 <body>
+	#{bookId}, #{authorId},	#{bookNm}, #{bookImg}, #{bookUUID}, #publisherId}, #{publisherNm}, #{pubDt}, #{introOneline}, #{introDetail}
     
 	<div align="center" layout:fragment="content">
 
 		<h3>도서 게시글 등록화면</h3>
 		<form th:action="@{/book/createBd}" method="post" enctype="multipart/form-data">
-			<table border="1">
+			<table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				<tr>
-					<td>제목</td>
+					<td>도서명</td>
 					<td><input type="text" name="bookNm" /></td>
 				</tr>
 				<tr>
