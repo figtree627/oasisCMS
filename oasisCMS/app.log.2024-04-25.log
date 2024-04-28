@@ -1,0 +1,11 @@
+2024-04-25 12:42:27.892 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-04-25 12:42:27.939 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$dDmu6J6aFyVPH9VrVDR26.WvAVy3Qs0nO/fGIIfHJ57dXBDfyFZie |Y         |
+|-------------------------------------------------------------|----------|
+
