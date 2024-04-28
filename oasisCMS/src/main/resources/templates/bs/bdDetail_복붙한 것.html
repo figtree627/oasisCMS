@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+<meta charset="UTF-8">
+<title>방송 게시글 상세 조회</title>
+<script>
+// 사진 불러 오기
+
+</script>
+</head>
+<body>
+<div layout:fragment="content">
+	<h3><span th:text="|${bsDTO.bdId}번 방송 게시글 상세조회 |"> 방송 게시글 상세조회 </span></h3>
+	
+	<div style="border-color:red; padding:5px;" >
+		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${bsDTO.title}">제목</span> <br>
+		|&emsp;글번호&emsp; |&emsp; <span th:text="${bsDTO.bdId}"></span> 
+		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${bsDTO.readCnt}"></span>
+		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(bsDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
+		<hr>
+		
+		<div>
+		<p><img th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}" class="images"/></p>
+		
+		
+		<span th:utext="${bsDTO.content}"></span></div>
+	</div>
+	<hr>
+		<div align="right" class="mybtn" th:if="|${session.memberId=='admin'}|">
+			<input type="button" value="수정" th:onclick="|location.href='@{/bs/updateBd(bdId=${#strings.toString(bsDTO.bdId)})}'|" />
+			<input type="button" value="삭제" th:onclick="|location.href='@{/bs/deleteBd(bdId=${#strings.toString(bsDTO.bdId)})}'|" /><br><br>
+			<span class="mybtn" th:if="${session.memberId != null}">
+				<input type="button" value="글쓰기" th:onclick="checkSession()" />
+			</span>
+			<input type="button" value="목록보기" th:onclick="|location.href='@{/bs/main}'|" />
+		</div>
+
+</div>
+</body>
+</html>

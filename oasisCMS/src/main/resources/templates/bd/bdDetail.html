@@ -9,12 +9,12 @@
 <body>
 <div layout:fragment="content">
 	
-	<div style="border-color:red; padding:5px;" >
-		|&emsp;제&emsp;목&emsp; |&emsp; <span style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
-		|&emsp;글번호&emsp; |&emsp; <span th:text="${bdDTO.bdId}"></span> 
-		&emsp;|&emsp;작성자&emsp; |&emsp; <span th:text="${bdDTO.memberNick}">작성자</span>
-		&emsp;|&emsp;조회수&emsp; |&emsp; <span th:text="${bdDTO.readCnt}"></span>
-		&emsp;|&emsp;작성일&emsp; |&emsp; <span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
+	<div class="detailBody">
+		<label>글번호</label><span th:text="${bdDTO.bdId}"></span>
+		<label>제목</label><span style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
+		<label>작성자</label><span th:text="${bdDTO.memberNick}">작성자</span>
+		<label>조회수</label><span th:text="${bdDTO.readCnt}"></span>
+		<label>작성일</label><span th:text="${#dates.format(bdDTO.createDt, 'yy-MM-dd hh:mm:ss')}"></span>&emsp;<br>
 		<hr>
 		<div><span th:utext="${bdDTO.content}"></span></div>
 	</div>

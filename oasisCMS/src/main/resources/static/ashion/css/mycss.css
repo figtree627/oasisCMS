@@ -11,7 +11,11 @@
     font-weight: bolder;
     font-style: normal;
 }
-
+.detailBody{
+	display:block;
+	align-itmes:center;
+	margin:0 auto;
+}
 .mybody {
 		display: block;
 		align-items: center;
@@ -41,7 +45,7 @@ table{
 }
 
 td {
-	width:100%;
+
 	text-align: left;
 	border:3px gray solid;
 	margin:50px;
