@@ -52,10 +52,14 @@ public class BookController {
 	}
 	
 	@GetMapping("/")
-	public String main(Model model, HttpServletRequest req) {
+	public String book(Model model, HttpServletRequest req) {
 			HttpSession session = req.getSession();
 			model.addAttribute("memberId", (String)session.getAttribute("memberId"));
 		return "redirect:/book/bdList";
+	}
+	@GetMapping("/main")
+	public String main() {
+		return "book/main";
 	}
 	
 	@GetMapping("/createBd")

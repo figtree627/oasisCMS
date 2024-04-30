@@ -4,18 +4,52 @@
 <meta charset="UTF-8">
 <title>댓글쓰기</title>
 
+<style>
+@font-face {
+    font-family: 'ChosunKg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.repl-label{
+	display:inline-block;
+	margin-left:10%;
+	text-align:right;
+}
+#content{
+	display:inline-block;
+	margin:10px 10px;
+	border:1px grey solid;
+	width:auto;
+	border-radius : 10px;
+	padding:0;
+	height:100px;
+}
+
+.repl{
+	font-size:1.2rem;
+	font-family: 'ChosunKg';
+	display:inline-block;
+	margin:10px 10px;
+	background-color:yellowgreen;
+	opacity:70%;
+}
+
+</style>
 </head>
 <body>
-    <div layout:fragment="content" align="center">
-	<h4> 댓글작성</h4>
+    <div layout:fragment="content" >
+	<br>
     <form th:action="@{/repl/createRepl}" method="post">
-             <div style="border:3px solid green; display:inline-block; ">
-             댓글 작성자 : <div th:text="${memberDTO.memberNick}"></div>
-             </div>
-                        <input type="submit" value="댓글등록"/>
-                <textarea name="content" id="content" rows="3" cols="100" required></textarea>
+             <div>
+	            <div class="repl-label">
+	           		<div class="repl" th:text="|[${memberDTO.memberNick}]님 |"></div><br>
+                	<input type="submit" value="댓글등록"/>
+	            </div>
+                <textarea name="content" id="content" rows="2" cols="100" required></textarea>
                 <input type="hidden" name="bdId" th:value="${bdId}" />
                 <input type="hidden" name="memberId" th:value="${session.memberId}" />
+             </div>
     </form>
 </div>
 </body>

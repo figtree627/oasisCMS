@@ -32,7 +32,6 @@ public class AuthorController {
 	
 	@Value("${file.repo.path.author}")
     private String fileRepositoryPath;
-
 	
 	@Autowired
 	private MemberService memberService;

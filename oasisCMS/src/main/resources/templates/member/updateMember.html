@@ -5,12 +5,10 @@
 <script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
 <script th:src="@{http://dmaps.daum.net/map_js_init/postcode.v2.js}"></script>
 <script>
-
 	function execDaumPostcode() {
 	    new daum.Postcode({
 	        oncomplete: function(data) {
 	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-	
 	            // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
 	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 	            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
@@ -33,7 +31,6 @@
 	            if (fullRoadAddr !== ''){
 	                fullRoadAddr += extraRoadAddr;
 	            }
-	
 	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	            document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
 	            document.getElementById('roadAddress').value = fullRoadAddr;
@@ -42,19 +39,14 @@
 	        }
 	    }).open();
 	}
-	
-</script>
-
-<script>
 
 	let isPassId = false;
 	let isPassPasswd = false;
 	
 	$().ready(function() {
-		 /*
+		
 		$("#passwd").keyup(function(){
         let passwd = $(this).val();
-	
        
         // 정규 표현식을 사용하여 비밀번호가 조건을 충족하는지 확인
         let passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
@@ -66,8 +58,6 @@
             $("#isValidPasswdMsg").empty(); // Clear error message if valid
         }
     });	
- 
-       */
 		$("#confirmPasswd").blur(function(){
 			
 			let passwd = $("#passwd").val();
@@ -82,7 +72,6 @@
 			}
 		});	
 	});
-	
 	function checkFormValidation() {
 
 		if (!isPassPasswd) {
@@ -91,7 +80,6 @@
 			return false;
 		}
 	}
-	
 </script>
 <link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 </head>
@@ -103,9 +91,10 @@
 		<form 	th:action="@{/member/updateMember}" 
 				th:onsubmit="return checkFormValidation();" 
 				method="post" enctype="multipart/form-data">
-			
-			<h3 class="title"><span th:text="${memberDTO.memberId}">회원정보수정</span></h3>
-			
+			<div class="center">
+			<h3><span class="title" th:text="|${memberDTO.memberId}님의 정보수정|">회원정보수정</span></h3>
+			<br>
+			<div class="center">
 			<table>
 		        <tr>
 		        <td class="mytd1"><label>아이디</label></td>
@@ -163,10 +152,10 @@
 			        	<label>우편번호</label><input type="text" placeholder="우편번호 입력" id="zipcode" name="zipcode" th:value="${memberDTO.zipcode}" >
 		                 
 			        <input type="button" th:onclick="javascript:execDaumPostcode()" value="검색" /><br>
-		            <label>도로명 주소 : </label>    <input type="text" name="roadAddress" th:value="${memberDTO.roadAddress}" id="roadAddress" size="60"> <br>
-					<label>지번 주소 : </label>
+		            <label>도로명 주소</label>    <input type="text" name="roadAddress" th:value="${memberDTO.roadAddress}" id="roadAddress" size="60"> <br>
+					<label>지번 주소</label>
 			        	<input type="text"  name="jibunAddress" th:value="${memberDTO.jibunAddress}" id="jibunAddress" size="60"> <br>
-					<label>나머지 주소: </label>	<input type="text" name="namujiAddress" th:value="${memberDTO.namujiAddress}" id="namujiAddress" size="60"/>
+					<label>나머지 주소</label>	<input type="text" name="namujiAddress" th:value="${memberDTO.namujiAddress}" id="namujiAddress" size="60"/>
 			        </td>
 		        </tr>
 		        <tr>
@@ -178,17 +167,12 @@
 			        </td>
 			        
 		        </tr>                                     
-		        <tr>
-			        <td colspan="2" align="center">
-			        	<input type="submit" value="수정완료하기"  >
-			        </td>
-			    </tr>
-			                                
+		        <tr><td colspan="2" align="center"><input type="submit" value="수정완료하기"></td></tr>
 		     </table>
+			</div>
+			</div>
 	     </form>
 	</div>
-
-
 </div>
 
 </body>

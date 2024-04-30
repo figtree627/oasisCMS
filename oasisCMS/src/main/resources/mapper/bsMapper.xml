@@ -1,15 +1,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.application.oasisCMS.bs.dao.BsDAO">
 	<insert id="createBd" parameterType="BsDTO">
-	INSERT INTO BS (
-		 BD_ID, TITLE, CONTENT, BS_IMG, BS_UUID
-	) VALUES(
-		#{bdId}, #{title}, #{content}, #{bsImg}, #{bsUUID}		
-	)
-</insert>
-
+		INSERT INTO BS (
+			 BD_ID, TITLE, CONTENT, BS_IMG, BS_UUID, BS_CATEGORY_1,  BS_CATEGORY_2,  BS_CATEGORY_3
+		) VALUES(
+			#{bdId}, #{title}, #{content}, #{bsImg}, #{bsUUID}, #{bsCategory1}, #{bsCategory2}, #{bsCategory3}		
+		)
+	</insert>
+	
 	<select id="getBdList" resultType="BsDTO">
-		SELECT * FROM BS
+		SELECT * FROM BS;
+	</select>
+	
+	<select id="getBsByCategory" parameterType="string" resultType="BsDTO">
+	    SELECT * FROM BS
+	    WHERE category1 = #{category1}
 	</select>
 	
 	<select id="getBdDetail" parameterType="long" resultType="BsDTO">

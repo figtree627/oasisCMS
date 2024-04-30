@@ -15,8 +15,6 @@
 </head>
 <body>
 	<div layout:fragment="content">
-
-
 		<!-- Breadcrumb Begin -->
 		<div class="breadcrumb-option">
 			<div class="container">
@@ -38,21 +36,21 @@
 			<br>
 		</div>
 
-		<section class="blog spad">
-			<div class="myContainer" th:each="bsDTO : ${bdList}">
-								<div class="blog__item__text">
-									<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"> 
-									<img class="bdImg"
-										th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}"/>
-									</a>
-									<h6>
-										<span th:text="${bsDTO.title}">제목</span>
-									</h6>
-									<ul>
-										<li>by <span>운영자</span></li>
-										<li th:text="${#dates.format(bsDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
-									</ul>
-								</div>
+		<section class="author-box1">
+			<div class="author-box1" th:each="bsDTO : ${bdList}">
+				<div class="blog__item__text">
+					<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"> 
+					<img class="bdImg"
+						th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}"/>
+					</a>
+					<h6>
+						<span th:text="${bsDTO.title}">제목</span>
+					</h6>
+					<ul>
+						<li>by <span>운영자</span></li>
+						<li th:text="${#dates.format(bsDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 

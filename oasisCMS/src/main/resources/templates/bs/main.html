@@ -1,56 +1,109 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
-<meta charset="UTF-8">
-<title>방송</title>
-<script>
-	function checkSession() {
-		
-		let jsSession = "[[${session.memberId}]]";
-		console.log(jsSession);
-		/*
-		if (jsSession == "") {
-			alert("빈문자열")
-		} 
-		if (jsSession == null) {
-			alert("null")
-		} 
-		if (jsSession == undefined) {
-			alert("undifined")
-		} 
-		*/
-		
-// 세션확인 있으면 > 로그인ok > 글쓰기 화면으로
-		if (jsSession != "") {
-			// alert('로그인 확인 했습니다. 글쓰기 화면으로 이동합니다.');
-			location.href = "/bs/createBd";
-		} else { //	없으면 > 로그인x > 로그인화면으로
-			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
-			location.href="/member/loginMember";
-		}
-	}
-</script>
-
+    <meta charset="UTF-8">
+    <title>방송</title>
 </head>
 <body>
 
 <div align="center" layout:fragment="content">
 
-	<h2> 오아시스 방송 </h2>
-	<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId == 'admin'}">
-		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
-		<br><br>
-	</div>
-		<ol>
-			<li><a th:href="@{/bs/1}">월요일방송</a></li>
-			<li><a th:href="@{/bs/2}">화요일방송</a></li>
-			<li><a th:href="@{/bs/3}">수요일방송</a></li>
-			<li><a th:href="@{/bs/4}">목요일방송</a></li>
-			<li><a th:href="@{/bs/5}">금요일방송</a></li>
-			<li><a th:href="@{/bs/6}">토요일방송</a></li>
-			<li><a th:href="@{/bs/7}">주일 방송</a></li>
-		</ol>
+    <h2> 오아시스 방송 </h2>
+    <div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId == 'admin'}">
+        <input type="button" value="글쓰기" onclick="checkSession()"/>
+        <br><br>
+    </div>
+    <!-- 전체 Bs 게시글 리스트 -->
+<!-- 전체 Bs 게시글 리스트 -->
+<div class="bd-body" id="bdDTO">
+    <!-- 여기에 전체 Bs 게시글이 동적으로 추가될 것입니다. -->
+    <div th:each="bdDTO: ${bdList}">
+        <div th:if="${bdDTO.bsCategory1 == '월'
+                    or bdDTO.bsCategory1 == '화'
+                    or bdDTO.bsCategory1 == '수'
+                    or bdDTO.bsCategory1 == '목'
+                    or bdDTO.bsCategory1 == '금'
+                    or bdDTO.bsCategory1 == '토'
+                    or bdDTO.bsCategory1 == '일' }">
+            <span th:text="${bdDTO.bdId}">글번호</span><br>
+            <h4><span th:text="${bdDTO.title}">제목</span></h4><br>
+        </div>
+    </div>
+</div>
+    <!-- 카테고리 필터링을 위한 버튼 -->
+    <div>
+        <button onclick="filterByCategory('월')">월요일</button>
+        <button onclick="filterByCategory('화')">화요일</button>
+        <button onclick="filterByCategory('수')">수요일</button>
+        <button onclick="filterByCategory('목')">목요일</button>
+        <button onclick="filterByCategory('금')">금요일</button>
+        <button onclick="filterByCategory('토')">토요일</button>
+        <button onclick="filterByCategory('일')">주일</button>
+    </div>
 
-	</div>
+    <!-- 필터링된 결과를 표시할 영역 -->
+    <div id="filteredResults"></div>
+
+</div>
+
+<script>
+    // 페이지 로드 시 전체 Bs 게시글을 가져와서 표시하는 함수
+    window.onload = function() {
+        fetchAllBs();
+    }
+
+    
+    
+    // 전체 Bs 게시글을 가져와서 표시하는 JavaScript 함수
+    function fetchAllBs() {
+        fetch("/bs/main")
+            .then(response => response.json())
+            .then(data => {
+                displayBsList(data);
+            });
+    }
+
+    // 전체 Bs 게시글을 화면에 표시하는 JavaScript 함수
+    function displayBsList(bdDTO) {
+        let html = "";
+        bdDTO.forEach(bs => {
+            html += `<div class="bsbox1"><a href="/bs/${bs.id}">${bs.title}</a></div>`;
+        });
+        document.getElementById("bdDTO").innerHTML = html;
+    }
+
+    // 카테고리 필터링을 위한 JavaScript 함수
+    function filterByCategory(category) {
+    fetch(`/bs/filter?category1=${category}`)
+        .then(response => response.json())
+        .then(data => {
+            displayFilteredResults(data);
+        });
+	}
+
+    // 필터링된 결과를 화면에 표시하는 JavaScript 함수
+    function displayFilteredResults(data) {
+        let html = "<h3>필터링된 결과</h3>";
+        html += "<ul>";
+        data.forEach(item => {
+            html += "<li>" + item.title + "</li>"; // 예시: 방송의 제목을 표시
+        });
+        html += "</ul>";
+        document.getElementById("filteredResults").innerHTML = html;
+    }
+
+    // 세션 체크 함수
+    function checkSession() {
+        // 로그인 여부 확인 로직
+        // ...
+
+        // 로그인되어 있다면 글쓰기 화면으로 이동
+        // ...
+
+        // 로그인되어 있지 않다면 로그인 화면으로 이동
+        // ...
+    }
+</script>
+
 </body>
 </html>

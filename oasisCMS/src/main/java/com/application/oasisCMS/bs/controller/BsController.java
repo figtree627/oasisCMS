@@ -40,10 +40,32 @@ public class BsController {
 	private MemberService memberService;
 	
 	// 일반 주소 네비게이션
+//	@GetMapping("/main")
+//	public String main() {
+//		System.out.println("[컨트롤러]");
+//		bsService.getBdList();
+//		return "bs/main";
+//	}
+	
 	@GetMapping("/main")
-	public String main() {
-		return "bs/main";
+	public String showMainPage(Model model) {
+	    List<BsDTO> bdList = bsService.getBdList(); // 모든 게시글 가져오기
+	    
+	    System.out.println("[컨트롤러] 방송 메인- 전체리스트" + bdList);
+	    model.addAttribute("bdList", bdList); // 가져온 게시글을 모델에 추가
+	    return "bs/main"; // main.html 페이지로 이동
 	}
+	
+	@GetMapping("/bsAll")
+	public String bsAll() {
+		return "redirect:/bs/main";
+	}
+	
+	@GetMapping("/filter")
+    public List<BsDTO> getFilteredBs(@RequestParam("category1") String category1) {
+		
+        return bsService.getBsByCategory(category1);
+    }
 	
 	@GetMapping("/1")
 	public String day1 () {

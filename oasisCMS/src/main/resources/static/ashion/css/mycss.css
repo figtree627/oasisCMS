@@ -11,54 +11,117 @@
     font-weight: bolder;
     font-style: normal;
 }
+.title{
+	text-align:center;
+	border: 5px solid grey;
+	margin:100px;
+	padding:20px;
+	border-radius:10px;
+	box-shadow: 10px 10px 10px rgba(30, 50, 100, 0.5); /* Add shadow effect */	
+}
+.author-box{
+	display: flex; /* 부모 요소를 Flex Container로 설정 */
+    flex-wrap:wrap;
+    margin:20px;
+}
+.author-box1{
+	width: 400px;
+    margin: 20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.bdId {
+	color:darkgey;
+	font-size:0.8rem;
+}
+
+.bdTitle{
+	color:black;
+	background-color:corn-silk;
+	font-size:1.1rem;
+}
+
+.bdWriter{
+	color:grey;
+	font-size:0.8rem;
+}
+
 .detailBody{
-	display:block;
-	align-itmes:center;
-	margin:0 auto;
+	display:inline-block;
+	text-align:center;
+	margin:0 20%;
 }
+.repl-area1{
+	text-align:left;
+	margin-left:10%;
+	padding-left:10px;
+}
+.header__menu{
+	font-family: 'ChosunKg';
+	font-weight: bolder;
+	font-size: 1.2rem;
+}
+.repl-area2{
+	text-align:left;
+	margin-left:10%;
+	padding-left:10px;
+}
+.btn-write{
+	text-align:right;
+	padding-right:20%;
+}
+.center{
+	text-align:center;
+	padding:30px;
+}
+
 .mybody {
-		display: block;
-		align-items: center;
-		justify-content: center;
-		margin: 0 auto;
-		height: 100vh;
-		background-color: #f1f1f1;
+    width: auto;
+    margin: 0 auto;
+    background-color: #f1f1f1;
 }
+
+table {
+    border: 2px navy solid;
+    width: 80%;
+    border-radius: 5px;
+    margin: 0 auto; /* Center horizontally */
+    box-shadow: 10px 10px 10px rgba(30, 50, 100, 0.5); /* Add shadow effect */	
+}
+
 .audio {
 	width: 80%;
 }
 
+input{
+		padding-left:10px;
+}
+
 input[type="text"] {
-		width:70%;
+		width:60%;
 	  	align-items: center;
 	  	border-radius:8px;
 	  	font-family: 'ChosunSg';
 		font-size:1.1rem;
 		font-weight: 600;		
 }
-table{
-	border:3px navy solid;
-	text-align:center;
-	width :70%;
-	margin:50px;
-	border-radius:5px;
-}
-
 td {
 
 	text-align: left;
 	border:3px gray solid;
 	margin:50px;
 	height : 30px;
-	
-	
+}
+.update-member{
+	text-align:center;
 }
 .my-right {
 	text-align:right;
 	
 }
 td.mytd1 {
-	width:25%;
+	width:20%;
 	text-align: center;
 	height: 27px;
 	line-height: 27px;
@@ -71,10 +134,14 @@ td.mytd2 {
 	
 }		
 
+label.repl{
+	width:100px;
+}
+
 label {
 	height:30px;
     line-height: 30px;
-	width:150px;
+	width:120px;
 	text-align:center;
 	font-family: 'ChosunSg';
 	font-size:1.1rem;
@@ -94,6 +161,60 @@ label {
  	margin-left:10px;
  	
  }
+ 
+ .bsbox {
+    display: flex;
+    flex-wrap: wrap; /* 요소들이 필요한만큼 여러 줄로 나뉘어 배치됨 */
+    justify-content: center; /* 가로 정렬을 가운데 정렬로 설정 */
+    align-items: center; /* 세로 정렬을 가운데 정렬로 설정 */
+}
+
+/* 미디어 쿼리를 사용하여 화면이 특정 크기 이하일 때 요소의 크기나 배열 방식을 조절 */
+@media screen and (max-width: 300px) {
+    .bsbox {
+        justify-content: flex-start; /* 화면이 좁아지면 요소들을 왼쪽 정렬로 변경 */
+    }
+}
+ 
+ .bsbox1{
+    display: flex;
+ 	width:30%;
+ 	height:200px;
+ 	background-color: cornsilk;;
+ 	margin:10px;
+    justify-content: center; /* 가로 정렬을 가운데 정렬로 설정 */
+    align-items: center; /* 세로 정렬을 가운데 정렬로 설정 */
+    color:black;
+    font-size:1.5rem;
+    font-weight:600;
+}
+ .bsbox1:nth-child(1) {
+    background-color: rgba(255, 0, 0, 0.2); /* 빨간색의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(2) {
+    background-color: rgba(255, 165, 0, 0.2); /* 주황색의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(3) {
+    background-color: rgba(255, 255, 0, 0.2); /* 노란색의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(4) {
+    background-color: rgba(0, 128, 0, 0.2); /* 초록색의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(5) {
+    background-color: rgba(0, 0, 255, 0.2); /* 파란색의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(6) {
+    background-color: rgba(75, 0, 130, 0.2); /* 남색(인디고)의 투명도를 20%로 지정 */
+}
+
+.bsbox1:nth-child(7) {
+    background-color: rgba(238, 130, 238, 0.2); /* 보라색(자두)의 투명도를 20%로 지정 */
+}
  
  .bdImgContainer {
     display: flex;

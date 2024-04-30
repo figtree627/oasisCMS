@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -97,6 +99,16 @@ public class MemberController {
 		return "redirect:main";
 		
 	}
+	
+	@GetMapping("/memberUUID")
+    @ResponseBody
+    public Resource thumbnails(@RequestParam("memberId") String memberId) throws IOException{
+		System.out.println("[컨트롤러] 멤버 - memberUUID 겟매핑 도착");
+        String fileName = memberService.getMemberDetail(memberId).getProfileUUID();
+		System.out.println(fileName);
+		return new UrlResource("file:" + fileRepositoryPath + fileName);
+    }
+	
 	
 	@GetMapping("/updateMember")
 	public String updateMember(Model model, HttpServletRequest req) {

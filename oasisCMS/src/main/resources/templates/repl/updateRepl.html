@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글 수정</title>
+<style>
+</style>
 </head>
 <body>
     <div layout:fragment="content">
-	<h1>댓글수정</h1>
+	
+	<div>
+	<h5 class="repl" th:text="|[${memberDTO.memberNick}]님의 댓글 |">댓글수정 페이지</h5>
     <form th:action="@{/repl/updateRepl}" method="post">
         <table>
             <tr>
-                <th>
-                    작성내용
-                <p th:text="${replDTO.bdId}" > a</p>
-                <p th:text="${replDTO.memberId}" > b</p>
-                <p th:text="${replDTO.replId}" > c</p>
-                </th>
                 <td>
                     <textarea name="content" rows="3" cols="200" th:text="${replDTO.content}"></textarea>
                     <input type="submit" value="댓글수정"/>
@@ -26,6 +24,7 @@
             </tr>
         </table>
     </form>
+    </div>
 </div>
 </body>
 </html>

@@ -54,6 +54,10 @@ public class BsServiceImpl implements BsService {
 		 bsDAO.createBd(bsDTO);
 	}
 	
+	@Override
+	public List<BsDTO> getBsByCategory(String category1) {
+        return bsDAO.getBsByCategory(category1);
+    }
 	
 	@Override
 	public List<BsDTO> getBdList() {
