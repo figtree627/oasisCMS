@@ -55,11 +55,6 @@ public class BsServiceImpl implements BsService {
 	}
 	
 	@Override
-	public List<BsDTO> getBsByCategory(String category1) {
-        return bsDAO.getBsByCategory(category1);
-    }
-	
-	@Override
 	public List<BsDTO> getBdList() {
 
 		List<BsDTO> bdList = bsDAO.getBdList();
@@ -111,6 +106,22 @@ public class BsServiceImpl implements BsService {
 		System.out.println("[서비스] 방송 삭제");
 
 		bsDAO.deleteBd(bdId);
+	}
+
+	@Override
+	public List<BsDTO> getBsByCategory(String category1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BsDTO> getBdListByCategory(int category) {
+		return bsDAO.getBsByCategory(category);
+	}
+
+	@Override
+	public List<BsDTO> getAllBdList() {
+		return bsDAO.getAllBdList();
 	}
 
 }

@@ -3,107 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <title>방송</title>
+    <style>
+    th{
+    width: 100px;
+    text-align:center;
+    }
+    td{
+    width:100px;
+    text-align:center;
+    }
+    </style>
+    <script>
+        // 세션 체크 함수
+        function checkSession() {
+            location.href="/bs/createBd";
+        }
+
+        function getfilteredlist(category) {
+            // -1을 받으면 전체를 의미하므로 컨트롤러에서 전체 목록을 가져옴
+            if (category === -1) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/bs/getAllBdList", true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var bdList = JSON.parse(xhr.responseText);
+                        updateBdList(bdList);
+                    }
+                };
+                xhr.send();
+            } else {
+                // 그 외의 경우 해당 카테고리의 목록을 가져옴
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/bs/getBdListByCategory?category=" + category, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var bdList = JSON.parse(xhr.responseText);
+                        updateBdList(bdList);
+                    }
+                };
+                xhr.send();
+            }
+        }
+
+        function updateBdList(bdList) {
+            var tbody = document.querySelector("#bdList tbody");
+            tbody.innerHTML = ""; // 기존의 내용을 지우고 새로운 내용으로 업데이트
+
+            // dayOfWeek 변수 정의
+            const dayOfWeek = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
+
+            bdList.forEach(function(bdDTO, index) {
+                var row = document.createElement("tr");
+                
+                var td1 = document.createElement("td");
+                td1.textContent = index + 1; // 글번호
+                
+                var td2 = document.createElement("td");
+                td2.textContent = bdDTO.title; // 제목
+                
+                var td3 = document.createElement("td");
+                td3.textContent = dayOfWeek[bdDTO.bsCategory1]; // 방송구분
+                
+                var td4 = document.createElement("td");
+                td4.textContent = new Date(bdDTO.createDt).toLocaleDateString(); // 작성일
+                
+                var td5 = document.createElement("td");
+                td5.textContent = bdDTO.readCnt; // 조회수
+                
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                row.appendChild(td4);
+                row.appendChild(td5);
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        function showAll() {
+            var radios = document.querySelectorAll('input[name="bsCategory1"]');
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
+            getfilteredlist(-1); // -1은 전체를 의미
+        }
+
+    </script>
 </head>
 <body>
-
 <div align="center" layout:fragment="content">
-
-    <h2> 오아시스 방송 </h2>
-    <div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId == 'admin'}">
-        <input type="button" value="글쓰기" onclick="checkSession()"/>
-        <br><br>
-    </div>
-    <!-- 전체 Bs 게시글 리스트 -->
-<!-- 전체 Bs 게시글 리스트 -->
-<div class="bd-body" id="bdDTO">
-    <!-- 여기에 전체 Bs 게시글이 동적으로 추가될 것입니다. -->
-    <div th:each="bdDTO: ${bdList}">
-        <div th:if="${bdDTO.bsCategory1 == '월'
-                    or bdDTO.bsCategory1 == '화'
-                    or bdDTO.bsCategory1 == '수'
-                    or bdDTO.bsCategory1 == '목'
-                    or bdDTO.bsCategory1 == '금'
-                    or bdDTO.bsCategory1 == '토'
-                    or bdDTO.bsCategory1 == '일' }">
-            <span th:text="${bdDTO.bdId}">글번호</span><br>
-            <h4><span th:text="${bdDTO.title}">제목</span></h4><br>
-        </div>
-    </div>
-</div>
-    <!-- 카테고리 필터링을 위한 버튼 -->
     <div>
-        <button onclick="filterByCategory('월')">월요일</button>
-        <button onclick="filterByCategory('화')">화요일</button>
-        <button onclick="filterByCategory('수')">수요일</button>
-        <button onclick="filterByCategory('목')">목요일</button>
-        <button onclick="filterByCategory('금')">금요일</button>
-        <button onclick="filterByCategory('토')">토요일</button>
-        <button onclick="filterByCategory('일')">주일</button>
+        <span class="bs-title">오아시스 방송 전체 리스트</span>
+        <span class="mybtn" th:if="${session.memberId == 'admin'}"></span>
+        <input type="button" value="글쓰기" onclick="checkSession()"/>
+        
+        <br>
     </div>
+    <hr>
+    <h4>BS Main Page</h4>
+    <hr>
+    <!-- 게시글 리스트를 표시할 영역 -->
+    <div id="bdList">
+        <div class="bs-radio">
+        	<input type="radio" name="bsCategory1" value="7" onclick="showAll()"/>전체
+            <input type="radio" name="bsCategory1" value="0" onchange="getfilteredlist(this.value)"> 월요일
+            <input type="radio" name="bsCategory1" value="1" onchange="getfilteredlist(this.value)"> 화요일
+            <input type="radio" name="bsCategory1" value="2" onchange="getfilteredlist(this.value)"> 수요일
+            <input type="radio" name="bsCategory1" value="3" onchange="getfilteredlist(this.value)"> 목요일
+            <input type="radio" name="bsCategory1" value="4" onchange="getfilteredlist(this.value)"> 금요일
+            <input type="radio" name="bsCategory1" value="5" onchange="getfilteredlist(this.value)"> 토요일
+            <input type="radio" name="bsCategory1" value="6" onchange="getfilteredlist(this.value)"> 일요일
+        </div>
 
-    <!-- 필터링된 결과를 표시할 영역 -->
-    <div id="filteredResults"></div>
-
+        <table>
+            <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>방송구분</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="bdDTO, iterStat : ${bdList}">
+               	<tr>
+               		<td><span th:text="${iterStat.count}">글 번호</span></td>
+                    <td><span th:text="${bdDTO.title}">게시글 제목</span></td>
+                    <td>
+	                    <span th:if="${dayOfWeek != null and dayOfWeek.size() > 0}"
+	          				  th:text="${dayOfWeek[bdDTO.bsCategory1]}">방송구분1</span>
+                    
+                    </td>
+                    <td><span th:text="${#dates.format(bdDTO.createDt,'yyyy-MM-dd')}">작성일</span></td>
+                    <td><span th:text="${bdDTO.readCnt}">조회수</span></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<script>
-    // 페이지 로드 시 전체 Bs 게시글을 가져와서 표시하는 함수
-    window.onload = function() {
-        fetchAllBs();
-    }
-
-    
-    
-    // 전체 Bs 게시글을 가져와서 표시하는 JavaScript 함수
-    function fetchAllBs() {
-        fetch("/bs/main")
-            .then(response => response.json())
-            .then(data => {
-                displayBsList(data);
-            });
-    }
-
-    // 전체 Bs 게시글을 화면에 표시하는 JavaScript 함수
-    function displayBsList(bdDTO) {
-        let html = "";
-        bdDTO.forEach(bs => {
-            html += `<div class="bsbox1"><a href="/bs/${bs.id}">${bs.title}</a></div>`;
-        });
-        document.getElementById("bdDTO").innerHTML = html;
-    }
-
-    // 카테고리 필터링을 위한 JavaScript 함수
-    function filterByCategory(category) {
-    fetch(`/bs/filter?category1=${category}`)
-        .then(response => response.json())
-        .then(data => {
-            displayFilteredResults(data);
-        });
-	}
-
-    // 필터링된 결과를 화면에 표시하는 JavaScript 함수
-    function displayFilteredResults(data) {
-        let html = "<h3>필터링된 결과</h3>";
-        html += "<ul>";
-        data.forEach(item => {
-            html += "<li>" + item.title + "</li>"; // 예시: 방송의 제목을 표시
-        });
-        html += "</ul>";
-        document.getElementById("filteredResults").innerHTML = html;
-    }
-
-    // 세션 체크 함수
-    function checkSession() {
-        // 로그인 여부 확인 로직
-        // ...
-
-        // 로그인되어 있다면 글쓰기 화면으로 이동
-        // ...
-
-        // 로그인되어 있지 않다면 로그인 화면으로 이동
-        // ...
-    }
-</script>
-
 </body>
 </html>

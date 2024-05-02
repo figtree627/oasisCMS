@@ -2,6 +2,7 @@ package com.application.oasisCMS.bs.controller;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.application.oasisCMS.bs.dto.BsDTO;
@@ -49,23 +49,31 @@ public class BsController {
 	
 	@GetMapping("/main")
 	public String showMainPage(Model model) {
-	    List<BsDTO> bdList = bsService.getBdList(); // 모든 게시글 가져오기
+	    List<BsDTO> bdList = bsService.getBdList();
 	    
-	    System.out.println("[컨트롤러] 방송 메인- 전체리스트" + bdList);
+	    System.out.println("[컨트롤러] 방송 메인- 전체리스트" + bdList +"\n");
+	    
+	    List<String> dayOfWeek = Arrays.asList("월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일");
+	    model.addAttribute("dayOfWeek", dayOfWeek);
 	    model.addAttribute("bdList", bdList); // 가져온 게시글을 모델에 추가
 	    return "bs/main"; // main.html 페이지로 이동
 	}
+
 	
-	@GetMapping("/bsAll")
-	public String bsAll() {
-		return "redirect:/bs/main";
+	@GetMapping("/getBdListByCategory")
+	@ResponseBody
+	public List<BsDTO> getBdListByCategory(@RequestParam("category") int category) {
+	    List<BsDTO> bdListByCategory = bsService.getBdListByCategory(category);
+	    return bdListByCategory;
 	}
 	
-	@GetMapping("/filter")
-    public List<BsDTO> getFilteredBs(@RequestParam("category1") String category1) {
-		
-        return bsService.getBsByCategory(category1);
-    }
+	
+	@GetMapping("/getAllBdList")
+	@ResponseBody
+	public List<BsDTO> getAllBdList() {
+	    List<BsDTO> allBdList = bsService.getAllBdList();
+	    return allBdList;
+	}
 	
 	@GetMapping("/1")
 	public String day1 () {

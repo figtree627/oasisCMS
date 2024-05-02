@@ -12,9 +12,13 @@
 		SELECT * FROM BS;
 	</select>
 	
-	<select id="getBsByCategory" parameterType="string" resultType="BsDTO">
-	    SELECT * FROM BS
-	    WHERE category1 = #{category1}
+	<select id="getBsByCategory" parameterType="int" resultType="BsDTO">
+	    SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = #{bsCategory1}
+	</select>
+	
+	<select id="getAllBdList" resultType="BsDTO">
+		SELECT * FROM BS
 	</select>
 	
 	<select id="getBdDetail" parameterType="long" resultType="BsDTO">

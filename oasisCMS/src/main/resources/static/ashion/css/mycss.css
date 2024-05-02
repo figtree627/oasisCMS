@@ -11,6 +11,33 @@
     font-weight: bolder;
     font-style: normal;
 }
+.bs-radio{
+	font-size:1rem;
+	font-weight:900;
+	margin-bottom:30px;
+	height: 40px;
+	background-color:lightpink;
+	border-radius:10px;
+	line-height:40px;
+	padding-left:30px;
+	padding-right:30px;
+	}
+.bs-radio input[type="radio"] {
+    width:auto;
+    margin-left:20px; /* 라디오 버튼 간격 조정 */
+}
+.bs-title{
+	display:inline-block;
+	width:60%;
+	font-size:2rem;
+}
+.mybtn{
+	display:inline-block;
+	width: 100px;
+	font-size : 1rem;
+	font-weight: 900;
+	border-radius:10px;
+}
 .title{
 	text-align:center;
 	border: 5px solid grey;
@@ -107,11 +134,18 @@ input[type="text"] {
 		font-weight: 600;		
 }
 td {
-
 	text-align: left;
 	border:3px gray solid;
 	margin:50px;
 	height : 30px;
+}
+
+th {
+border:3px gray solid;
+	margin:50px;
+	height : 30px;
+text-align:center;
+
 }
 .update-member{
 	text-align:center;

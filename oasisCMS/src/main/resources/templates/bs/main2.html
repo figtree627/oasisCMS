@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>방송</title>
+    
+<script>
+    // 세션 체크 함수
+    function checkSession() {
+		location.href="/bs/createBd";
+    }
+</script>
+
+
+<script>
+    // 페이지 로드 시 전체 Bs 게시글을 가져와서 표시하는 함수
+    window.onload = function() {
+    	alert('시작');
+        fetchAllBs();
+    }
+    
+    // 전체 Bs 게시글을 가져와서 표시하는 JavaScript 함수
+    function fetchAllBs() {
+    	alert('전체 시작');
+    	fetch("/bs/main")
+            .then(response => response.json())
+            .then(data => {
+                displayBsList(data);
+            });
+    	
+    }
+
+    // 전체 Bs 게시글을 화면에 표시하는 JavaScript 함수
+    function displayBsList(bsDTO) {
+    	alert('displayBsList');
+        let html = "";
+        bsDTO.forEach(bs => {
+            html += `<div class="bsbox1"><a href="/bs/${bs.id}">${bs.title}</a></div>`;
+        });
+        document.getElementById("bsDTO").innerHTML = html;
+    }
+
+    // 카테고리 필터링을 위한 JavaScript 함수
+    function filterByCategory(day) {
+        let encodedDay = encodeURIComponent(day); // 요일을 URL 인코딩
+        fetch(`/bs/filter?bsCategory1=encodedDay`)
+            .then(response => response.json())
+            .then(data => {
+                displayFilteredResults(data);
+            });
+    }
+
+    // 필터링된 결과를 화면에 표시하는 JavaScript 함수
+    function displayFilteredResults(data) {
+    	alert('displayFilterResults');
+        let html = "<h3>필터링된 결과</h3>";
+        html += "<ul>";
+        data.forEach(item => {
+            html += "<li>" + item.title + "</li>"; // 예시: 방송의 제목을 표시
+        });
+        html += "</ul>";
+        document.getElementById("filteredResults").innerHTML = html;
+    }
+</script>
+    
+</head>
+<body>
+
+<div align="center" layout:fragment="content">
+
+    <h3> 오아시스 방송 전체 리스트</h3>
+    <div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId == 'admin'}">
+        <input type="button" value="글쓰기" onclick="checkSession()"/>
+        <br>
+    </div>
+    <hr>
+    <!-- 전체 Bs 게시글 리스트 -->
+<div class="bd-body" id="bsDTO">
+    <div th:each="bsDTO: ${bdList}">
+        <div th:if="${bsDTO.bsCategory1 == '월'
+                    or bsDTO.bsCategory1 == '화'
+                    or bsDTO.bsCategory1 == '수'
+                    or bsDTO.bsCategory1 == '목' 
+                    or bsDTO.bsCategory1 == '금'
+                    or bsDTO.bsCategory1 == '토'
+                    or bsDTO.bsCategory1 == '일' }">
+            <span th:text="${bsDTO.bdId}">글번호</span><br>
+            <h4><span th:text="${bsDTO.title}">제목</span></h4><hr>
+        </div>
+    </div>
+</div>
+    <!-- 카테고리 필터링을 위한 버튼 -->
+    <div>
+        <button onclick="filterByCategory('월')">월요일</button>
+        <button onclick="filterByCategory('화')">화요일</button>
+        <button onclick="filterByCategory('수')">수요일</button>
+        <button onclick="filterByCategory('목')">목요일</button>
+        <button onclick="filterByCategory('금')">금요일</button>
+        <button onclick="filterByCategory('토')">토요일</button>
+        <button onclick="filterByCategory('일')">주일</button>
+    </div>
+
+    <!-- 필터링된 결과를 표시할 영역 -->
+    <div id="filteredResults"></div>
+
+</div>
+
+</body>
+</html>
