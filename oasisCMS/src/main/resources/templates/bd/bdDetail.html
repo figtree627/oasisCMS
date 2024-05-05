@@ -10,31 +10,32 @@
 <div layout:fragment="content">
 	
 	<!-- 제목 및 작성자 정보 영역 -->
-	<div class="detailBody">
-		<span class="bdId" th:text="|[ ${bdDTO.bdId} ]|">글번호</span>&emsp;&emsp;
-		<span class="bdTitle" style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
-		</div>
-		
+	<div class="detailBody-parent">
 		<div class="detailBody">
-			<span class="bdWriter" th:text="${bdDTO.memberNick}">작성자</span>
-			조회수<span th:text="${bdDTO.readCnt}"></span>
-			작성일<span th:text="${#dates.format(bdDTO.createDt, 
-								'yy-MM-dd | hh:mm:ss')}"></span>&emsp;<br>
+			<span class="bdId" th:text="|[ ${bdDTO.bdId} ]|">글번호</span>&emsp;&emsp;
+			<span class="bdTitle" style="width:200px " th:text="${bdDTO.title}">제목</span> <br>
+			</div>
+			
+		<div class="detailBody">
+			작성자 : <span class="bdWriter" th:text="${bdDTO.memberNick}">작성자</span>&emsp;&emsp;
+			조회수 : <span th:text="${bdDTO.readCnt}"></span>&emsp;&emsp;
+			작성일 : <span t		h:text="${#dates.format(bdDTO.createDt,'yy-MM-dd | hh:mm:ss')}"></span>&emsp;<br>
 		</div>
+	</div>
 		
 		<!-- 게시글 내용 영역 -->
 		<hr>
 		<div><span th:utext="${bdDTO.content}"></span></div>
 	<hr>
-	<div align="right" class="mybtn" th:if="${session.memberId == bdDTO.memberId}">
-		<input type="button" value="수정" th:onclick="|location.href='@{/bd/updateBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" />
-		<input type="button" value="삭제" th:onclick="|location.href='@{/bd/deleteBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" /><br><br>
-		<span class="mybtn" th:if="${session.memberId != null}">
-			<input type="button" value="글쓰기" th:onclick="checkSession()" />
-		</span>
-		<input type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|" />
+	<div class="mybtn-parent">
+		<div th:if="${session.memberId == bdDTO.memberId}">
+			<input class="mybtn" type="button" value="수정" th:onclick="|location.href='@{/bd/updateBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" />
+			<input class="mybtn" type="button" value="삭제" th:onclick="|location.href='@{/bd/deleteBd(bdId=${#strings.toString(bdDTO.bdId)})}'|" /><br><br>
+		</div>
+		<span th:if="${session.memberId != null}">
+			<input class="mybtn" type="button" value="글쓰기" th:onclick="checkSession()" /></span>
+		<input class="mybtn" type="button" value="목록보기" th:onclick="|location.href='@{/bd/main}'|" />
 	</div>
-
 	<!-- 댓글 목록 -->
 	<!-- 
 		id에 번호를 붙여서 for문을 돌 때, js에서 id번호에 맞게 수정 틀이 나오도록 한다. 

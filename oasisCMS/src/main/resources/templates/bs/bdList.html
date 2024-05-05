@@ -1,61 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout.html}">
 <head>
 <meta charset="UTF-8">
-<title>오아시스아카데미 방송 메인페이지</title>
-<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
+<title>저자 갤러리</title>
 <script>
-	function checkSession(number) {
-
-		location.href = "/bs/createBd?bsCategory=" + number;
+	function checkSession() {
+		
+		let jsSession = "[[${session.memberId}]]";
+		console.log(jsSession);
+		/*
+		if (jsSession == "") {
+			alert("빈문자열")
+		} 
+		if (jsSession == null) {
+			alert("null")
+		} 
+		if (jsSession == undefined) {
+			alert("undifined")
+		} 
+		*/
+		
+// 세션확인 있으면 > 로그인ok > 글쓰기 화면으로
+		if (jsSession != "") {
+			// alert('로그인 확인 했습니다. 글쓰기 화면으로 이동합니다.');
+			location.href = "/bs/createBd";
+		} else { //	없으면 > 로그인x > 로그인화면으로
+			alert('먼저 로그인을 해야 합니다. 로그인 화면으로 이동합니다.')
+			location.href="/member/loginMember";
+		}
 	}
 </script>
 </head>
 <body>
-	<div layout:fragment="content">
-		<!-- Breadcrumb Begin -->
-		<div class="breadcrumb-option">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="breadcrumb__links">
-							<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span><a
-								th:href="@{/bs/main}">방송</a></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Breadcrumb End -->
-		<!-- Blog Section Begin -->
-		<div style="width: 720px; text-align:right;" class="mybtn"
-			th:if="${session.memberId == 'admin'}">
-			<input type="button" value="글쓰기" onclick="checkSession()" /> <br>
-			<br>
-		</div>
-
-		<section class="author-box1">
-			<div class="author-box1" th:each="bsDTO : ${bdList}">
-				<div class="blog__item__text">
-					<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"> 
-					<img class="bdImg"
-						th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}"/>
-					</a>
-					<h6>
-						<span th:text="${bsDTO.title}">제목</span>
-					</h6>
-					<ul>
-						<li>by <span>운영자</span></li>
-						<li th:text="${#dates.format(bsDTO.createDt , 'yyyy-MM-dd')}">작성일</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-
-		<!-- Blog Section End -->
-
+<div layout:fragment="content">
+	<div style="width:720px;" align="right" class="mybtn" th:if="${session.memberId =='admin'}">
+		<input type="button" value="글쓰기" th:onclick="checkSession()"/>
+		<br><br>
 	</div>
+	<div class="bs-body-div">
+	<div class="bs-box">
+		<div class="bs-box1" th:each="bsDTO : ${bdList}">
+			<a th:href="@{/bs/bdDetail(bdId=${bsDTO.bdId})}"><img th:src="@{/bs/thumbnails(fileName=${bsDTO.bsUUID})}" /></a><hr>
+			<h6 th:text="${bsDTO.title}">제목</h6>
+			<h6 th:text="${#dates.format(bsDTO.createDt , 'yyyy-MM-dd')}">작성일</h6>
+		</div>
+	</div>
+	</div>
+</div>
 </body>
 </html>

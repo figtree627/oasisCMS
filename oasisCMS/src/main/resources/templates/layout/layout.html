@@ -8,7 +8,6 @@
 			
 	-->
 <head>
-<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 
 	<meta charset="UTF-8">
 	<meta name="description" content="오아시스 아카데미 홈페이지">
@@ -31,8 +30,7 @@
 	<link rel="stylesheet" th:href="@{/ashion/css/owl.carousel.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/ashion/css/slicknav.min.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{/ashion/css/style.css}" type="text/css">
-	
-
+	<link rel="stylesheet" th:href="@{/ashion/css/mycss.css}" type="text/css">
 	<script th:src="@{/ashion/js/jquery-3.3.1.min.js}"></script>
 </head>
 <body>
@@ -61,12 +59,17 @@
 				<a th:href="@{/member/loginMember}">로그인</a>
 				<a href="/member/registerMember">회원가입</a>
 			</span> 
+			<span th:if="${session.memberId == 'admin'}">
+				<input type="button" value="글쓰기" th:onclick="checkSession()"/>
+			</span>
 			<span th:unless="${session.memberId == null}">
 				<a th:href="@{/member/logoutMember}">로그아웃</a>
 				<a th:href="@{/member/updateMember(memberId=${session.memberId})}">회원정보수정</a>
 			</span>
+			
 		</div>
 	</div>
+	
 	<!-- Offcanvas Menu End -->
 
 	<!-- Header Section Begin -->
@@ -74,9 +77,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xl-3 col-lg-8">
-					<div class="header__logo" align="center">
-						<a href="/main"><img src="/img/logo.jpg"></a>
-					</div>
+					<a th:href="@{/main}">	<div class="logo-text">OASIS ACADEMY</div></a>
+					<!-- <a href="/main"><img src="/img/logo.jpg"></a> -->
 				</div>
 				<div class="col-xl-6 col-lg-7" align="center">
 					<nav class="header__menu">
@@ -151,7 +153,6 @@
 								<a th:href="@{/member/logoutMember}">로그아웃</a>
 								<a href="/member/updateMember">회원정보수정</a>
 							</span>
-						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
 							<li><a href="#"><span class="icon_heart_alt"></span>
@@ -166,6 +167,7 @@
 				<i class="fa fa-bars"></i>
 			</div>
 		</div>
+		</div>
 	</header>
 	<!-- Header Section End -->
 
@@ -175,24 +177,21 @@
 	<!-- Footer Section Begin -->
 	<footer class="footer">
 		<div class="container">
-			<div class="row">
+			<div class="footer-row">
 				<div class="col-lg-4 col-md-10 col-sm-7" align="center">
 					<div class="footer__about">
 						<div class="footer__logo">
 							<a href="#"><img src="/img/logo.jpg" alt=""></a>
 						</div>
-						<div align="center">
-							<span>오아시스 아카데미 홈페이지<br> 본질영성
-							</span>
-						</div>
+						<h6><span>오아시스 아카데미<br>본질영성추구의 현장</span></h6>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-5">
 					<div class="footer__widget">
 						<h6>Quick links</h6>
 						<ul>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Blogs</a></li>
+							<li><a th:href="@{/bs/main}">방송</a></li>
+							<li><a th:href="@{/book/main}">암마북스</a></li>
 							<li><a href="#">Contact</a></li>
 							<li><a href="#">FAQ</a></li>
 						</ul>
@@ -209,17 +208,12 @@
 						</ul>
 					</div>
 				</div>
-
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					
 					<div class="footer__copyright__text">
-						<p>
-							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
+						<p>Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script>
 							All rights reserved | OASIS Academy
 						</p>
 					</div>

@@ -123,7 +123,7 @@ public class BsController {
 		System.out.println("[컨트롤러] 방송 등록 포스트");
 		System.out.println("bsDTO : " + bsDTO);
 		bsService.createBd(uploadImg, bsDTO);
-		return "redirect:/bs/bdList";
+		return "redirect:/bs/main";
 	}
 	
 	@GetMapping("/bdList")
@@ -133,7 +133,7 @@ public class BsController {
 		System.out.println("[컨트롤러] 방송 리스트 - 겟 도착");
 		List<BsDTO> bdList = bsService.getBdList();
 		for(BsDTO dto : bdList) {
-			System.out.println("bsDTO :" + dto);
+			System.out.println("[컨트롤러] 방송리스트의 DTO :" + dto);
 		}
 		model.addAttribute("bdList" ,bdList );
 		return "bs/bdList";

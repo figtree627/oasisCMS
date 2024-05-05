@@ -1,16 +1,69 @@
+/* 조선굵은고딕 */
 @font-face {
     font-family: 'ChosunKg';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunKg.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
+/* 조선일보명조 */
+@font-face {
+    font-family: 'Chosunilbo_myungjo'; 
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 조선견고딕 */
+@font-face {
+    font-family: 'ChosunBg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunBg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 조선가는고딕 */
 @font-face {
     font-family: 'ChosunSg';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunSg.woff') format('woff');
-    font-weight: bolder;
+    font-weight: normal;
+    font-style: normal;
+    }
+@font-face {
+    font-family: 'KCC-Hanbit';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}    
+@font-face {
+    font-family: 'SOGANGUNIVERSITYTTF';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SOGANGUNIVERSITYTTF.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
+.required-form-marker{
+	color:red;
+	font-weight:bolder;
+	
+}
+
+.logo-text{
+text-align:center;
+	padding:5px;
+	color:violet;
+	margin-top: 20px;
+	background-color:cornsilk;
+	border:5px solid cornsilk;
+	border-radius:20px;
+	font-size:2rem;
+	font-weight:800;
+	text-shadow:5px 3px 8px black;
+}
+
+.footer-row{
+	 display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    margin:20px;
+	
+}    
 .bs-radio{
 	font-size:1rem;
 	font-weight:900;
@@ -25,18 +78,31 @@
 .bs-radio input[type="radio"] {
     width:auto;
     margin-left:20px; /* 라디오 버튼 간격 조정 */
-}
+    }
 .bs-title{
 	display:inline-block;
 	width:60%;
 	font-size:2rem;
+	}
+.mybtn-parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
 }
-.mybtn{
-	display:inline-block;
-	width: 100px;
-	font-size : 1rem;
-	font-weight: 900;
-	border-radius:10px;
+
+.mybtn {
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 900;
+    border-radius: 10px;
+    margin-right: 20px; /* 각 버튼 사이에 20px 간격을 주기 위해 오른쪽 마진을 설정합니다. */
+    margin-left:20px;
+}
+
+/* 마지막 버튼에는 오른쪽 마진을 주지 않습니다. */
+.mybtn:last-child {
+    margin-right: 0;
 }
 .title{
 	text-align:center;
@@ -44,7 +110,36 @@
 	margin:100px;
 	padding:20px;
 	border-radius:10px;
-	box-shadow: 10px 10px 10px rgba(30, 50, 100, 0.5); /* Add shadow effect */	
+	box-shadow: 10px 10px 10px rgba(30, 50, 100, 0.5); /* Add shadow effect */
+	}
+.bs-body-div{
+	display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.bs-box{
+    display: flex; /* 부모 요소를 Flex Container로 설정 */
+    flex-wrap: wrap;
+    margin: 20px auto;
+	justify-content: left; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    }
+    
+.bs-box1{
+	border:1px grey dotted;
+	border-radius:20px;
+	text-align:center;
+    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 400px;
+    position: relative; /* 상대적인 위치 지정 */
+    }
+.bs-box1 img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
 }
 .author-box{
 	display: flex; /* 부모 요소를 Flex Container로 설정 */
@@ -73,11 +168,18 @@
 	color:grey;
 	font-size:0.8rem;
 }
+.detailBody-parent{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	margin:60px auto;
+}
 
 .detailBody{
+	padding:10px;
 	display:inline-block;
 	text-align:center;
-	margin:0 20%;
+	margin:0 10%;
 }
 .repl-area1{
 	text-align:left;
