@@ -13,16 +13,15 @@
 <br>
 		
 	<div style="border-color:red; padding:5px;" >
-		 #<span th:text="${authorDTO.bdId}"></span> 
-		&nbsp;<span style="width:200px " th:text="${authorDTO.title}">제목</span> <br>
+		 <h4>#<span th:text="${authorDTO.bdId}"></span>. 
+		&nbsp;<span style="width:200px " th:text="${authorDTO.title}">제목</span> <br></h4>
 		<div align="right">
-		
-		 &nbsp;|&nbsp; <span th:text="${#dates.format(authorDTO.createDt, 'yy-MM-dd | hh:mm')}"></span>&emsp;
-		 &nbsp;| 조회수:&nbsp; <span th:text="${authorDTO.readCnt}"></span>
+		<span th:text="${#dates.format(authorDTO.createDt, 'yy-MM-dd | hh:mm')}"></span>
+		 | 조회수:&nbsp; <span th:text="${authorDTO.readCnt}"></span>
 		 <br>
 		 
 		 </div>
-		 
+		  
 		<hr>
 		
 <table>
@@ -33,16 +32,13 @@
 </table>
 		
 	</div>
-	<hr>
-		<div align="right" class="mybtn" th:if="|${session.memberId=='admin'}|">
+		<span class="mybtn" th:if="|${session.memberId=='admin'}|">
 			<input type="button" value="수정" th:onclick="|location.href='@{/author/updateBd(bdId=${#strings.toString(authorDTO.bdId)})}'|" />
 			<input type="button" value="삭제" th:onclick="|location.href='@{/author/deleteBd(bdId=${#strings.toString(authorDTO.bdId)})}'|" /><br><br>
-			<span class="mybtn" th:if="${session.memberId != null}">
-				<input type="button" value="글쓰기" th:onclick="checkSession()" />
-			</span>
+			<input type="button" value="글쓰기" th:onclick="checkSession()" />
+		</span>
 			<input type="button" value="목록보기" th:onclick="|location.href='@{/author/main}'|" />
-		</div>
-
+<hr>
 </div>
 </body>
 </html>

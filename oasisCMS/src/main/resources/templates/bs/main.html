@@ -89,18 +89,22 @@
         }
 
     </script>
+    <style>
+#bs-table th{
+    	width:250px;
+    }
+    </style>
 </head>
 <body>
 <div align="center" layout:fragment="content">
     <div>
-        <span class="bs-title">오아시스 방송 전체 리스트</span>
-        <span class="mybtn" th:if="${session.memberId == 'admin'}"></span>
-        <input type="button" value="글쓰기" onclick="checkSession()"/>
+        <span class="bs-title">오아시스 방송 전체 리스트</span><span class="mybtn" th:if="${session.memberId == 'admin'}"><input type="button" value="글쓰기" onclick="checkSession()"/>
+        </span>
+        
+         <h4>BS Main Page</h4>
         
         <br>
     </div>
-    <hr>
-    <h4>BS Main Page</h4>
     <hr>
     <!-- 게시글 리스트를 표시할 영역 -->
     <div id="bdList">
@@ -126,7 +130,7 @@
             </tr>
             </thead>
             <tbody>
-            <div th:each="bdDTO, iterStat : ${bdList}">
+            <div id="bs-table" th:each="bdDTO, iterStat : ${bdList}">
                	<tr>
                		<td><span th:text="${iterStat.count}">글 번호</span></td>
                     <td><span th:text="${bdDTO.title}">게시글 제목</span></td>
