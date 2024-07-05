@@ -104,10 +104,11 @@ text-align:center;
 .mybtn:last-child {
     margin-right: 0;
 }
-.title{
+.myTitle{
 	text-align:center;
+	width:40%;
 	border: 5px solid grey;
-	margin:100px;
+	margin:100px auto;
 	padding:20px;
 	border-radius:10px;
 	box-shadow: 10px 10px 10px rgba(30, 50, 100, 0.5); /* Add shadow effect */
@@ -272,7 +273,6 @@ input[type="text"] {
 }
 td.mytd1 {
 	width:20%;
-	text-align: center;
 	height: 27px;
 	line-height: 27px;
 }
