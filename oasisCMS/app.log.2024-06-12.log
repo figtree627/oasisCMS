@@ -1,0 +1,133 @@
+2024-06-12 11:58:38.001 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-06-12 11:58:38.017 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-06-12 11:59:16.817 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer1'
+
+2024-06-12 11:59:16.833 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-06-12 12:00:38.341 [http-nio-80-exec-6] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'qwer1', '$2a$10$vHaiUepn2lM5NQ18LUL8N./Ok6hP9qjQiERq7fQlvRuZgorJJ7epO','회원1', '회원1닉',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '01011111111', '', '',
+			'',	'','',
+			''
+		)
+
+2024-06-12 12:00:47.364 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'qwer1'
+
+2024-06-12 12:00:47.364 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$vHaiUepn2lM5NQ18LUL8N./Ok6hP9qjQiERq7fQlvRuZgorJJ7epO |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-06-12 12:00:51.982 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-06-12 12:00:51.983 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|------|---------|----------|------------|----------|
+|bd_id |title |read_cnt |create_dt |member_nick |member_id |
+|------|------|---------|----------|------------|----------|
+|------|------|---------|----------|------------|----------|
+
+2024-06-12 12:00:53.860 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer1'
+
+2024-06-12 12:00:53.862 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer1     |$2a$10$vHaiUepn2lM5NQ18LUL8N./Ok6hP9qjQiERq7fQlvRuZgorJJ7epO |회원1       |회원1닉        |c:/spring_member_profile/member/default.jpg |null         |m   |01011111111 |      |        |             |              |               |    |Y         |2024-06-12 12:00:38.0 |null        |[unread] |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-06-12 12:00:53.865 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM MEMBER WHERE MEMBER_ID = 'qwer1'
+
+2024-06-12 12:00:53.868 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|member_id |passwd                                                       |member_nm |member_nick |profile_img                                 |profile_uuid |sex |hp          |email |zipcode |road_address |jibun_address |namuji_address |etc |active_yn |join_dt               |inactive_dt |login_dt |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+|qwer1     |$2a$10$vHaiUepn2lM5NQ18LUL8N./Ok6hP9qjQiERq7fQlvRuZgorJJ7epO |회원1       |회원1닉        |c:/spring_member_profile/member/default.jpg |null         |m   |01011111111 |      |        |             |              |               |    |Y         |2024-06-12 12:00:38.0 |null        |[unread] |
+|----------|-------------------------------------------------------------|----------|------------|--------------------------------------------|-------------|----|------------|------|--------|-------------|--------------|---------------|----|----------|----------------------|------------|---------|
+
+2024-06-12 12:01:14.460 [http-nio-80-exec-6] INFO  jdbc.sqlonly - INSERT INTO BOARD (
+			MEMBER_ID, TITLE, CONTENT
+		)
+		VALUES(
+			'qwer1', '1번회원이 남긴 글.', '<p>날씨가 화창해서 너무 좋네요</p>
+'
+		)
+
+2024-06-12 12:01:14.469 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT
+				B.BD_ID			AS BD_ID,
+				B.TITLE			AS TITLE,
+				B.READ_CNT		AS READ_CNT,
+				B.CREATE_DT		AS CREATE_DT,	
+				M.MEMBER_NICK 	AS MEMBER_NICK,
+				M.MEMBER_ID 	AS MEMBER_ID
+		FROM	BOARD B
+		JOIN	MEMBER M
+		ON B.MEMBER_ID = M.MEMBER_ID
+
+2024-06-12 12:01:14.472 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|------------|---------|----------------------|------------|----------|
+|bd_id |title       |read_cnt |create_dt             |member_nick |member_id |
+|------|------------|---------|----------------------|------------|----------|
+|1     |1번회원이 남긴 글. |0        |2024-06-12 12:01:14.0 |회원1닉        |qwer1     |
+|------|------------|---------|----------------------|------------|----------|
+
+2024-06-12 12:21:06.213 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer2'
+
+2024-06-12 12:21:06.213 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-06-12 12:23:01.888 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'qwer2'
+
+2024-06-12 12:23:01.888 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+

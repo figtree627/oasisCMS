@@ -1,0 +1,248 @@
+2024-10-15 15:01:38.810 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:01:38.858 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:01:44.499 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:01:44.500 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:01:46.396 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:01:46.396 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:01:48.340 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:01:48.341 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:01:55.605 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:01:55.606 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:02:02.364 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:02:02.365 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:02:25.384 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin2'
+
+2024-10-15 15:02:25.385 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-10-15 15:04:11.542 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT * FROM BS;
+
+2024-10-15 15:04:11.550 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+|bd_id |title         |bs_img     |bs_uuid                                  |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt             |
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+|1     |목요일-5월 16일 방송 |뉴진스_해린.jpg |57821592-b9d1-4b09-adc2-6dcaff5d54f9.jpg |        |0        |3             |영성예화          |null          |2024-05-16 20:05:24.0 |
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+
+2024-10-15 15:04:17.360 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 0
+
+2024-10-15 15:04:17.363 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:18.352 [http-nio-80-exec-6] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 1
+
+2024-10-15 15:04:18.353 [http-nio-80-exec-6] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:19.306 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 2
+
+2024-10-15 15:04:19.307 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:20.032 [http-nio-80-exec-8] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 3
+
+2024-10-15 15:04:20.034 [http-nio-80-exec-8] INFO  jdbc.resultsettable - 
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+|bd_id |title         |bs_img     |bs_uuid                                  |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt             |
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+|1     |목요일-5월 16일 방송 |뉴진스_해린.jpg |57821592-b9d1-4b09-adc2-6dcaff5d54f9.jpg |        |0        |3             |영성예화          |null          |2024-05-16 20:05:24.0 |
+|------|--------------|-----------|-----------------------------------------|--------|---------|--------------|--------------|--------------|----------------------|
+
+2024-10-15 15:04:21.146 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 4
+
+2024-10-15 15:04:21.148 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:22.433 [http-nio-80-exec-10] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 5
+
+2024-10-15 15:04:22.434 [http-nio-80-exec-10] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:23.331 [http-nio-80-exec-4] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 6
+
+2024-10-15 15:04:23.332 [http-nio-80-exec-4] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:04:26.047 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT 	* FROM BS
+	    WHERE 	bs_category_1 = 2
+
+2024-10-15 15:04:26.049 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|bd_id |title |bs_img |bs_uuid |content |read_cnt |bs_category_1 |bs_category_2 |bs_category_3 |create_dt |
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+|------|------|-------|--------|--------|---------|--------------|--------------|--------------|----------|
+
+2024-10-15 15:05:00.729 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-10-15 15:05:00.735 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-10-15 15:06:20.292 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-10-15 15:06:20.293 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:38:14.035 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin2'
+
+2024-10-15 15:38:14.036 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-10-15 15:47:13.503 [http-nio-80-exec-3] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin2'
+
+2024-10-15 15:47:13.505 [http-nio-80-exec-3] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-10-15 15:48:35.840 [http-nio-80-exec-9] INFO  jdbc.sqlonly - SELECT 	MEMBER_ID 
+		FROM 	MEMBER 
+		WHERE 	MEMBER_ID = 'admin2'
+
+2024-10-15 15:48:35.858 [http-nio-80-exec-9] INFO  jdbc.resultsettable - 
+|----------|
+|member_id |
+|----------|
+|----------|
+
+2024-10-15 15:49:01.417 [http-nio-80-exec-7] INFO  jdbc.sqlonly - INSERT INTO MEMBER (
+			MEMBER_ID, PASSWD, MEMBER_NM, MEMBER_NICK,
+			PROFILE_IMG, PROFILE_UUID,
+			SEX, HP, EMAIL,	ZIPCODE,
+			ROAD_ADDRESS,JIBUN_ADDRESS,NAMUJI_ADDRESS,
+			ETC
+		) VALUES (
+			'admin2', '$2a$10$NY.YNNnWXlOiNbKe4ZLpo.xLL2mKNJ3OcbmJOLY2Qdtt4umHPyT2W','원', '닉',
+			'c:/spring_member_profile/member/default.jpg', NULL,
+			'm', '010-2988-0603', 'figtree@gmail.com', '',
+			'',	'','',
+			''
+		)
+
+2024-10-15 15:49:14.821 [http-nio-80-exec-5] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin2'
+
+2024-10-15 15:49:14.824 [http-nio-80-exec-5] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$NY.YNNnWXlOiNbKe4ZLpo.xLL2mKNJ3OcbmJOLY2Qdtt4umHPyT2W |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-10-15 15:49:19.964 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-10-15 15:49:19.967 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+
+2024-10-15 15:49:22.323 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT * FROM AUTHOR
+
+2024-10-15 15:49:22.326 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|bd_id |author_id |title |book_id |author_nm |content |author_img |author_uuid |read_cnt |create_dt |
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+|------|----------|------|--------|----------|--------|-----------|------------|---------|----------|
+

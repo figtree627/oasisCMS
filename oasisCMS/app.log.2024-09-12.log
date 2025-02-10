@@ -1,0 +1,33 @@
+2024-09-12 14:34:03.809 [http-nio-80-exec-7] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-09-12 14:34:03.848 [http-nio-80-exec-7] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-09-12 14:34:10.346 [http-nio-80-exec-1] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-09-12 14:34:10.348 [http-nio-80-exec-1] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
+2024-09-12 14:34:16.322 [http-nio-80-exec-2] INFO  jdbc.sqlonly - SELECT	PASSWD,	ACTIVE_YN	
+		FROM	MEMBER	
+		WHERE	MEMBER_ID = 'admin'
+
+2024-09-12 14:34:16.323 [http-nio-80-exec-2] INFO  jdbc.resultsettable - 
+|-------------------------------------------------------------|----------|
+|passwd                                                       |active_yn |
+|-------------------------------------------------------------|----------|
+|$2a$10$7bh//p7xIYq7W3DqCaKyheqyeF67zY3M3/MhE04Ky3LgHjU5CEKQ. |Y         |
+|-------------------------------------------------------------|----------|
+
